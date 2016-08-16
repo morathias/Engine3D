@@ -1,17 +1,19 @@
 #include "Camera.h"
+#include "Utility.h"
 
 #include <d3d9.h>
 #pragma comment (lib, "d3d9.lib") 
 #include <d3dx9.h>
 #pragma comment (lib, "d3dx9.lib") 
 
-Camera::Camera(Renderer& renderer){
-	_renderer = renderer;
+Camera::Camera(){
 
 	_eye = new D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	_right = new D3DXVECTOR3(1.0f, 0.0f, 0.0f);
 	_up = new D3DXVECTOR3(0.0f, 1.0f, 0.0f);
 	_lookAt = new D3DXVECTOR3(0.0f, 0.0f, 1.0f);
+
+	_viewMatrix = new D3DXMATRIX();
 }
 
 Camera::~Camera(){
@@ -19,6 +21,8 @@ Camera::~Camera(){
 	delete _right;
 	delete _up;
 	delete _lookAt;
+
+	delete _viewMatrix;
 }
 
 void Camera::roll(float value){
@@ -31,12 +35,15 @@ void Camera::yaw(float value){
 }
 
 void Camera::walk(float value){
+	*_eye += *_lookAt * value;
 }
 
 void Camera::strafe(float value){
+	*_eye += *_right * value;
 }
 
 void Camera::fly(float value){
+	*_eye += *_up * value;
 }
 
 void Camera::setPos(float x, float y, float z){
@@ -51,6 +58,38 @@ void Camera::setForward(float x, float y, float z){
 	_lookAt->z = z;
 }
 
-void Camera::update(){
+void Camera::update(Renderer& renderer){
+	D3DXVec3Normalize(_lookAt, _lookAt);
 
+	D3DXVec3Cross(_up, _lookAt, _right);
+	D3DXVec3Normalize(_up, _up);
+
+	D3DXVec3Cross(_right, _up, _lookAt);
+	D3DXVec3Normalize(_right, _right);
+
+	float x = -D3DXVec3Dot(_right, _eye);
+	float y = -D3DXVec3Dot(_up, _eye);
+	float z = -D3DXVec3Dot(_lookAt, _eye);
+
+	(*_viewMatrix)(0, 0) = _right->x;
+	(*_viewMatrix)(0, 1) = _up->x;
+	(*_viewMatrix)(0, 2) = _lookAt->x;
+	(*_viewMatrix)(0, 3) = 0.0f;
+
+	(*_viewMatrix)(1, 0) = _right->y;
+	(*_viewMatrix)(1, 1) = _up->y;
+	(*_viewMatrix)(1, 2) = _lookAt->y;
+	(*_viewMatrix)(1, 3) = 0.0f;
+
+	(*_viewMatrix)(2, 0) = _right->z;
+	(*_viewMatrix)(2, 1) = _up->z;
+	(*_viewMatrix)(2, 2) = _lookAt->z;
+	(*_viewMatrix)(2, 3) = 0.0f;
+
+	(*_viewMatrix)(3, 0) = x;
+	(*_viewMatrix)(3, 1) = y;
+	(*_viewMatrix)(3, 2) = z;
+	(*_viewMatrix)(3, 3) = 1.0f;
+
+	renderer.setMatrix(VIEW, _viewMatrix);
 }

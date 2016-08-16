@@ -11,7 +11,7 @@ typedef D3DXVECTOR3* Vector3;
 class Camera
 {
 public:
-	DLLexport Camera(Renderer& renderer);
+	DLLexport Camera();
 	DLLexport ~Camera();
 
 public:
@@ -27,15 +27,13 @@ public:
 	DLLexport void setPos(float x , float y, float z);
 	DLLexport void setForward(float x, float y, float z);
 
-	DLLexport void update();
+	DLLexport void update(Renderer& renderer);
 
 private:
 	Vector3 _eye;
 	Vector3 _lookAt;
 	Vector3 _up;
 	Vector3 _right;
-
-	Renderer _renderer;
 
 	Matrix _viewMatrix;
 };

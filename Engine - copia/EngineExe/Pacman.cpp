@@ -3,6 +3,7 @@
 //==================================================================================
 string userName;
 bool Pacman::init(Renderer& rkRenderer){
+	camera = new Camera();
 	_sound.open("Assets/wind.mp3", true);
 	_sound.play();
 	userName = "MatyX";
@@ -49,20 +50,24 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 	if (input.keyDown(Input::KEY_D)){
 		_player->setPosX(_player->posX() + 3.0f);
 		_player->setAnimation(_runRight);
+		camera->strafe(0.05f);
 	}
 	else if (input.keyDown(Input::KEY_A)){
 		_player->setPosX(_player->posX() - 3.0f);
 		_player->setAnimation(_runLeft);
+		camera->strafe(-0.05f);
 	}
 
 	if (input.keyDown(Input::KEY_W)){
 		_player->setPosY(_player->posY() + 3.0f);
 		_player->setAnimation(_runUp);
+		camera->fly(0.05f);
 	}
 
 	else if (input.keyDown(Input::KEY_S)) {
 		_player->setPosY(_player->posY() - 3.0f);
 		_player->setAnimation(_runDown);
+		camera->fly(-0.05f);
 	}
 
 	if (input.keyUp(Input::KEY_S) && input.keyUp(Input::KEY_A) && input.keyUp(Input::KEY_D) && input.keyUp(Input::KEY_W)){
@@ -80,6 +85,8 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 	_score.display(rkRenderer);
 	_userName.setText("Username: " + userName);
 	_userName.display(rkRenderer);
+	
+	camera->update(rkRenderer);
 }
 //==================================================================================
 void Pacman::deinit(){
