@@ -1,7 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 //========================================================================================
-#include "Camera.h"
+#include "Renderer.h"
 #include "Quad.h"
 #include "Sprite.h"
 #include "Random.h"
