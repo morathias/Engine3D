@@ -1,9 +1,10 @@
 #include "Pacman.h"
 #include "input.h"
+#include <iostream>
 //==================================================================================
 string userName;
 bool Pacman::init(Renderer& rkRenderer){
-	camera = new Camera();
+	
 	_sound.open("Assets/wind.mp3", true);
 	_sound.play();
 	userName = "MatyX";
@@ -18,8 +19,10 @@ bool Pacman::init(Renderer& rkRenderer){
 	_player = new Sprite();
 	_player->setPosX(0);
 	_player->setPosY(-100);
+	_player->setPosZ(0);
 	_player->setTexture(rkRenderer.loadTexture("assets/samurai.png", D3DCOLOR_XRGB(255, 255, 255)));
-	_player->setScale(120, 120);
+	_player->setScale(100, 100);
+	quad.setScale(32, 32);
 
 	_iddleDown = new Animation();
 	_iddleDown->addFrame(0.0f, 0.0f, 64.0f, 64.0f, 1024.0f, 1024.0f, 0.6f, 4);
@@ -38,6 +41,8 @@ bool Pacman::init(Renderer& rkRenderer){
 	_runUp->addFrame(256.0f, 192.0f, 64.0f, 64.0f, 1024.0f, 1024.0f, 0.7f, 6);
 	_player->setAnimation(_iddleDown);
 
+	camera = new Camera();
+	camera->setPos(0, -100, -100);
 	return true;
 }
 //==================================================================================
@@ -48,27 +53,23 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 	tileMap->draw(rkRenderer);
 	
 	if (input.keyDown(Input::KEY_D)){
-		_player->setPosX(_player->posX() + 3.0f);
-		_player->setAnimation(_runRight);
-		camera->strafe(0.05f);
+		camera->strafe(15.0f * (timer.timeBetweenFrames() / 100));
 	}
 	else if (input.keyDown(Input::KEY_A)){
-		_player->setPosX(_player->posX() - 3.0f);
-		_player->setAnimation(_runLeft);
-		camera->strafe(-0.05f);
+		camera->strafe(-15.0f * (timer.timeBetweenFrames() / 100));
 	}
 
 	if (input.keyDown(Input::KEY_W)){
-		_player->setPosY(_player->posY() + 3.0f);
-		_player->setAnimation(_runUp);
-		camera->fly(0.05f);
+		camera->walk(15.0f * (timer.timeBetweenFrames() / 100));
 	}
 
 	else if (input.keyDown(Input::KEY_S)) {
-		_player->setPosY(_player->posY() - 3.0f);
-		_player->setAnimation(_runDown);
-		camera->fly(-0.05f);
+		camera->walk(-15.0f * (timer.timeBetweenFrames() / 100));
 	}
+
+	camera->yaw(input.mouseRelPosX() * 0.005);
+	camera->pitch(input.mouseRelPosY() * 0.005);
+	camera->roll(input.mouseRelPosZ() * 0.0005);
 
 	if (input.keyUp(Input::KEY_S) && input.keyUp(Input::KEY_A) && input.keyUp(Input::KEY_D) && input.keyUp(Input::KEY_W)){
 		_player->setAnimation(_iddleDown);
@@ -79,14 +80,14 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 	_player->update(timer);
 	_player->draw(rkRenderer);
 
+	camera->update(rkRenderer);
+
 	i++;
 	score = "Score: " + std::to_string(i);
 	_score.setText(score);
 	_score.display(rkRenderer);
 	_userName.setText("Username: " + userName);
 	_userName.display(rkRenderer);
-	
-	camera->update(rkRenderer);
 }
 //==================================================================================
 void Pacman::deinit(){

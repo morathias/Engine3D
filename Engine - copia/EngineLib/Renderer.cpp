@@ -4,6 +4,10 @@
 #pragma comment (lib, "d3d9.lib") 
 #include <d3dx9.h>
 #pragma comment (lib, "d3dx9.lib") 
+
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 //==================================================================================
 #define CUSTOMFVF (D3DFVF_XYZ | D3DFVF_DIFFUSE)
 #define TEXTUREFVF (D3DFVF_XYZ | D3DFVF_TEX1)
@@ -20,9 +24,9 @@ D3DPRIMITIVETYPE _primitives[PRIMITIVE_COUNT] =
 //---------------------------Matrix Type assignment-------------------------------
 D3DTRANSFORMSTATETYPE _matrixType[MATRIX_TYPE_COUNT] =
 {
-	{D3DTS_WORLD},
-	{D3DTS_PROJECTION},
-	{D3DTS_VIEW},
+	{ D3DTS_VIEW },
+	{ D3DTS_PROJECTION },
+	{ D3DTS_WORLD }
 };
 //==================================================================================
 Renderer::Renderer(){}
@@ -92,8 +96,11 @@ bool Renderer::init(HWND hWnd, unsigned int uiW, unsigned int uiH){
 	float viewportHeight = static_cast<float>(viewport.Height);
 	//----------------orthogonal projection--------------------------------
 	D3DXMATRIX projectionMatrix;
-	D3DXMatrixOrthoLH(&projectionMatrix, viewportWidth, viewportHeight, -1.0f, 1.0f);
+	//D3DXMatrixOrthoLH(&projectionMatrix, viewportWidth, viewportHeight, 0.0f, 1000.0f);
+	D3DXMatrixPerspectiveFovLH(&projectionMatrix, M_PI * 0.25, viewportWidth / viewportHeight, 1.0f, 10000.0f);
 	m_pkDevice->SetTransform(D3DTS_PROJECTION, &projectionMatrix);
+	_projectionMatrix = new D3DXMATRIX();
+	_projectionMatrix = &projectionMatrix;
 	//----------------vertex Buffers---------------------------------------
 	v_buffer = new VertexBuffer(m_pkDevice, sizeof(Vertex), CUSTOMFVF);
 	texturedVBuffer = new VertexBuffer(m_pkDevice, sizeof(TexturedVertex), TEXTUREFVF);
@@ -184,5 +191,9 @@ const Texture Renderer::loadTexture(const std::string& textureName, D3DCOLOR Col
 //==================================================================================
 void Renderer::setCurrentTexture(const Texture& texture){
 	m_pkDevice->SetTexture(0, texture);
+}
+//==================================================================================
+Matrix& Renderer::getProjectionMatrix(){
+	return _projectionMatrix;
 }
 //==================================================================================

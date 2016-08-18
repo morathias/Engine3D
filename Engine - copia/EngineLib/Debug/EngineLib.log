@@ -1,10 +1,14 @@
-﻿Build started 15/08/2016 08:55:47 p.m..
-     1>Project "C:\Users\Morales\Documents\GitHub\Engine3D\Engine - copia\EngineLib\EngineLib.vcxproj" on node 2 (Build target(s)).
+﻿Build started 18/08/2016 07:14:31 p.m..
+     1>Project "C:\Users\Morales\Documents\Engine - copia\EngineLib\EngineLib.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include" /ZI /nologo /W3 /WX- /Od /Oy- /D _WINDLL /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Camera.cpp
-         Camera.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include" /ZI /nologo /W3 /WX- /Od /Oy- /D _WINDLL /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Renderer.cpp
+         Renderer.cpp
+     1>c:\users\morales\documents\engine - copia\enginelib\renderer.cpp(100): warning C4305: 'argument' : truncation from 'double' to 'FLOAT'
+     1>c:\users\morales\documents\engine - copia\enginelib\renderer.cpp(140): warning C4172: returning address of local variable or temporary
+     1>c:\users\morales\documents\engine - copia\enginelib\renderer.cpp(147): warning C4172: returning address of local variable or temporary
+     1>c:\users\morales\documents\engine - copia\enginelib\renderer.cpp(177): warning C4018: '<' : signed/unsigned mismatch
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Morales\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.dll" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86" dxguid.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Morales\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Morales\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.lib" /MACHINE:X86 /DLL Debug\Animation.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Morales\Documents\Engine - copia\Debug\EngineLib.dll" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86" dxguid.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Morales\Documents\Engine - copia\Debug\EngineLib.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Morales\Documents\Engine - copia\Debug\EngineLib.lib" /MACHINE:X86 /DLL Debug\Animation.obj
          Debug\Camera.obj
          Debug\directinput.obj
          Debug\Engine.obj
@@ -26,9 +30,9 @@
          Debug\Vector2.obj
          Debug\vertexbuffer.obj
          Debug\Window.obj
-         EngineLib.vcxproj -> C:\Users\Morales\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.dll
-     1>Done Building Project "C:\Users\Morales\Documents\GitHub\Engine3D\Engine - copia\EngineLib\EngineLib.vcxproj" (Build target(s)).
+         EngineLib.vcxproj -> C:\Users\Morales\Documents\Engine - copia\Debug\EngineLib.dll
+     1>Done Building Project "C:\Users\Morales\Documents\Engine - copia\EngineLib\EngineLib.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:02.64
+Time Elapsed 00:00:01.63

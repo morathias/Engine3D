@@ -26,24 +26,45 @@ Camera::~Camera(){
 }
 
 void Camera::roll(float value){
+	D3DXMATRIX rotationMatrix;
+	D3DXMatrixRotationAxis(&rotationMatrix, _lookAt, value);
+
+	D3DXVec3TransformCoord(_right, _right, &rotationMatrix);
+	D3DXVec3TransformCoord(_up, _up, &rotationMatrix);
 }
 
 void Camera::pitch(float value){
+	D3DXMATRIX rotationMatrix;
+	D3DXMatrixRotationAxis(&rotationMatrix, _right, value);
+	
+	D3DXVec3TransformCoord(_up, _up, &rotationMatrix);
+	D3DXVec3TransformCoord(_lookAt, _lookAt, &rotationMatrix);
 }
 
 void Camera::yaw(float value){
+	D3DXMATRIX rotationMatrix;
+	D3DXMatrixRotationAxis(&rotationMatrix, _up, value);
+
+	D3DXVec3TransformCoord(_right, _right, &rotationMatrix);
+	D3DXVec3TransformCoord(_lookAt, _lookAt, &rotationMatrix);
 }
 
 void Camera::walk(float value){
-	*_eye += *_lookAt * value;
+	_eye->x += _lookAt->x * value;
+	_eye->y += _lookAt->y * value;
+	_eye->z += _lookAt->z * value;
 }
 
 void Camera::strafe(float value){
-	*_eye += *_right * value;
+	_eye->x += _right->x * value;
+	_eye->y += _right->y * value;
+	_eye->z += _right->z * value;
 }
 
 void Camera::fly(float value){
-	*_eye += *_up * value;
+	_eye->x += _up->x * value;
+	_eye->y += _up->y * value;
+	_eye->z += _up->z * value;
 }
 
 void Camera::setPos(float x, float y, float z){
@@ -61,11 +82,11 @@ void Camera::setForward(float x, float y, float z){
 void Camera::update(Renderer& renderer){
 	D3DXVec3Normalize(_lookAt, _lookAt);
 
-	D3DXVec3Cross(_up, _lookAt, _right);
-	D3DXVec3Normalize(_up, _up);
-
 	D3DXVec3Cross(_right, _up, _lookAt);
 	D3DXVec3Normalize(_right, _right);
+
+	D3DXVec3Cross(_up, _lookAt, _right);
+	D3DXVec3Normalize(_up, _up);
 
 	float x = -D3DXVec3Dot(_right, _eye);
 	float y = -D3DXVec3Dot(_up, _eye);
@@ -90,6 +111,9 @@ void Camera::update(Renderer& renderer){
 	(*_viewMatrix)(3, 1) = y;
 	(*_viewMatrix)(3, 2) = z;
 	(*_viewMatrix)(3, 3) = 1.0f;
+
+	//D3DXVECTOR3 _look = *_eye + *_lookAt;
+	//D3DXMatrixLookAtLH(_viewMatrix, _eye, &_look, _up);
 
 	renderer.setMatrix(VIEW, _viewMatrix);
 }

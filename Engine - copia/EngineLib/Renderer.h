@@ -45,6 +45,8 @@ public:
 
 	void setMatrix(MatrixType matrixType ,const Matrix& matrix);
 
+	Matrix& getProjectionMatrix();
+
 private:
 	unsigned int uiWidth;
 	unsigned int uiHeight;
@@ -57,6 +59,8 @@ private:
 	IDirect3DDevice9* m_pkDevice;
 
 	std::vector<Texture> _textureList;
+
+	Matrix _projectionMatrix;
 };
 //========================================================================================
 #endif
