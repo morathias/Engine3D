@@ -173,8 +173,13 @@
     <ClInclude Include="Sound.h">
       <Filter>Archivos de encabezado\User Classes</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Cube.h">
       <Filter>Archivos de encabezado</Filter>
+=======
+    <ClInclude Include="Mesh.h">
+      <Filter>Archivos de encabezado\Engine</Filter>
+>>>>>>> origin/master
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
