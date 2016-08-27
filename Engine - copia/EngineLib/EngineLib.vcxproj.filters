@@ -99,6 +99,9 @@
     <ClCompile Include="Sound.cpp">
       <Filter>Archivos de código fuente\User Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Cube.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vector2.h">
@@ -169,6 +172,9 @@
     </ClInclude>
     <ClInclude Include="Sound.h">
       <Filter>Archivos de encabezado\User Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Cube.h">
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

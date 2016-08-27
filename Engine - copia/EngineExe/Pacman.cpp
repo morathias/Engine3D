@@ -21,8 +21,9 @@ bool Pacman::init(Renderer& rkRenderer){
 	_player->setPosY(-100);
 	_player->setPosZ(0);
 	_player->setTexture(rkRenderer.loadTexture("assets/samurai.png", D3DCOLOR_XRGB(255, 255, 255)));
-	_player->setScale(100, 100);
-	quad.setScale(32, 32);
+	_player->setScale(100, 100, 1);
+	quad.setScale(32, 32,1);
+
 
 	_iddleDown = new Animation();
 	_iddleDown->addFrame(0.0f, 0.0f, 64.0f, 64.0f, 1024.0f, 1024.0f, 0.6f, 4);

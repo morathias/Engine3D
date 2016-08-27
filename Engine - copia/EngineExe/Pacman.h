@@ -34,6 +34,7 @@ private:
 	Sound _sound;
 
 	Quad quad;
+	Cube cube;
 
 	Camera* camera;
 };

@@ -3,6 +3,7 @@
 //========================================================================================
 #include "Camera.h"
 #include "Quad.h"
+#include "Cube.h"
 #include "Sprite.h"
 #include "Random.h"
 #include "Vector2.h"
