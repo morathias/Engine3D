@@ -1,103 +1,185 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Cube.cpp" />
-    <ClCompile Include="directinput.cpp" />
-    <ClCompile Include="Engine.cpp" />
-    <ClCompile Include="Entity2D.cpp" />
-    <ClCompile Include="Frame.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="input.cpp" />
-    <ClCompile Include="pg1_timer.cpp" />
-    <ClCompile Include="Physics.cpp" />
-    <ClCompile Include="Quad.cpp" />
-    <ClCompile Include="Random.cpp" />
-    <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="ScreenText.cpp" />
-    <ClCompile Include="Sound.cpp" />
-    <ClCompile Include="Sprite.cpp" />
-    <ClCompile Include="Tile.cpp" />
-    <ClCompile Include="TileMap.cpp" />
-    <ClCompile Include="tinyxml2.cpp" />
-    <ClCompile Include="Vector2.cpp" />
-    <ClCompile Include="vertexbuffer.cpp" />
-    <ClCompile Include="Window.cpp" />
-    <ClCompile Include="Animation.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="pg2_indexbuffer.cpp" />
-    <ClCompile Include="pg2_vertexbuffer.cpp" />
+    <Filter Include="Archivos de código fuente">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Archivos de encabezado">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Archivos de recursos">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Engine">
+      <UniqueIdentifier>{5825fcc0-3ea4-4f93-beb5-9a7077cb5b8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Entities">
+      <UniqueIdentifier>{636e2673-48b6-4477-8fee-4c4abf70a7e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\User Classes">
+      <UniqueIdentifier>{15fe16c7-9b75-4948-977b-b9d09ba538a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\Engine">
+      <UniqueIdentifier>{0a83fd16-e02a-428a-9b3c-79efb6872703}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\Entities">
+      <UniqueIdentifier>{46f9c37f-f23e-437b-89f0-8e37e4358ce8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\User Classes">
+      <UniqueIdentifier>{0f25a7cf-4b6f-4f36-bf7d-d6c7794c2c7d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Quad.h" />
-    <ClInclude Include="Random.h" />
-    <ClInclude Include="Renderer.h" />
-    <ClInclude Include="ScreenText.h" />
-    <ClInclude Include="Sound.h" />
-    <ClInclude Include="Sprite.h" />
-    <ClInclude Include="Tile.h" />
-    <ClInclude Include="TileMap.h" />
-    <ClInclude Include="tinyxml2.h" />
-    <ClInclude Include="Utility.h" />
-    <ClInclude Include="Vector2.h" />
-    <ClInclude Include="vertexbuffer.h" />
-    <ClInclude Include="Window.h" />
+    <ClCompile Include="Animation.cpp">
+      <Filter>Archivos de código fuente\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="directinput.cpp">
+      <Filter>Archivos de código fuente\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Archivos de código fuente\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity2D.cpp">
+      <Filter>Archivos de código fuente\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Frame.cpp">
+      <Filter>Archivos de código fuente\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Archivos de código fuente\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="input.cpp">
+      <Filter>Archivos de código fuente\User Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="pg1_timer.cpp">
+      <Filter>Archivos de código fuente\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Quad.cpp">
+      <Filter>Archivos de código fuente\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Archivos de código fuente\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2.cpp">
+      <Filter>Archivos de código fuente\User Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="vertexbuffer.cpp">
+      <Filter>Archivos de código fuente\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Archivos de código fuente\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Random.cpp">
+      <Filter>Archivos de código fuente\User Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Archivos de código fuente\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMap.cpp">
+      <Filter>Archivos de código fuente\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics.cpp">
+      <Filter>Archivos de código fuente\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Archivos de código fuente\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml2.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenText.cpp">
+      <Filter>Archivos de código fuente\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Archivos de código fuente\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>Archivos de código fuente\User Classes</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Vector2.h">
+      <Filter>Archivos de encabezado\User Classes</Filter>
+    </ClInclude>
     <ClInclude Include="Animation.h">
-      <Filter>headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Cube.h">
-      <Filter>headers</Filter>
-    </ClInclude>
-    <ClInclude Include="directinput.h">
-      <Filter>headers</Filter>
+      <Filter>Archivos de encabezado\Entities</Filter>
     </ClInclude>
     <ClInclude Include="Engine.h">
-      <Filter>headers</Filter>
+      <Filter>Archivos de encabezado\Engine</Filter>
     </ClInclude>
     <ClInclude Include="Entity2D.h">
-      <Filter>headers</Filter>
+      <Filter>Archivos de encabezado\Entities</Filter>
     </ClInclude>
     <ClInclude Include="Frame.h">
-      <Filter>headers</Filter>
-    </ClInclude>
-    <ClInclude Include="input.h">
-      <Filter>headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>headers</Filter>
-    </ClInclude>
-    <ClInclude Include="pg1_timer.h">
-      <Filter>headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Physics.h">
-      <Filter>headers</Filter>
+      <Filter>Archivos de encabezado\Entities</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
-      <Filter>headers</Filter>
+      <Filter>Archivos de encabezado\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="pg2_indexbuffer.h" />
-    <ClInclude Include="pg2_vertexbuffer.h" />
+    <ClInclude Include="pg1_timer.h">
+      <Filter>Archivos de encabezado\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Quad.h">
+      <Filter>Archivos de encabezado\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="directinput.h">
+      <Filter>Archivos de encabezado\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Archivos de encabezado\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Archivos de encabezado\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility.h">
+      <Filter>Archivos de encabezado\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="vertexbuffer.h">
+      <Filter>Archivos de encabezado\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Archivos de encabezado\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="input.h">
+      <Filter>Archivos de encabezado\User Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Random.h">
+      <Filter>Archivos de encabezado\User Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMap.h">
+      <Filter>Archivos de encabezado\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics.h">
+      <Filter>Archivos de encabezado\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Archivos de encabezado\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml2.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenText.h">
+      <Filter>Archivos de encabezado\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Archivos de encabezado\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>Archivos de encabezado\User Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Archivos de encabezado\Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="input.inl">
-      <Filter>headers</Filter>
+      <Filter>Archivos de código fuente\User Classes</Filter>
     </None>
     <None Include="pg1_timer.inl">
-      <Filter>headers</Filter>
+      <Filter>Archivos de código fuente\Engine</Filter>
     </None>
-    <None Include="pg2_indexbuffer.inl" />
-    <None Include="pg2_vertexbuffer.inl" />
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="headers">
-      <UniqueIdentifier>{5ce2c7da-b790-4498-8d4c-c875fde25c1b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source">
-      <UniqueIdentifier>{1c12b9e4-8df8-4a43-a1a5-57b94c6647e4}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
 </Project>
