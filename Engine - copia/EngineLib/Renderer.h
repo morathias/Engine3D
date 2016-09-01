@@ -2,9 +2,9 @@
 #define RENDERER_H
 //========================================================================================
 #include "Utility.h"
+#include <d3d9.h>
 #include <vector>
 #include <string>
-#include <d3dx9.h>
 //========================================================================================
 #define DllExport __declspec( dllexport )
 //========================================================================================
@@ -22,8 +22,8 @@ typedef interface ID3DXFont ID3DXFont;
 typedef interface ID3DXFont *LPD3DXFONT;
 typedef ID3DXFont* Font;
 
-class IndexBuffer;
 class VertexBuffer;
+class IndexBuffer;
 //========================================================================================
 //Se encarga de la comunicacion con el Direct3D
 class Renderer{
@@ -37,6 +37,14 @@ public:
 	DllExport void draw(Vertex* gameVertex, Primitive primitive, int vertexCount);
 	DllExport void draw(TexturedVertex* gameVertex, Primitive primitive, int vertexCount);
 
+	DllExport VertexBuffer* createVertexBuffer(size_t uiVertexSize, unsigned int uiFVF);
+	DllExport IndexBuffer* createIndexBuffer();
+
+	DllExport void setCurrentIndexBuffer(IndexBuffer* pkIndexBuffer);
+	DllExport void setCurrentVertexBuffer(VertexBuffer* pkVertexBuffer);
+	DllExport void drawCurrentBuffers(Primitive ePrimitive);
+
+
 	Font& createFont(int charSize, std::string textFont, bool italic);
 	RECT& createRect(int x, int y, int width, int height);
 	void displayText(Font& font, RECT& rect, std::string text);
@@ -46,14 +54,6 @@ public:
 	DllExport const Texture loadTexture(const std::string& textureName, D3DCOLOR ColorKey);
 	DllExport void setCurrentTexture(const Texture& texture);
 
-	DllExport VertexBuffer* createVertexBuffer(size_t vertexSize, unsigned int fvf);
-	DllExport IndexBuffer* createIndexBuffer();
-
-	DllExport void setCurrentIndexBuffer(IndexBuffer* indexBuffer);
-	DllExport void setCurrentVertexBuffer(VertexBuffer* vertexBuffer);
-
-	DllExport void drawCurrentBuffer(Primitive primitive);
-
 	void setMatrix(MatrixType matrixType ,const Matrix& matrix);
 
 	Matrix& getProjectionMatrix();
@@ -62,6 +62,9 @@ private:
 	unsigned int uiWidth;
 	unsigned int uiHeight;
 	HWND _hwnd;
+
+	VertexBuffer* v_buffer;
+	VertexBuffer* texturedVBuffer;
 
 	IDirect3D9* m_pkD3D;
 	IDirect3DDevice9* m_pkDevice;

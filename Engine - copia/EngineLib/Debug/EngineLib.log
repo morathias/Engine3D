@@ -1,77 +1,78 @@
-﻿Build started 27/08/2016 08:45:23 p.m..
-     1>Project "C:\Users\Morales\Documents\GitHub\Engine3D\Engine - copia\EngineLib\EngineLib.vcxproj" on node 2 (Build target(s)).
+﻿Build started 01/09/2016 12:50:17 p.m..
+     1>Project "C:\Users\820\Desktop\Engine3D-5f67ec58eedde022729264927e5f206d20b6dc6c\Engine - copia\EngineLib\EngineLib.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include" /ZI /nologo /W3 /WX- /Od /Oy- /D _WINDLL /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Camera.cpp Cube.cpp Engine.cpp Entity2D.cpp Game.cpp Physics.cpp Quad.cpp Renderer.cpp ScreenText.cpp Sprite.cpp Tile.cpp TileMap.cpp directinput.cpp input.cpp pg2_indexbuffer.cpp pg2_vertexbuffer.cpp
-         pg2_vertexbuffer.cpp
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\pg2_vertexbuffer.cpp(7): error C2871: 'pg2' : a namespace with this name does not exist
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include" /ZI /nologo /W3 /WX- /Od /Oy- /D _WINDLL /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Camera.cpp Engine.cpp Entity2D.cpp Game.cpp Physics.cpp Quad.cpp Renderer.cpp ScreenText.cpp Sprite.cpp Tile.cpp TileMap.cpp directinput.cpp input.cpp pg2_indexbuffer.cpp pg2_vertexbuffer.cpp
          input.cpp
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\screentext.h(7): warning C4005: 'DllExport' : macro redefinition
-                 c:\users\morales\documents\github\engine3d\engine - copia\enginelib\renderer.h(9) : see previous definition of 'DllExport'
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\game.h(13): warning C4005: 'DllExport' : macro redefinition
-                 c:\users\morales\documents\github\engine3d\engine - copia\enginelib\screentext.h(7) : see previous definition of 'DllExport'
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\screentext.h(7): warning C4005: 'DllExport' : macro redefinition
+                 c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\renderer.h(9) : see previous definition of 'DllExport'
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\game.h(12): warning C4005: 'DllExport' : macro redefinition
+                 c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\screentext.h(7) : see previous definition of 'DllExport'
          directinput.cpp
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\screentext.h(7): warning C4005: 'DllExport' : macro redefinition
-                 c:\users\morales\documents\github\engine3d\engine - copia\enginelib\renderer.h(9) : see previous definition of 'DllExport'
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\game.h(13): warning C4005: 'DllExport' : macro redefinition
-                 c:\users\morales\documents\github\engine3d\engine - copia\enginelib\screentext.h(7) : see previous definition of 'DllExport'
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\screentext.h(7): warning C4005: 'DllExport' : macro redefinition
+                 c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\renderer.h(9) : see previous definition of 'DllExport'
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\game.h(12): warning C4005: 'DllExport' : macro redefinition
+                 c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\screentext.h(7) : see previous definition of 'DllExport'
          TileMap.cpp
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(12): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(30): warning C4244: '=' : conversion from 'float' to 'unsigned int', possible loss of data
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(31): warning C4244: '=' : conversion from 'float' to 'unsigned int', possible loss of data
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(36): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(56): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(57): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(58): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(98): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(99): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(150): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(167): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(168): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(185): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(186): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(187): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(196): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(198): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\tilemap.cpp(12): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\tilemap.cpp(30): warning C4244: '=' : conversion from 'float' to 'unsigned int', possible loss of data
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\tilemap.cpp(31): warning C4244: '=' : conversion from 'float' to 'unsigned int', possible loss of data
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\tilemap.cpp(36): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\tilemap.cpp(56): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\tilemap.cpp(57): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\tilemap.cpp(58): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\tilemap.cpp(98): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\tilemap.cpp(99): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\tilemap.cpp(150): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\tilemap.cpp(167): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\tilemap.cpp(168): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\tilemap.cpp(185): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\tilemap.cpp(186): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\tilemap.cpp(187): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\tilemap.cpp(196): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\tilemap.cpp(198): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
          Tile.cpp
          Sprite.cpp
          ScreenText.cpp
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\screentext.h(7): warning C4005: 'DllExport' : macro redefinition
-                 c:\users\morales\documents\github\engine3d\engine - copia\enginelib\renderer.h(9) : see previous definition of 'DllExport'
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\screentext.h(7): warning C4005: 'DllExport' : macro redefinition
+                 c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\renderer.h(9) : see previous definition of 'DllExport'
          Renderer.cpp
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\renderer.cpp(43): error C2065: 'v_buffer' : undeclared identifier
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\renderer.cpp(43): error C2541: 'delete' : cannot delete objects that are not pointers
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\renderer.cpp(44): error C2065: 'v_buffer' : undeclared identifier
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\renderer.cpp(102): warning C4305: 'argument' : truncation from 'double' to 'FLOAT'
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\renderer.cpp(135): warning C4172: returning address of local variable or temporary
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\renderer.cpp(142): warning C4172: returning address of local variable or temporary
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\renderer.cpp(172): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\renderer.cpp(101): warning C4305: 'argument' : truncation from 'double' to 'FLOAT'
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\renderer.cpp(106): error C2661: 'VertexBuffer::VertexBuffer' : no overloaded function takes 3 arguments
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\renderer.cpp(107): error C2661: 'VertexBuffer::VertexBuffer' : no overloaded function takes 3 arguments
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\renderer.cpp(119): error C2039: 'draw' : is not a member of 'VertexBuffer'
+                 c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\pg2_vertexbuffer.h(13) : see declaration of 'VertexBuffer'
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\renderer.cpp(124): error C2039: 'draw' : is not a member of 'VertexBuffer'
+                 c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\pg2_vertexbuffer.h(13) : see declaration of 'VertexBuffer'
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\renderer.cpp(141): warning C4172: returning address of local variable or temporary
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\renderer.cpp(148): warning C4172: returning address of local variable or temporary
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\renderer.cpp(178): warning C4018: '<' : signed/unsigned mismatch
          Quad.cpp
          Physics.cpp
          Game.cpp
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\screentext.h(7): warning C4005: 'DllExport' : macro redefinition
-                 c:\users\morales\documents\github\engine3d\engine - copia\enginelib\renderer.h(9) : see previous definition of 'DllExport'
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\game.h(13): warning C4005: 'DllExport' : macro redefinition
-                 c:\users\morales\documents\github\engine3d\engine - copia\enginelib\screentext.h(7) : see previous definition of 'DllExport'
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\screentext.h(7): warning C4005: 'DllExport' : macro redefinition
+                 c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\renderer.h(9) : see previous definition of 'DllExport'
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\game.h(12): warning C4005: 'DllExport' : macro redefinition
+                 c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\screentext.h(7) : see previous definition of 'DllExport'
          Entity2D.cpp
          Engine.cpp
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\screentext.h(7): warning C4005: 'DllExport' : macro redefinition
-                 c:\users\morales\documents\github\engine3d\engine - copia\enginelib\window.h(9) : see previous definition of 'DllExport'
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\game.h(13): warning C4005: 'DllExport' : macro redefinition
-                 c:\users\morales\documents\github\engine3d\engine - copia\enginelib\screentext.h(7) : see previous definition of 'DllExport'
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\engine.cpp(16): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\screentext.h(7): warning C4005: 'DllExport' : macro redefinition
+                 c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\window.h(9) : see previous definition of 'DllExport'
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\game.h(12): warning C4005: 'DllExport' : macro redefinition
+                 c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\screentext.h(7) : see previous definition of 'DllExport'
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\engine.cpp(16): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(226) : see declaration of 'freopen'
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\engine.cpp(17): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\engine.cpp(17): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(226) : see declaration of 'freopen'
-     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\engine.cpp(18): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\820\desktop\engine3d-5f67ec58eedde022729264927e5f206d20b6dc6c\engine - copia\enginelib\engine.cpp(18): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(226) : see declaration of 'freopen'
-         Cube.cpp
          Camera.cpp
          Generating Code...
          Compiling...
+         pg2_vertexbuffer.cpp
          pg2_indexbuffer.cpp
          Generating Code...
-     1>Done Building Project "C:\Users\Morales\Documents\GitHub\Engine3D\Engine - copia\EngineLib\EngineLib.vcxproj" (Build target(s)) -- FAILED.
+     1>Done Building Project "C:\Users\820\Desktop\Engine3D-5f67ec58eedde022729264927e5f206d20b6dc6c\Engine - copia\EngineLib\EngineLib.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:33.00
+Time Elapsed 00:00:16.88

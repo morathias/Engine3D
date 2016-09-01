@@ -1,5 +1,4 @@
 #include "Renderer.h"
-#include "pg2_indexbuffer.h"
 #include "pg2_vertexbuffer.h"
 //==================================================================================
 #include <d3d9.h>
@@ -103,6 +102,9 @@ bool Renderer::init(HWND hWnd, unsigned int uiW, unsigned int uiH){
 	m_pkDevice->SetTransform(D3DTS_PROJECTION, &projectionMatrix);
 	_projectionMatrix = new D3DXMATRIX();
 	_projectionMatrix = &projectionMatrix;
+	//----------------vertex Buffers---------------------------------------
+	v_buffer = new VertexBuffer(m_pkDevice, sizeof(Vertex), CUSTOMFVF);
+	texturedVBuffer = new VertexBuffer(m_pkDevice, sizeof(TexturedVertex), TEXTUREFVF);
 
 	return true;
 }
@@ -113,9 +115,13 @@ void Renderer::beginFrame(){
 }
 //==================================================================================
 void Renderer::draw(Vertex* gameVertex, Primitive primitive, int vertexCount){
+	v_buffer->bind();
+	v_buffer->draw(gameVertex, _primitives[primitive], vertexCount);
 }
 //==================================================================================
 void Renderer::draw(TexturedVertex* gameVertex, Primitive primitive, int vertexCount){
+	texturedVBuffer->bind();
+	texturedVBuffer->draw(gameVertex, _primitives[primitive], vertexCount);
 }
 //==================================================================================
 Font& Renderer::createFont(int charSize, std::string textFont, bool italic){
@@ -192,22 +198,3 @@ Matrix& Renderer::getProjectionMatrix(){
 	return _projectionMatrix;
 }
 //==================================================================================
-VertexBuffer* Renderer::createVertexBuffer(size_t vertexSize, unsigned int fvf){
-	VertexBuffer* vertexBuffer = new VertexBuffer(*this, m_pkDevice, vertexSize, fvf);
-	return vertexBuffer;
-}
-
-IndexBuffer* Renderer::createIndexBuffer(){
-	IndexBuffer* indexBuffer = new IndexBuffer(*this, m_pkDevice);
-	return indexBuffer;
-}
-
-void Renderer::drawCurrentBuffer(Primitive primitive){
-
-}
-
-void Renderer::setCurrentIndexBuffer(IndexBuffer* indexBuffer){
-}
-
-void Renderer::setCurrentVertexBuffer(VertexBuffer* vertexBuffer){
-}
