@@ -1,4 +1,6 @@
 #include "Renderer.h"
+#include "pg2_indexbuffer.h"
+#include "pg2_vertexbuffer.h"
 //==================================================================================
 #include <d3d9.h>
 #pragma comment (lib, "d3d9.lib") 
@@ -197,3 +199,18 @@ Matrix& Renderer::getProjectionMatrix(){
 	return _projectionMatrix;
 }
 //==================================================================================
+pg2::VertexBuffer* Renderer::createVertexBuffer(size_t vertexSize, unsigned int fvf){
+
+}
+
+pg2::IndexBuffer* Renderer::createIndexBuffer(){
+
+}
+
+void Renderer::setCurrentIndexBuffer(pg2::IndexBuffer* indexBuffer){
+
+}
+
+void Renderer::setCurrentVertexBuffer(pg2::VertexBuffer* vertexBuffer){
+
+}

@@ -99,6 +99,12 @@
     <ClCompile Include="Sound.cpp">
       <Filter>Archivos de código fuente\User Classes</Filter>
     </ClCompile>
+    <ClCompile Include="pg2_indexbuffer.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="pg2_vertexbuffer.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vector2.h">
@@ -173,6 +179,12 @@
     <ClInclude Include="Mesh.h">
       <Filter>Archivos de encabezado\Engine</Filter>
     </ClInclude>
+    <ClInclude Include="pg2_indexbuffer.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="pg2_vertexbuffer.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="input.inl">
@@ -180,6 +192,12 @@
     </None>
     <None Include="pg1_timer.inl">
       <Filter>Archivos de código fuente\Engine</Filter>
+    </None>
+    <None Include="pg2_indexbuffer.inl">
+      <Filter>Archivos de encabezado</Filter>
+    </None>
+    <None Include="pg2_vertexbuffer.inl">
+      <Filter>Archivos de encabezado</Filter>
     </None>
   </ItemGroup>
 </Project>

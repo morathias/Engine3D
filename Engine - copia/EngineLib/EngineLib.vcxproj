@@ -77,6 +77,8 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="pg1_timer.cpp" />
+    <ClCompile Include="pg2_indexbuffer.cpp" />
+    <ClCompile Include="pg2_vertexbuffer.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Quad.cpp" />
     <ClCompile Include="Random.cpp" />
@@ -102,6 +104,8 @@
     <ClInclude Include="input.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="pg1_timer.h" />
+    <ClInclude Include="pg2_indexbuffer.h" />
+    <ClInclude Include="pg2_vertexbuffer.h" />
     <ClInclude Include="Physics.h" />
     <ClInclude Include="Quad.h" />
     <ClInclude Include="Random.h" />
@@ -120,6 +124,8 @@
   <ItemGroup>
     <None Include="input.inl" />
     <None Include="pg1_timer.inl" />
+    <None Include="pg2_indexbuffer.inl" />
+    <None Include="pg2_vertexbuffer.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

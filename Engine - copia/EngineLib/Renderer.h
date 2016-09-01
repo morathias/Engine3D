@@ -21,6 +21,11 @@ typedef IDirect3DTexture9* Texture;
 typedef interface ID3DXFont ID3DXFont;
 typedef interface ID3DXFont *LPD3DXFONT;
 typedef ID3DXFont* Font;
+
+namespace pg2{
+	class IndexBuffer;
+	class VertexBuffer;
+}
 //========================================================================================
 //Se encarga de la comunicacion con el Direct3D
 class Renderer{
@@ -46,6 +51,14 @@ public:
 	void setMatrix(MatrixType matrixType ,const Matrix& matrix);
 
 	Matrix& getProjectionMatrix();
+
+	pg2::VertexBuffer* createVertexBuffer(size_t vertexSize, unsigned int fvf);
+	pg2::IndexBuffer* createIndexBuffer();
+
+	void setCurrentIndexBuffer(pg2::IndexBuffer* indexBuffer);
+	void setCurrentVertexBuffer(pg2::VertexBuffer* vertexBuffer);
+
+	void drawCurrentBuffers(Primitive primitive);
 
 private:
 	unsigned int uiWidth;
