@@ -66,9 +66,12 @@
     <ClCompile Include="Vector2.cpp">
       <Filter>Archivos de código fuente\User Classes</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="vertexbuffer.cpp">
       <Filter>Archivos de código fuente\Engine</Filter>
     </ClCompile>
+=======
+>>>>>>> origin/master
     <ClCompile Include="Window.cpp">
       <Filter>Archivos de código fuente\Engine</Filter>
     </ClCompile>
@@ -100,10 +103,17 @@
       <Filter>Archivos de código fuente\User Classes</Filter>
     </ClCompile>
     <ClCompile Include="pg2_indexbuffer.cpp">
+<<<<<<< HEAD
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
     <ClCompile Include="pg2_vertexbuffer.cpp">
       <Filter>Archivos de código fuente</Filter>
+=======
+      <Filter>Archivos de código fuente\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="pg2_vertexbuffer.cpp">
+      <Filter>Archivos de código fuente\Engine</Filter>
+>>>>>>> origin/master
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -143,9 +153,12 @@
     <ClInclude Include="Utility.h">
       <Filter>Archivos de encabezado\Engine</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="vertexbuffer.h">
       <Filter>Archivos de encabezado\Engine</Filter>
     </ClInclude>
+=======
+>>>>>>> origin/master
     <ClInclude Include="Window.h">
       <Filter>Archivos de encabezado\Engine</Filter>
     </ClInclude>
@@ -180,10 +193,17 @@
       <Filter>Archivos de encabezado\Engine</Filter>
     </ClInclude>
     <ClInclude Include="pg2_indexbuffer.h">
+<<<<<<< HEAD
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="pg2_vertexbuffer.h">
       <Filter>Archivos de encabezado</Filter>
+=======
+      <Filter>Archivos de encabezado\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="pg2_vertexbuffer.h">
+      <Filter>Archivos de encabezado\Engine</Filter>
+>>>>>>> origin/master
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -194,10 +214,17 @@
       <Filter>Archivos de código fuente\Engine</Filter>
     </None>
     <None Include="pg2_indexbuffer.inl">
+<<<<<<< HEAD
       <Filter>Archivos de encabezado</Filter>
     </None>
     <None Include="pg2_vertexbuffer.inl">
       <Filter>Archivos de encabezado</Filter>
+=======
+      <Filter>Archivos de encabezado\Engine</Filter>
+    </None>
+    <None Include="pg2_vertexbuffer.inl">
+      <Filter>Archivos de encabezado\Engine</Filter>
+>>>>>>> origin/master
     </None>
   </ItemGroup>
 </Project>

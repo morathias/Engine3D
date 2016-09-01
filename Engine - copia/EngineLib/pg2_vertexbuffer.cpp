@@ -1,10 +1,12 @@
 
 //---------------------------------------------------------------------------
 #include "pg2_vertexbuffer.h"
+<<<<<<< HEAD
 //---------------------------------------------------------------------------
 #include "rendering/pg2_renderer.h"
-//---------------------------------------------------------------------------
-using namespace pg2;
+=======
+#include "Renderer.h"
+>>>>>>> origin/master
 //---------------------------------------------------------------------------
 VertexBuffer::VertexBuffer (Renderer& rkRenderer, IDirect3DDevice9* pkDevice, size_t uiVertexSize, unsigned int uiFVF)
 :
