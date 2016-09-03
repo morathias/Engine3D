@@ -2,7 +2,11 @@
 #define RENDERER_H
 //========================================================================================
 #include "Utility.h"
+<<<<<<< HEAD
 #include "vertexbuffer.h"
+=======
+#include <d3d9.h>
+>>>>>>> origin/master
 #include <vector>
 #include <string>
 //========================================================================================
@@ -21,6 +25,16 @@ typedef IDirect3DTexture9* Texture;
 typedef interface ID3DXFont ID3DXFont;
 typedef interface ID3DXFont *LPD3DXFONT;
 typedef ID3DXFont* Font;
+
+<<<<<<< HEAD
+namespace pg2{
+	class IndexBuffer;
+	class VertexBuffer;
+}
+=======
+class VertexBuffer;
+class IndexBuffer;
+>>>>>>> origin/master
 //========================================================================================
 //Se encarga de la comunicacion con el Direct3D
 class Renderer{
@@ -34,6 +48,14 @@ public:
 	DllExport void draw(Vertex* gameVertex, Primitive primitive, int vertexCount);
 	DllExport void draw(TexturedVertex* gameVertex, Primitive primitive, int vertexCount);
 
+	DllExport VertexBuffer* createVertexBuffer(size_t uiVertexSize, unsigned int uiFVF);
+	DllExport IndexBuffer* createIndexBuffer();
+
+	DllExport void setCurrentIndexBuffer(IndexBuffer* pkIndexBuffer);
+	DllExport void setCurrentVertexBuffer(VertexBuffer* pkVertexBuffer);
+	DllExport void drawCurrentBuffers(Primitive ePrimitive);
+
+
 	Font& createFont(int charSize, std::string textFont, bool italic);
 	RECT& createRect(int x, int y, int width, int height);
 	void displayText(Font& font, RECT& rect, std::string text);
@@ -44,8 +66,19 @@ public:
 	DllExport void setCurrentTexture(const Texture& texture);
 
 	void setMatrix(MatrixType matrixType ,const Matrix& matrix);
+<<<<<<< HEAD
 
 	Matrix& getProjectionMatrix();
+
+	pg2::VertexBuffer* createVertexBuffer(size_t vertexSize, unsigned int fvf);
+	pg2::IndexBuffer* createIndexBuffer();
+
+	void setCurrentIndexBuffer(pg2::IndexBuffer* indexBuffer);
+	void setCurrentVertexBuffer(pg2::VertexBuffer* vertexBuffer);
+=======
+>>>>>>> origin/master
+
+	void drawCurrentBuffers(Primitive primitive);
 
 private:
 	unsigned int uiWidth;
