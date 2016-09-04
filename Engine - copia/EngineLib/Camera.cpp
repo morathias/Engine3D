@@ -1,11 +1,11 @@
 #include "Camera.h"
 #include "Utility.h"
-
+//==================================================================================
 #include <d3d9.h>
 #pragma comment (lib, "d3d9.lib") 
 #include <d3dx9.h>
 #pragma comment (lib, "d3dx9.lib") 
-
+//==================================================================================
 Camera::Camera(){
 
 	_eye = new D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -15,7 +15,7 @@ Camera::Camera(){
 
 	_viewMatrix = new D3DXMATRIX();
 }
-
+//==================================================================================
 Camera::~Camera(){
 	delete _eye;
 	delete _right;
@@ -24,7 +24,7 @@ Camera::~Camera(){
 
 	delete _viewMatrix;
 }
-
+//==================================================================================
 void Camera::roll(float value){
 	D3DXMATRIX rotationMatrix;
 	D3DXMatrixRotationAxis(&rotationMatrix, _lookAt, value);
@@ -32,7 +32,7 @@ void Camera::roll(float value){
 	D3DXVec3TransformCoord(_right, _right, &rotationMatrix);
 	D3DXVec3TransformCoord(_up, _up, &rotationMatrix);
 }
-
+//==================================================================================
 void Camera::pitch(float value){
 	D3DXMATRIX rotationMatrix;
 	D3DXMatrixRotationAxis(&rotationMatrix, _right, value);
@@ -48,37 +48,37 @@ void Camera::yaw(float value){
 	D3DXVec3TransformCoord(_right, _right, &rotationMatrix);
 	D3DXVec3TransformCoord(_lookAt, _lookAt, &rotationMatrix);
 }
-
+//==================================================================================
 void Camera::walk(float value){
 	_eye->x += _lookAt->x * value;
 	_eye->y += _lookAt->y * value;
 	_eye->z += _lookAt->z * value;
 }
-
+//==================================================================================
 void Camera::strafe(float value){
 	_eye->x += _right->x * value;
 	_eye->y += _right->y * value;
 	_eye->z += _right->z * value;
 }
-
+//==================================================================================
 void Camera::fly(float value){
 	_eye->x += _up->x * value;
 	_eye->y += _up->y * value;
 	_eye->z += _up->z * value;
 }
-
+//==================================================================================
 void Camera::setPos(float x, float y, float z){
 	_eye->x = x;
 	_eye->y = y;
 	_eye->z = z;
 }
-
+//==================================================================================
 void Camera::setForward(float x, float y, float z){
 	_lookAt->x = x;
 	_lookAt->y = y;
 	_lookAt->z = z;
 }
-
+//==================================================================================
 void Camera::update(Renderer& renderer){
 	D3DXVec3Normalize(_lookAt, _lookAt);
 
@@ -117,3 +117,4 @@ void Camera::update(Renderer& renderer){
 
 	renderer.setMatrix(VIEW, _viewMatrix);
 }
+//==================================================================================

@@ -4,7 +4,6 @@
 //==================================================================================
 string userName;
 bool Pacman::init(Renderer& rkRenderer){
-	
 	_sound.open("Assets/wind.mp3", true);
 	_sound.play();
 	userName = "MatyX";
@@ -42,7 +41,35 @@ bool Pacman::init(Renderer& rkRenderer){
 	_player->setAnimation(_iddleDown);
 
 	camera = new Camera();
-	camera->setPos(0, -100, -100);
+	camera->setPos(0, 0, -100);
+
+	unsigned short indices[] = { 0, 1, 2, 2, 1, 3, //front
+								 4, 0, 6, 6, 0, 2, //right
+								 7, 5, 6, 6, 5, 4, //back
+								 3, 1, 7, 7, 1, 5, //left
+								 4, 5, 0, 0, 5, 1, //upper
+								 3, 7, 2, 2, 7, 6 }; //bottom
+	Vertex _verts[8];
+
+	_verts[0].x = -0.5f;	_verts[0].y = 0.5f;		_verts[0].z = -0.5f;	_verts[0].color = D3DCOLOR_ARGB(255, 100, 100, 100);
+	_verts[1].x = 0.5f;		_verts[1].y = 0.5f;		_verts[1].z = -0.5f;	_verts[1].color = D3DCOLOR_ARGB(255, 100, 100, 100);
+	_verts[2].x = -0.5f;	_verts[2].y = -0.5f;	_verts[2].z = -0.5f;	_verts[2].color = D3DCOLOR_ARGB(255, 100, 100, 100);
+	_verts[3].x = 0.5f;		_verts[3].y = -0.5f;	_verts[3].z = -0.5f;	_verts[3].color = D3DCOLOR_ARGB(255, 100, 100, 100);
+	_verts[4].x = -0.5f;	_verts[4].y = 0.5f;		_verts[4].z = 0.5f;		_verts[4].color = D3DCOLOR_ARGB(255, 200, 200, 200);
+	_verts[5].x = 0.5f;		_verts[5].y = 0.5f;		_verts[5].z = 0.5f;		_verts[5].color = D3DCOLOR_ARGB(255, 200, 200, 200);
+	_verts[6].x = -0.5f;	_verts[6].y = -0.5f;	_verts[6].z = 0.5f;		_verts[6].color = D3DCOLOR_ARGB(255, 200, 200, 200);
+	_verts[7].x = 0.5f;		_verts[7].y = -0.5f;	_verts[7].z = 0.5f;		_verts[7].color = D3DCOLOR_ARGB(255, 200, 200, 200);
+
+	for (size_t i = 0; i < 100; i++)
+	{
+		Mesh* mesh = new Mesh(rkRenderer);
+		mesh->setMeshData(_verts, Primitive::TRIANGLELIST, ARRAYSIZE(_verts), indices, ARRAYSIZE(indices));
+		mesh->setPosX(Random::valueBetweenInts(-700, 700));
+		mesh->setPosY(Random::valueBetweenInts(-700, 700));
+		mesh->setPosZ(Random::valueBetweenInts(-700, 700));
+		mesh->setScale(Random::valueBetweenInts(50, 300), Random::valueBetweenInts(50, 500), Random::valueBetweenInts(50, 300));
+		_meshes.push_back(mesh);
+	}
 	return true;
 }
 //==================================================================================
@@ -50,7 +77,7 @@ int i = 0;
 string score;
 
 void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
-	tileMap->draw(rkRenderer);
+	//tileMap->draw(rkRenderer);
 	
 	if (input.keyDown(Input::KEY_D)){
 		camera->strafe(15.0f * (timer.timeBetweenFrames() / 100));
@@ -75,10 +102,14 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 		_player->setAnimation(_iddleDown);
 	}
 
-	tileMap->checkCollision(*_player);
+	//tileMap->checkCollision(*_player);
 
-	_player->update(timer);
-	_player->draw(rkRenderer);
+	//_player->update(timer);
+	//_player->draw(rkRenderer);
+	for (size_t i = 0; i < _meshes.size()-1; i++)
+	{
+		_meshes[i]->draw();
+	}
 
 	camera->update(rkRenderer);
 
@@ -88,6 +119,8 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 	_score.display(rkRenderer);
 	_userName.setText("Username: " + userName);
 	_userName.display(rkRenderer);
+
+	
 }
 //==================================================================================
 void Pacman::deinit(){

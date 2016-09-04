@@ -1,4 +1,5 @@
 #include "vertexbuffer.h"
+using namespace pg1;
 //===============================================================================================================
 VertexBuffer::VertexBuffer (IDirect3DDevice9* pkDevice, size_t uiVertexSize, unsigned int uiFVF)
 	:

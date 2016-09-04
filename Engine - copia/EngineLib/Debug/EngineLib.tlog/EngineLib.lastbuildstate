@@ -1,6 +1,2 @@
 #TargetFrameworkVersion=v4.0:PlatformToolSet=v120:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit
-<<<<<<< HEAD
-Debug|Win32|C:\Users\Morales\Documents\Engine - copia\|
-=======
-Debug|Win32|C:\Users\820\Desktop\Engine3D-5f67ec58eedde022729264927e5f206d20b6dc6c\Engine - copia\|
->>>>>>> origin/master
+Debug|Win32|C:\Users\Morales\Documents\GitHub\Engine3D\Engine - copia\|

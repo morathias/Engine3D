@@ -1,14 +1,12 @@
 
 //---------------------------------------------------------------------------
 #include "pg2_vertexbuffer.h"
-<<<<<<< HEAD
 //---------------------------------------------------------------------------
-#include "rendering/pg2_renderer.h"
-=======
 #include "Renderer.h"
->>>>>>> origin/master
+
+using namespace pg2;
 //---------------------------------------------------------------------------
-VertexBuffer::VertexBuffer (Renderer& rkRenderer, IDirect3DDevice9* pkDevice, size_t uiVertexSize, unsigned int uiFVF)
+pg2::VertexBuffer::VertexBuffer (Renderer& rkRenderer, IDirect3DDevice9* pkDevice, size_t uiVertexSize, unsigned int uiFVF)
 :
 m_uiFVF(uiFVF),
 m_uiVertexSize(uiVertexSize),
@@ -20,7 +18,7 @@ m_rkRenderer(rkRenderer)
 	// nothing to do
 }
 //---------------------------------------------------------------------------
-VertexBuffer::~VertexBuffer ()
+pg2::VertexBuffer::~VertexBuffer()
 {
 	if(m_pkVertexBuffer)
 	{
@@ -29,7 +27,7 @@ VertexBuffer::~VertexBuffer ()
 	}
 }
 //---------------------------------------------------------------------------
-void VertexBuffer::setVertexData (const void* pakVertices, size_t uiVertexCount)
+void pg2::VertexBuffer::setVertexData(const void* pakVertices, size_t uiVertexCount)
 {
 	// release if previously created
 	if(m_pkVertexBuffer)
@@ -65,7 +63,7 @@ void VertexBuffer::setVertexData (const void* pakVertices, size_t uiVertexCount)
 	m_uiVertexCount = uiVertexCount;
 }
 //---------------------------------------------------------------------------
-void VertexBuffer::bind ()
+void pg2::VertexBuffer::bind()
 {
 	// bind the buffer
 	HRESULT hr;

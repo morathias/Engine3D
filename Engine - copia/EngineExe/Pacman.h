@@ -36,6 +36,8 @@ private:
 	Quad quad;
 
 	Camera* camera;
+
+	std::vector<Mesh*> _meshes;
 };
 //==================================================================================
 #endif
