@@ -1,37 +1,9 @@
-﻿Build started 04/09/2016 01:03:16 a.m..
-     1>Project "C:\Users\Morales\Documents\GitHub\Engine3D\Engine - copia\EngineLib\EngineLib.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include" /ZI /nologo /W3 /WX- /Od /Oy- /D _WINDLL /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Mesh.cpp
-         Mesh.cpp
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Morales\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.dll" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86" dxguid.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Morales\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Morales\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.lib" /MACHINE:X86 /DLL Debug\Animation.obj
-         Debug\Camera.obj
-         Debug\directinput.obj
-         Debug\Engine.obj
-         Debug\Entity2D.obj
-         Debug\Frame.obj
-         Debug\Game.obj
-         Debug\input.obj
-         Debug\Mesh.obj
-         Debug\pg1_timer.obj
-         Debug\pg2_indexbuffer.obj
-         Debug\pg2_vertexbuffer.obj
-         Debug\Physics.obj
-         Debug\Quad.obj
-         Debug\Random.obj
-         Debug\Renderer.obj
-         Debug\ScreenText.obj
-         Debug\Sound.obj
-         Debug\Sprite.obj
-         Debug\Tile.obj
-         Debug\TileMap.obj
-         Debug\tinyxml2.obj
-         Debug\Vector2.obj
-         Debug\vertexbuffer.obj
-         Debug\Window.obj
-         EngineLib.vcxproj -> C:\Users\Morales\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.dll
-     1>Done Building Project "C:\Users\Morales\Documents\GitHub\Engine3D\Engine - copia\EngineLib\EngineLib.vcxproj" (Build target(s)).
+﻿Build started 08/09/2016 12:28:34 p.m..
+     1>Project "C:\Users\820\Documents\GitHub\Engine3D\Engine - copia\EngineLib\EngineLib.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         EngineLib.vcxproj -> C:\Users\820\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.dll
+     1>Done Building Project "C:\Users\820\Documents\GitHub\Engine3D\Engine - copia\EngineLib\EngineLib.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:03.14
+Time Elapsed 00:00:00.10

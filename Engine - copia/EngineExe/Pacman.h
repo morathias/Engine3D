@@ -38,6 +38,9 @@ private:
 	Camera* camera;
 
 	std::vector<Mesh*> _meshes;
+
+	Mesh* cuboRotando;
+	Mesh* cuboEstatico;
 };
 //==================================================================================
 #endif
