@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Archivos de código fuente\Enemigos">
-      <UniqueIdentifier>{583edf49-5c38-467e-baa4-e1c82d450837}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\Enemigos">
-      <UniqueIdentifier>{99c521e1-28ac-4a73-9a2e-969e336e8817}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">

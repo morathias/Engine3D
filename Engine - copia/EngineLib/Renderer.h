@@ -2,11 +2,7 @@
 #define RENDERER_H
 //========================================================================================
 #include "Utility.h"
-<<<<<<< HEAD
 #include "vertexbuffer.h"
-=======
-#include <d3d9.h>
->>>>>>> origin/master
 #include <vector>
 #include <string>
 //========================================================================================
@@ -26,15 +22,10 @@ typedef interface ID3DXFont ID3DXFont;
 typedef interface ID3DXFont *LPD3DXFONT;
 typedef ID3DXFont* Font;
 
-<<<<<<< HEAD
 namespace pg2{
 	class IndexBuffer;
 	class VertexBuffer;
 }
-=======
-class VertexBuffer;
-class IndexBuffer;
->>>>>>> origin/master
 //========================================================================================
 //Se encarga de la comunicacion con el Direct3D
 class Renderer{
@@ -48,14 +39,6 @@ public:
 	DllExport void draw(Vertex* gameVertex, Primitive primitive, int vertexCount);
 	DllExport void draw(TexturedVertex* gameVertex, Primitive primitive, int vertexCount);
 
-	DllExport VertexBuffer* createVertexBuffer(size_t uiVertexSize, unsigned int uiFVF);
-	DllExport IndexBuffer* createIndexBuffer();
-
-	DllExport void setCurrentIndexBuffer(IndexBuffer* pkIndexBuffer);
-	DllExport void setCurrentVertexBuffer(VertexBuffer* pkVertexBuffer);
-	DllExport void drawCurrentBuffers(Primitive ePrimitive);
-
-
 	Font& createFont(int charSize, std::string textFont, bool italic);
 	RECT& createRect(int x, int y, int width, int height);
 	void displayText(Font& font, RECT& rect, std::string text);
@@ -66,7 +49,6 @@ public:
 	DllExport void setCurrentTexture(const Texture& texture);
 
 	void setMatrix(MatrixType matrixType ,const Matrix& matrix);
-<<<<<<< HEAD
 
 	Matrix& getProjectionMatrix();
 
@@ -75,8 +57,6 @@ public:
 
 	void setCurrentIndexBuffer(pg2::IndexBuffer* indexBuffer);
 	void setCurrentVertexBuffer(pg2::VertexBuffer* vertexBuffer);
-=======
->>>>>>> origin/master
 
 	void drawCurrentBuffers(Primitive primitive);
 
@@ -85,8 +65,11 @@ private:
 	unsigned int uiHeight;
 	HWND _hwnd;
 
-	VertexBuffer* v_buffer;
-	VertexBuffer* texturedVBuffer;
+	pg1::VertexBuffer* v_buffer;
+	pg1::VertexBuffer* texturedVBuffer;
+
+	pg2::IndexBuffer* _indexBuffer;
+	pg2::VertexBuffer* _vertexBuffer;
 
 	IDirect3D9* m_pkD3D;
 	IDirect3DDevice9* m_pkDevice;

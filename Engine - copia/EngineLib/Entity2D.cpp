@@ -17,6 +17,7 @@ _previusPosY(0),
 _rotation(0),
 _scaleX(100.0f),
 _scaleY(100.0f),
+_scaleZ(100.0f),
 _flip(false)
 {}
 //==================================================================================
@@ -44,6 +45,7 @@ void Entity2D::setPosZ(float fPosZ){
 
 	updateLocalTransformation();
 }
+//==================================================================================
 void Entity2D::setRotation(float fRotation){
 	_rotation = fRotation;
 
@@ -53,6 +55,14 @@ void Entity2D::setRotation(float fRotation){
 void Entity2D::setScale(float fScaleX, float fScaleY){
 	_scaleX = fScaleX;
 	_scaleY = fScaleY;
+
+	updateLocalTransformation();
+}
+//==================================================================================
+void Entity2D::setScale(float fScaleX, float fScaleY, float scaleZ){
+	_scaleX = fScaleX;
+	_scaleY = fScaleY;
+	_scaleZ = scaleZ;
 
 	updateLocalTransformation();
 }
@@ -130,6 +140,7 @@ float Entity2D::posY() const{
 float Entity2D::posZ() const{
 	return _posZ;
 }
+//==================================================================================
 float Entity2D::previusPosX() const{
 	return _previusPosX;
 }
@@ -159,7 +170,7 @@ void Entity2D::updateLocalTransformation(){
 	D3DXMatrixRotationZ(&rotationMat, _rotation);
 
 	D3DXMATRIX scaleMat;
-	D3DXMatrixScaling(&scaleMat, _scaleX, _scaleY, 1);
+	D3DXMatrixScaling(&scaleMat, _scaleX, _scaleY, _scaleZ);
 
 	D3DXMatrixIdentity(_transformationMatrix);
 	D3DXMatrixMultiply(_transformationMatrix, &traslatrionMat, _transformationMatrix);

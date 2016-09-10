@@ -10,12 +10,27 @@ using namespace std;
 class Mesh : public Entity2D
 {
 public:
-	Mesh(Renderer & renderer);
-	~Mesh();
+	DllExport Mesh(Renderer& renderer);
+	DllExport ~Mesh();
 
 public:
-	void setMeshData(const TexturedVertex* texVertex, Primitive ePrimitive, size_t uiVertexCount, const unsigned short* pusIndices, size_t uiIndexCount);
-	void draw();
-	void setTextureId(int iTextureId);
+	DllExport void setMeshData(const TexturedVertex* texVertex, 
+							   Primitive ePrimitive, 
+							   size_t uiVertexCount, 
+							   const unsigned short* pusIndices, 
+							   size_t uiIndexCount);
+
+	DllExport void setMeshData(const Vertex* texVertex,
+								Primitive ePrimitive,
+								size_t uiVertexCount,
+								const unsigned short* pusIndices,
+								size_t uiIndexCount);
+	DllExport void draw();
+	DllExport void setTextureId(int iTextureId);
+
+private:
+	Renderer _renderer;
+	Primitive _primitive;
 };
+//========================================================================================
 #endif

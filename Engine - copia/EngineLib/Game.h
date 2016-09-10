@@ -8,6 +8,8 @@
 #include "Vector2.h"
 #include "ScreenText.h"
 #include "Sound.h"
+#include "Mesh.h"
+#include "Utility.h"
 //========================================================================================
 #define DllExport __declspec( dllexport )
 //========================================================================================

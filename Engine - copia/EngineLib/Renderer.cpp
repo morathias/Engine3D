@@ -1,5 +1,6 @@
 #include "Renderer.h"
 #include "pg2_vertexbuffer.h"
+#include "pg2_indexbuffer.h"
 //==================================================================================
 #include <d3d9.h>
 #pragma comment (lib, "d3d9.lib") 
@@ -8,7 +9,6 @@
 
 #define _USE_MATH_DEFINES
 #include <math.h>
-
 //==================================================================================
 #define CUSTOMFVF (D3DFVF_XYZ | D3DFVF_DIFFUSE)
 #define TEXTUREFVF (D3DFVF_XYZ | D3DFVF_TEX1)
@@ -73,6 +73,8 @@ bool Renderer::init(HWND hWnd, unsigned int uiW, unsigned int uiH){
 	d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
 	d3dpp.hDeviceWindow = hWnd;
 	d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;
+	d3dpp.EnableAutoDepthStencil = TRUE;
+	d3dpp.AutoDepthStencilFormat = D3DFMT_D16;
 	//------------------device creation-------------------------------------
 	hr = m_pkD3D->CreateDevice(D3DADAPTER_DEFAULT,
 		D3DDEVTYPE_HAL,
@@ -89,6 +91,7 @@ bool Renderer::init(HWND hWnd, unsigned int uiW, unsigned int uiH){
 	m_pkDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
 	m_pkDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 	m_pkDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
+	m_pkDevice->SetRenderState(D3DRS_ZENABLE, D3DZB_TRUE);
 	//-----------------viewport creation-----------------------------------
 	D3DVIEWPORT9 viewport;
 	m_pkDevice->GetViewport(&viewport);
@@ -103,14 +106,14 @@ bool Renderer::init(HWND hWnd, unsigned int uiW, unsigned int uiH){
 	_projectionMatrix = new D3DXMATRIX();
 	_projectionMatrix = &projectionMatrix;
 	//----------------vertex Buffers---------------------------------------
-	v_buffer = new VertexBuffer(m_pkDevice, sizeof(Vertex), CUSTOMFVF);
-	texturedVBuffer = new VertexBuffer(m_pkDevice, sizeof(TexturedVertex), TEXTUREFVF);
+	v_buffer = new pg1::VertexBuffer(m_pkDevice, sizeof(Vertex), CUSTOMFVF);
+	texturedVBuffer = new pg1::VertexBuffer(m_pkDevice, sizeof(TexturedVertex), TEXTUREFVF);
 
 	return true;
 }
 //==================================================================================
 void Renderer::beginFrame(){
-	m_pkDevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(50, 50, 50), 1.0f, 0);
+	m_pkDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(50, 50, 50), 1.0f, 0);
 	m_pkDevice->BeginScene();
 }
 //==================================================================================
@@ -197,23 +200,33 @@ void Renderer::setCurrentTexture(const Texture& texture){
 Matrix& Renderer::getProjectionMatrix(){
 	return _projectionMatrix;
 }
-<<<<<<< HEAD
 //==================================================================================
 pg2::VertexBuffer* Renderer::createVertexBuffer(size_t vertexSize, unsigned int fvf){
+	pg2::VertexBuffer* vertexBuffer;
+	if (fvf == 0)
+		vertexBuffer = new pg2::VertexBuffer(*this, m_pkDevice, vertexSize, TEXTUREFVF);
+	else
+		vertexBuffer = new pg2::VertexBuffer(*this, m_pkDevice, vertexSize, CUSTOMFVF);
 
+	return vertexBuffer;
 }
-
-pg2::IndexBuffer* Renderer::createIndexBuffer(){
-
-}
-
-void Renderer::setCurrentIndexBuffer(pg2::IndexBuffer* indexBuffer){
-
-}
-
-void Renderer::setCurrentVertexBuffer(pg2::VertexBuffer* vertexBuffer){
-
-}
-=======
 //==================================================================================
->>>>>>> origin/master
+pg2::IndexBuffer* Renderer::createIndexBuffer(){
+	pg2::IndexBuffer* indexBuffer = new pg2::IndexBuffer(*this, m_pkDevice);
+	return indexBuffer;
+}
+//==================================================================================
+void Renderer::setCurrentIndexBuffer(pg2::IndexBuffer* indexBuffer){
+	_indexBuffer = indexBuffer;
+}
+//==================================================================================
+void Renderer::setCurrentVertexBuffer(pg2::VertexBuffer* vertexBuffer){
+	_vertexBuffer = vertexBuffer;
+}
+//==================================================================================
+void Renderer::drawCurrentBuffers(Primitive primitive){
+	_vertexBuffer->bind();
+	_indexBuffer->bind();
+	m_pkDevice->DrawIndexedPrimitive(_primitives[primitive], 0, 0, 8, 0, 12);
+}
+//==================================================================================
