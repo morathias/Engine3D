@@ -11,13 +11,11 @@ Entity2D::Entity2D()
 _transformationMatrix(new D3DXMATRIX()),
 _posX(0),
 _posY(0),
-_posZ(0),
 _previusPosX(0),
 _previusPosY(0),
 _rotation(0),
 _scaleX(100.0f),
 _scaleY(100.0f),
-_scaleZ(100.0f),
 _flip(false)
 {}
 //==================================================================================
@@ -40,12 +38,6 @@ void Entity2D::setPosY(float fPosY){
 	updateLocalTransformation();
 }
 //==================================================================================
-void Entity2D::setPosZ(float fPosZ){
-	_posZ = fPosZ;
-
-	updateLocalTransformation();
-}
-//==================================================================================
 void Entity2D::setRotation(float fRotation){
 	_rotation = fRotation;
 
@@ -55,14 +47,6 @@ void Entity2D::setRotation(float fRotation){
 void Entity2D::setScale(float fScaleX, float fScaleY){
 	_scaleX = fScaleX;
 	_scaleY = fScaleY;
-
-	updateLocalTransformation();
-}
-//==================================================================================
-void Entity2D::setScale(float fScaleX, float fScaleY, float scaleZ){
-	_scaleX = fScaleX;
-	_scaleY = fScaleY;
-	_scaleZ = scaleZ;
 
 	updateLocalTransformation();
 }
@@ -137,10 +121,6 @@ float Entity2D::posY() const{
 	return _posY;
 }
 //==================================================================================
-float Entity2D::posZ() const{
-	return _posZ;
-}
-//==================================================================================
 float Entity2D::previusPosX() const{
 	return _previusPosX;
 }
@@ -164,13 +144,13 @@ float Entity2D::scaleY() const{
 void Entity2D::updateLocalTransformation(){
 
 	D3DXMATRIX traslatrionMat;
-	D3DXMatrixTranslation(&traslatrionMat, _posX, _posY, _posZ);
+	D3DXMatrixTranslation(&traslatrionMat, _posX, _posY, 0);
 
 	D3DXMATRIX rotationMat;
 	D3DXMatrixRotationZ(&rotationMat, _rotation);
 
 	D3DXMATRIX scaleMat;
-	D3DXMatrixScaling(&scaleMat, _scaleX, _scaleY, _scaleZ);
+	D3DXMatrixScaling(&scaleMat, _scaleX, _scaleY, 1);
 
 	D3DXMatrixIdentity(_transformationMatrix);
 	D3DXMatrixMultiply(_transformationMatrix, &traslatrionMat, _transformationMatrix);

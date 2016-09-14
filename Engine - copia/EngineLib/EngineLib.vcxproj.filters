@@ -74,6 +74,9 @@
     <ClCompile Include="Vector2.cpp">
       <Filter>Source\User Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Entity3D.cpp">
+      <Filter>Source\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyxml2.h" />
@@ -151,6 +154,9 @@
     </ClInclude>
     <ClInclude Include="Window.h">
       <Filter>Headers\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity3D.h">
+      <Filter>Headers\Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

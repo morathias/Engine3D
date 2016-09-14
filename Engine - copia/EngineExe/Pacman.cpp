@@ -4,6 +4,7 @@
 //==================================================================================
 string userName;
 bool Pacman::init(Renderer& rkRenderer){
+	/*
 	_sound.open("Assets/wind.mp3", true);
 	_sound.play();
 	userName = "MatyX";
@@ -18,7 +19,6 @@ bool Pacman::init(Renderer& rkRenderer){
 	_player = new Sprite();
 	_player->setPosX(0);
 	_player->setPosY(-100);
-	_player->setPosZ(0);
 	_player->setTexture(rkRenderer.loadTexture("assets/samurai.png", D3DCOLOR_XRGB(255, 255, 255)));
 	_player->setScale(100, 100);
 	quad.setScale(32, 32);
@@ -39,6 +39,7 @@ bool Pacman::init(Renderer& rkRenderer){
 	_runUp = new Animation();
 	_runUp->addFrame(256.0f, 192.0f, 64.0f, 64.0f, 1024.0f, 1024.0f, 0.7f, 6);
 	_player->setAnimation(_iddleDown);
+	*/
 
 	camera = new Camera();
 	camera->setPos(0, 0, -100);
@@ -91,9 +92,9 @@ bool Pacman::init(Renderer& rkRenderer){
 	return true;
 }
 //==================================================================================
-int i = 0;
+//int i = 0;
 float rotation = 0.0f;
-string score;
+//string score;
 
 void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 	//tileMap->draw(rkRenderer);
@@ -117,14 +118,17 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 	camera->pitch(input.mouseRelPosY() * 0.005);
 	camera->roll(input.mouseRelPosZ() * 0.0005);
 
+	/*
 	if (input.keyUp(Input::KEY_S) && input.keyUp(Input::KEY_A) && input.keyUp(Input::KEY_D) && input.keyUp(Input::KEY_W)){
 		_player->setAnimation(_iddleDown);
 	}
 
-	//tileMap->checkCollision(*_player);
+	tileMap->checkCollision(*_player);
 
-	//_player->update(timer);
-	//_player->draw(rkRenderer);
+	_player->update(timer);
+	_player->draw(rkRenderer);
+	*/
+
 	for (size_t i = 0; i < _meshes.size(); i++)
 	{
 		_meshes[i]->draw();
@@ -135,12 +139,14 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 
 	camera->update(rkRenderer);
 
+	/*
 	i++;
 	score = "Score: " + std::to_string(i);
 	_score.setText(score);
 	_score.display(rkRenderer);
 	_userName.setText("Username: " + userName);
 	_userName.display(rkRenderer);
+	*/
 
 	
 }

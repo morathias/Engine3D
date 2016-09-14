@@ -73,6 +73,7 @@
     <ClCompile Include="directinput.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Entity2D.cpp" />
+    <ClCompile Include="Entity3D.cpp" />
     <ClCompile Include="Frame.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="input.cpp" />
@@ -100,6 +101,7 @@
     <ClInclude Include="directinput.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Entity2D.h" />
+    <ClInclude Include="Entity3D.h" />
     <ClInclude Include="Frame.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="input.h" />

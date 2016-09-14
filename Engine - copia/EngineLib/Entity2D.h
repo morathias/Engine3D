@@ -21,10 +21,8 @@ public:
 	DllExport ~Entity2D();
 	DllExport void setPosX(float fPosX);
 	DllExport void setPosY(float fPosY);
-	DllExport void setPosZ(float fPosZ);
 	DllExport void setRotation(float fRotation);
 	DllExport void setScale(float fScaleX, float fScaleY);
-	DllExport void setScale(float fScaleX, float fScaleY, float scaleZ);
 
 	DllExport void flipNot();
 	DllExport void Flip();
@@ -37,7 +35,6 @@ public:
 
 	DllExport float posX() const;
 	DllExport float posY() const;
-	DllExport float posZ() const;
 
 	DllExport float previusPosX() const;
 	DllExport float previusPosY() const;
@@ -45,19 +42,16 @@ public:
 	DllExport float rotation() const;
 	DllExport float scaleX() const;
 	DllExport float scaleY() const;
-	DllExport float scaleZ() const;
 
 protected:
 	void updateLocalTransformation();
 	float _posX;
 	float _posY;
-	float _posZ;
 	float _previusPosX;
 	float _previusPosY;
 	float _rotation;
 	float _scaleX;
 	float _scaleY;
-	float _scaleZ;
 	bool _flip;
 
 	Matrix _transformationMatrix;
