@@ -22,12 +22,11 @@ public:
 	DllExport void setPosX(float fPosX);
 	DllExport void setPosY(float fPosY);
 	DllExport void setPosZ(float fPosZ);
-	DllExport void setRotation(float fRotation);
+	DllExport void setRotation(float rotationX, float rotationY, float rotationZ);
 	DllExport void setScale(float fScaleX, float fScaleY);
 	DllExport void setScale(float fScaleX, float fScaleY, float scaleZ);
 
-	DllExport void flipNot();
-	DllExport void Flip();
+	DllExport void Flip(bool flipped);
 
 	DllExport CollisionResult3D checkCollision(Entity3D& toCheck);
 
@@ -42,23 +41,22 @@ public:
 	DllExport float previusPosX() const;
 	DllExport float previusPosY() const;
 
-	DllExport float rotation() const;
+	DllExport float rotationX() const;
+	DllExport float rotationY() const;
+	DllExport float rotationZ() const;
+
 	DllExport float scaleX() const;
 	DllExport float scaleY() const;
 	DllExport float scaleZ() const;
 
 protected:
 	void updateLocalTransformation();
-	float _posX;
-	float _posY;
-	float _posZ;
-	float _previusPosX;
-	float _previusPosY;
-	float _rotation;
-	float _scaleX;
-	float _scaleY;
-	float _scaleZ;
-	bool _flip;
+	float _posX, _posY, _posZ;
+	float _previusPosX, _previusPosY;
+
+	float _rotationX, _rotationY, _rotationZ;
+
+	float _scaleX, _scaleY, _scaleZ;
 
 	Matrix _transformationMatrix;
 

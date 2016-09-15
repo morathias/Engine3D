@@ -14,11 +14,12 @@ Entity3D::Entity3D()
 	_posZ(0),
 	_previusPosX(0),
 	_previusPosY(0),
-	_rotation(0),
+	_rotationX(0),
+	_rotationY(0),
+	_rotationZ(0),
 	_scaleX(100.0f),
 	_scaleY(100.0f),
-	_scaleZ(100.0f),
-	_flip(false)
+	_scaleZ(100.0f)
 {}
 //==================================================================================
 Entity3D::~Entity3D(){
@@ -46,8 +47,10 @@ void Entity3D::setPosZ(float fPosZ){
 	updateLocalTransformation();
 }
 //==================================================================================
-void Entity3D::setRotation(float fRotation){
-	_rotation = fRotation;
+void Entity3D::setRotation(float rotationX, float rotationY, float rotationZ){
+	_rotationX = rotationX;
+	_rotationY = rotationY;
+	_rotationZ = rotationZ;
 
 	updateLocalTransformation();
 }
@@ -67,15 +70,8 @@ void Entity3D::setScale(float fScaleX, float fScaleY, float scaleZ){
 	updateLocalTransformation();
 }
 //==================================================================================
-void Entity3D::flipNot(){
-	_flip = false;
-	if (!_flip && _scaleX < 0)
-		_scaleX = -(_scaleX);
-}
-//==================================================================================
-void Entity3D::Flip(){
-	_flip = true;
-	if (_flip && _scaleX > 0)
+void Entity3D::Flip(bool flipped){
+	if (flipped && _scaleX > 0)
 		_scaleX = -(_scaleX);
 }
 //==================================================================================
@@ -149,8 +145,16 @@ float Entity3D::previusPosY() const{
 	return _previusPosY;
 }
 //==================================================================================
-float Entity3D::rotation() const{
-	return _rotation;
+float Entity3D::rotationX() const{
+	return _rotationX;
+}
+//==================================================================================
+float Entity3D::rotationY() const{
+	return _rotationY;
+}
+//==================================================================================
+float Entity3D::rotationZ() const{
+	return _rotationZ;
 }
 //==================================================================================
 float Entity3D::scaleX() const{
@@ -167,7 +171,13 @@ void Entity3D::updateLocalTransformation(){
 	D3DXMatrixTranslation(&traslatrionMat, _posX, _posY, _posZ);
 
 	D3DXMATRIX rotationMat;
-	D3DXMatrixRotationZ(&rotationMat, _rotation);
+	D3DXMATRIX rotX, rotY, rotZ;
+
+	D3DXMatrixRotationX(&rotX, _rotationX);
+	D3DXMatrixRotationY(&rotY, _rotationY);
+	D3DXMatrixRotationZ(&rotZ, _rotationZ);
+
+	rotationMat = rotX * rotY * rotZ;
 
 	D3DXMATRIX scaleMat;
 	D3DXMatrixScaling(&scaleMat, _scaleX, _scaleY, _scaleZ);

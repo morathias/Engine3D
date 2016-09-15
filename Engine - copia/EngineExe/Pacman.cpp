@@ -134,7 +134,7 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 		_meshes[i]->draw();
 	}
 
-	cuboRotando->setRotation(rotation);
+	cuboRotando->setRotation(rotation,rotation, rotation);
 	rotation += 0.003f;
 
 	camera->update(rkRenderer);
