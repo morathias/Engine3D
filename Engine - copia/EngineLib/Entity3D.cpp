@@ -171,13 +171,8 @@ void Entity3D::updateLocalTransformation(){
 	D3DXMatrixTranslation(&traslatrionMat, _posX, _posY, _posZ);
 
 	D3DXMATRIX rotationMat;
-	D3DXMATRIX rotX, rotY, rotZ;
 
-	D3DXMatrixRotationX(&rotX, _rotationX);
-	D3DXMatrixRotationY(&rotY, _rotationY);
-	D3DXMatrixRotationZ(&rotZ, _rotationZ);
-
-	rotationMat = rotX * rotY * rotZ;
+	D3DXMatrixRotationYawPitchRoll(&rotationMat, _rotationY, _rotationX, _rotationZ);
 
 	D3DXMATRIX scaleMat;
 	D3DXMatrixScaling(&scaleMat, _scaleX, _scaleY, _scaleZ);
