@@ -1,12 +1,21 @@
-﻿Build started 15/09/2016 12:57:46 p.m..
-     1>Project "C:\Users\820\Desktop\Engine3D\Engine - copia\EngineExe\EngineExe.vcxproj" on node 2 (Build target(s)).
-     1>Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\820\Desktop\Engine3D\Engine - copia\Debug\EngineExe.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\820\Desktop\Engine3D\Engine - copia\/Debug" EngineLib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\820\Desktop\Engine3D\Engine - copia\Debug\EngineExe.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\820\Desktop\Engine3D\Engine - copia\Debug\EngineExe.lib" /MACHINE:X86 Debug\Main.obj
+﻿Build started 19/09/2016 12:03:43 a.m..
+     1>Project "C:\Users\Morales\Documents\GitHub\Engine3D\Engine - copia\EngineExe\EngineExe.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Morales\Documents\GitHub\Engine3D\Engine - copia\/EngineLib" /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Pacman.cpp
+         Pacman.cpp
+     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\screentext.h(7): warning C4005: 'DllExport' : macro redefinition
+                 c:\users\morales\documents\github\engine3d\engine - copia\enginelib\vertexbuffer.h(11) : see previous definition of 'DllExport'
+     1>c:\users\morales\documents\github\engine3d\engine - copia\enginelib\mesh.h(4): warning C4005: 'DllExport' : macro redefinition
+                 c:\users\morales\documents\github\engine3d\engine - copia\enginelib\screentext.h(7) : see previous definition of 'DllExport'
+     1>c:\users\morales\documents\github\engine3d\engine - copia\engineexe\pacman.cpp(66): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\morales\documents\github\engine3d\engine - copia\engineexe\pacman.cpp(67): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\morales\documents\github\engine3d\engine - copia\engineexe\pacman.cpp(68): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Morales\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineExe.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Morales\Documents\GitHub\Engine3D\Engine - copia\/Debug" EngineLib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Morales\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineExe.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Morales\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineExe.lib" /MACHINE:X86 Debug\Main.obj
          Debug\Pacman.obj
-            Creating library C:\Users\820\Desktop\Engine3D\Engine - copia\Debug\EngineExe.lib and object C:\Users\820\Desktop\Engine3D\Engine - copia\Debug\EngineExe.exp
-         EngineExe.vcxproj -> C:\Users\820\Desktop\Engine3D\Engine - copia\Debug\EngineExe.exe
-     1>Done Building Project "C:\Users\820\Desktop\Engine3D\Engine - copia\EngineExe\EngineExe.vcxproj" (Build target(s)).
+         EngineExe.vcxproj -> C:\Users\Morales\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineExe.exe
+     1>Done Building Project "C:\Users\Morales\Documents\GitHub\Engine3D\Engine - copia\EngineExe\EngineExe.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.41
+Time Elapsed 00:00:02.52

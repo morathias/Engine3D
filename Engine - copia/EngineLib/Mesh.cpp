@@ -4,9 +4,14 @@
 //=====================================================
 Mesh::Mesh(Renderer& renderer){
 	_renderer = renderer;
+	_texture = NoTexture;
 }
 //=====================================================
 Mesh::~Mesh(){
+	delete _vertexBuffer;
+	_vertexBuffer = NULL;
+	delete _indexBuffer;
+	_indexBuffer = NULL;
 }
 //=====================================================
 void Mesh::setMeshData(const TexturedVertex* texVertex, 
@@ -17,40 +22,41 @@ void Mesh::setMeshData(const TexturedVertex* texVertex,
 {
 	_primitive = ePrimitive;
 
-	pg2::IndexBuffer* indexBuffer = _renderer.createIndexBuffer();
-	pg2::VertexBuffer* vertexBuffer = _renderer.createVertexBuffer(sizeof(TexturedVertex), 0);
+	_indexBuffer = _renderer.createIndexBuffer();
+	_vertexBuffer = _renderer.createVertexBuffer(sizeof(TexturedVertex), 0);
 
-	vertexBuffer->setVertexData(texVertex, uiVertexCount);
-	indexBuffer->setIndexData(pusIndices, uiIndexCount);
+	_vertexBuffer->setVertexData(texVertex, uiVertexCount);
+	_indexBuffer->setIndexData(pusIndices, uiIndexCount);
 
-	_renderer.setCurrentIndexBuffer(indexBuffer);
-	_renderer.setCurrentVertexBuffer(vertexBuffer);
+	_renderer.setCurrentIndexBuffer(_indexBuffer);
+	_renderer.setCurrentVertexBuffer(_vertexBuffer);
 }
 //=====================================================
 void Mesh::setMeshData(const Vertex* texVertex,
-	Primitive ePrimitive,
-	size_t uiVertexCount,
-	const unsigned short* pusIndices,
-	size_t uiIndexCount)
+					   Primitive ePrimitive,
+					   size_t uiVertexCount,
+					   const unsigned short* pusIndices,
+					   size_t uiIndexCount)
 {
 	_primitive = ePrimitive;
 
-	pg2::IndexBuffer* indexBuffer = _renderer.createIndexBuffer();
-	pg2::VertexBuffer* vertexBuffer = _renderer.createVertexBuffer(sizeof(Vertex), 1);
+	_indexBuffer = _renderer.createIndexBuffer();
+	_vertexBuffer = _renderer.createVertexBuffer(sizeof(Vertex), 1);
 
-	vertexBuffer->setVertexData(texVertex, uiVertexCount);
-	indexBuffer->setIndexData(pusIndices, uiIndexCount);
+	_vertexBuffer->setVertexData(texVertex, uiVertexCount);
+	_indexBuffer->setIndexData(pusIndices, uiIndexCount);
 
-	_renderer.setCurrentIndexBuffer(indexBuffer);
-	_renderer.setCurrentVertexBuffer(vertexBuffer);
+	_renderer.setCurrentIndexBuffer(_indexBuffer);
+	_renderer.setCurrentVertexBuffer(_vertexBuffer);
 }
 //=====================================================
 void Mesh::draw(){
+	_renderer.setCurrentTexture(_texture);
 	_renderer.setMatrix(MatrixType::WORLD, _transformationMatrix);
 	_renderer.drawCurrentBuffers(_primitive);
 }
 //=====================================================
-void Mesh::setTextureId(int iTextureId){
-
+void Mesh::setTextureId(int iTextureId, Texture texture){
+	_texture = texture;
 }
 //=====================================================

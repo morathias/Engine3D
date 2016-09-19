@@ -41,6 +41,7 @@ Renderer::~Renderer(){
 
 	delete v_buffer;
 	v_buffer = NULL;
+	delete texturedVBuffer;
 
 	std::vector<Texture>::iterator iter;
 	for(iter = _textureList.begin(); iter != _textureList.end(); iter++){
@@ -227,6 +228,6 @@ void Renderer::setCurrentVertexBuffer(pg2::VertexBuffer* vertexBuffer){
 void Renderer::drawCurrentBuffers(Primitive primitive){
 	_vertexBuffer->bind();
 	_indexBuffer->bind();
-	m_pkDevice->DrawIndexedPrimitive(_primitives[primitive], 0, 0, 8, 0, 12);
+	m_pkDevice->DrawIndexedPrimitive(_primitives[primitive], 0, 0, _vertexBuffer->vertexCount(), 0, _indexBuffer->indexCount() / 3);
 }
 //==================================================================================

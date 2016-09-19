@@ -7,10 +7,10 @@
 class Importer
 {
 public:
-	Importer();
-	~Importer();
+	DllExport Importer();
+	DllExport ~Importer();
 
-	bool importMesh(const std::string& fileName, Mesh& mesh);
+	DllExport bool importMesh(const std::string& fileName, Mesh& mesh);
 };
 //=============================================================
 #endif
