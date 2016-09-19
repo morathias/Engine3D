@@ -20,7 +20,9 @@ Entity3D::Entity3D()
 	_scaleX(100.0f),
 	_scaleY(100.0f),
 	_scaleZ(100.0f)
-{}
+{
+	updateLocalTransformation();
+}
 //==================================================================================
 Entity3D::~Entity3D(){
 }

@@ -14,11 +14,7 @@ Importer::~Importer(){
 bool Importer::importMesh(const std::string& fileName, Mesh& mesh){
 	Assimp::Importer importer;
 
-	const aiScene* scene = importer.ReadFile(fileName, aiProcess_Triangulate |
-													   aiProcess_JoinIdenticalVertices |
-													   aiProcess_SortByPType|
-													   aiProcess_ConvertToLeftHanded
-													   );
+	const aiScene* scene = importer.ReadFile(fileName, aiProcess_Triangulate );
 	if (!scene){
 		return false;
 	}
@@ -29,24 +25,22 @@ bool Importer::importMesh(const std::string& fileName, Mesh& mesh){
 	}
 	
 	TexturedVertex* verts = new TexturedVertex[_aiMesh->mNumVertices];
-	for (size_t i = 0; i < _aiMesh->mNumVertices; i++)
+	for (int i = 0; i < _aiMesh->mNumVertices; i++)
 	{
-		if (_aiMesh->HasPositions()){
-			verts[i].x = _aiMesh->mVertices[i].x;
-			verts[i].y = _aiMesh->mVertices[i].y;
-			verts[i].z = _aiMesh->mVertices[i].z;
-		}
-		if (_aiMesh->HasTextureCoords(0)){
-			verts[i].u = _aiMesh->mTextureCoords[0][i].x;
-			verts[i].v = _aiMesh->mTextureCoords[0][i].y;
-		}
+		verts[i] = { _aiMesh->mVertices[i].x,
+			_aiMesh->mVertices[i].y,
+			_aiMesh->mVertices[i].z,
+			_aiMesh->mTextureCoords[0][i].x,
+			_aiMesh->mTextureCoords[0][i].y 
+		};
+
 	}
 
-	unsigned short numIndices = _aiMesh->mNumFaces * 3;
+	unsigned int numIndices = _aiMesh->mNumFaces * 3;
 	unsigned short* indices = new unsigned short[numIndices];
 	int index = 0;
 
-	for (size_t i = 0; i < _aiMesh->mNumFaces; i++)
+	/*for (size_t i = 0; i < _aiMesh->mNumFaces; i++)
 	{
 		const aiFace& face = _aiMesh->mFaces[i];
 		if (face.mNumIndices == 3){
@@ -58,6 +52,13 @@ bool Importer::importMesh(const std::string& fileName, Mesh& mesh){
 			}
 		}
 		cout << endl;
+	}*/
+
+	for (unsigned int i = 0; i < _aiMesh->mNumFaces; i++)
+	{
+		indices[i * 3 + 0] = _aiMesh->mFaces[i].mIndices[0];
+		indices[i * 3 + 1] = _aiMesh->mFaces[i].mIndices[1];
+		indices[i * 3 + 2] = _aiMesh->mFaces[i].mIndices[2];
 	}
 
 	mesh.setMeshData(verts, TRIANGLELIST, _aiMesh->mNumVertices, indices, numIndices);

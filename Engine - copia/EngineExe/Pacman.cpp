@@ -24,7 +24,7 @@ bool Pacman::init(Renderer& rkRenderer){
 	_verts[6].x = -0.5f;	_verts[6].y = -0.5f;	_verts[6].z = 0.5f;		_verts[6].color = D3DCOLOR_ARGB(255, 200, 32, 200);
 	_verts[7].x = 0.5f;		_verts[7].y = -0.5f;	_verts[7].z = 0.5f;		_verts[7].color = D3DCOLOR_ARGB(255, 255, 10, 111);
 
-	/*cuboEstatico = new Mesh(rkRenderer);
+	cuboEstatico = new Mesh(rkRenderer);
 	cuboEstatico->setMeshData(_verts, Primitive::TRIANGLELIST, ARRAYSIZE(_verts), indices, ARRAYSIZE(indices));
 	cuboEstatico->setPosX(20);
 	cuboEstatico->setPosY(20);
@@ -38,11 +38,19 @@ bool Pacman::init(Renderer& rkRenderer){
 	cuboRotando->setPosY(100);
 	cuboRotando->setPosZ(100);
 	cuboRotando->setScale(50, 50, 50);
-	_meshes.push_back(cuboRotando);*/
+	_meshes.push_back(cuboRotando);
 
-	cuboImportado = new Mesh(rkRenderer);
-	_importer.importMesh("Assets/cube.obj", *cuboImportado);
-	cuboImportado->setTextureId(0, rkRenderer.loadTexture("Assets/TexturesCom_Cliffs0180_1_seamless_S.jpg", D3DCOLOR_XRGB(255, 255, 255)));
+	torus = new Mesh(rkRenderer);
+	_importer.importMesh("Assets/taurus.obj", *torus);
+	torus->setTextureId(0, rkRenderer.loadTexture("Assets/TexturesCom_Cliffs0180_1_seamless_S.jpg", D3DCOLOR_XRGB(255, 255, 255)));
+	torus->setScale(35, 35, 35);
+	torus->setPosZ(200);
+
+	teaPot = new Mesh(rkRenderer);
+	_importer.importMesh("Assets/teapot.obj", *teaPot);
+	teaPot->setTextureId(0, rkRenderer.loadTexture("Assets/TexturesCom_Cliffs0180_1_seamless_S.jpg", D3DCOLOR_XRGB(255, 255, 255)));
+	teaPot->setScale(1, 1, 1);
+	teaPot->setPosX(-100);
 	return true;
 }
 //==================================================================================
@@ -67,13 +75,14 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 	camera->pitch(input.mouseRelPosY() * 0.005);
 	camera->roll(input.mouseRelPosZ() * 0.0005);
 
-	/*for (size_t i = 0; i < _meshes.size(); i++)
+	for (size_t i = 0; i < _meshes.size(); i++)
 	{
 		_meshes[i]->draw();
-	}*/
+	}
 
-	cuboImportado->draw();
-	//cuboRotando->setRotation(rotation, rotation, rotation);
+	torus->draw();
+	teaPot->draw();
+	cuboRotando->setRotation(rotation, rotation, rotation);
 	rotation += 0.003f;
 
 	camera->update(rkRenderer);

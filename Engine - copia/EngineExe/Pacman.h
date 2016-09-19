@@ -41,7 +41,8 @@ private:
 
 	Mesh* cuboRotando;
 	Mesh* cuboEstatico;
-	Mesh* cuboImportado;
+	Mesh* torus;
+	Mesh* teaPot;
 
 	Importer _importer;
 };
