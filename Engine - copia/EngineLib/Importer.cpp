@@ -14,7 +14,7 @@ Importer::~Importer(){
 bool Importer::importMesh(const std::string& fileName, Mesh& mesh){
 	Assimp::Importer importer;
 
-	const aiScene* scene = importer.ReadFile(fileName, aiProcess_Triangulate );
+	const aiScene* scene = importer.ReadFile(fileName, aiProcess_Triangulate | aiProcess_ConvertToLeftHanded);
 	if (!scene){
 		return false;
 	}

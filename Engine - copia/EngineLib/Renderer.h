@@ -6,8 +6,6 @@
 #include <vector>
 #include <string>
 //========================================================================================
-#define DllExport __declspec( dllexport )
-//========================================================================================
 struct IDirect3D9;
 struct IDirect3DDevice9;
 
