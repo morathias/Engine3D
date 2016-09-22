@@ -1,7 +1,7 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 //==================================================================================
-#define DLLexport __declspec(dllexport)
+#include "DllExport.h"
 //==================================================================================
 #include "Renderer.h"
 //==================================================================================
@@ -11,23 +11,23 @@ typedef D3DXVECTOR3* Vector3;
 class Camera
 {
 public:
-	DLLexport Camera();
-	DLLexport ~Camera();
+	DllExport Camera();
+	DllExport ~Camera();
 
 public:
-	DLLexport void roll(float value);
-	DLLexport void pitch(float value);
-	DLLexport void yaw(float value);
+	DllExport void roll(float value);
+	DllExport void pitch(float value);
+	DllExport void yaw(float value);
 
-	DLLexport void walk(float value);
-	DLLexport void strafe(float value);
-	DLLexport void fly(float value);
+	DllExport void walk(float value);
+	DllExport void strafe(float value);
+	DllExport void fly(float value);
 
 public:
-	DLLexport void setPos(float x , float y, float z);
-	DLLexport void setForward(float x, float y, float z);
+	DllExport void setPos(float x, float y, float z);
+	DllExport void setForward(float x, float y, float z);
 
-	DLLexport void update(Renderer& renderer);
+	DllExport void update(Renderer& renderer);
 
 private:
 	Vector3 _eye;

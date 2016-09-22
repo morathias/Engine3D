@@ -43,6 +43,14 @@ private:
 	Mesh* cuboEstatico;
 	Mesh* torus;
 	Mesh* teaPot;
+	Mesh* bridge;
+	Mesh* treeTrunk;
+	Mesh* treeLeaves;
+	Mesh* treeTrunk2;
+	Mesh* treeLeaves2;
+	Mesh* castleInterior;
+	Mesh* castleExterior;
+	Mesh* castleTowers;
 
 	Importer _importer;
 };

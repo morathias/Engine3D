@@ -4,11 +4,11 @@
 #include <time.h>
 #include <stdlib.h>
 //===============================================================
-#define DLLExport __declspec(dllexport)
+#include "DllExport.h"
 //===============================================================
 class Random{
 public:
-	DLLExport static int valueBetweenInts(int min, int max);
+	DllExport static int valueBetweenInts(int min, int max);
 };
 //===============================================================
 #endif

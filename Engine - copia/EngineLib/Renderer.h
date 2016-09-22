@@ -6,7 +6,7 @@
 #include <vector>
 #include <string>
 //========================================================================================
-#define DllExport __declspec( dllexport )
+#include "DllExport.h"
 //========================================================================================
 struct IDirect3D9;
 struct IDirect3DDevice9;

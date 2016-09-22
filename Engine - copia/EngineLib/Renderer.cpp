@@ -179,7 +179,7 @@ const Texture Renderer::loadTexture(const std::string& textureName, D3DCOLOR Col
 								&texture);
 
 	if(texture){
-		for(int i = 0; i < _textureList.size(); i++){
+		for(size_t i = 0; i < _textureList.size(); i++){
 			if(texture == _textureList[i])
 				return texture;
 		}

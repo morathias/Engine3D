@@ -42,7 +42,7 @@ bool Pacman::init(Renderer& rkRenderer){
 
 	torus = new Mesh(rkRenderer);
 	_importer.importMesh("Assets/taurus.obj", *torus);
-	torus->setTextureId(0, rkRenderer.loadTexture("Assets/TexturesCom_Cliffs0180_1_seamless_S.jpg", D3DCOLOR_XRGB(255, 255, 255)));
+	torus->setTextureId(0, rkRenderer.loadTexture("Assets/bread.jpg", D3DCOLOR_XRGB(255, 255, 255)));
 	torus->setScale(35, 35, 35);
 	torus->setPosZ(200);
 
@@ -51,6 +51,74 @@ bool Pacman::init(Renderer& rkRenderer){
 	teaPot->setTextureId(0, rkRenderer.loadTexture("Assets/TexturesCom_Cliffs0180_1_seamless_S.jpg", D3DCOLOR_XRGB(255, 255, 255)));
 	teaPot->setScale(1, 1, 1);
 	teaPot->setPosX(-100);
+
+	bridge = new Mesh(rkRenderer);
+	_importer.importMesh("Assets/bridge.obj", *bridge);
+	bridge->setTextureId(0, rkRenderer.loadTexture("Assets/bridge.jpg", D3DCOLOR_XRGB(255, 255, 255)));
+	bridge->setScale(3, 3, 3);
+	bridge->setPosY(-150);
+	bridge->setPosX(100);
+	bridge->setPosZ(100);
+
+	float treePosX = 100;
+	float treePosY = -50;
+	float treePosZ = -100;
+	treeTrunk = new Mesh(rkRenderer);
+	_importer.importMesh("Assets/treeTrunk.obj", *treeTrunk);
+	treeTrunk->setTextureId(0, rkRenderer.loadTexture("Assets/bark_0021.jpg", D3DCOLOR_XRGB(255, 255, 255)));
+	treeTrunk->setScale(50, 50, 50);
+	treeTrunk->setPosX(treePosX);
+	treeTrunk->setPosY(treePosY);
+	treeTrunk->setPosZ(treePosZ);
+
+	treeTrunk2 = new Mesh(rkRenderer);
+	_importer.importMesh("Assets/treeTrunk.obj", *treeTrunk2);
+	treeTrunk2->setTextureId(0, rkRenderer.loadTexture("Assets/bark_0021.jpg", D3DCOLOR_XRGB(255, 255, 255)));
+	treeTrunk2->setScale(50, 50, 50);
+	treeTrunk2->setPosX(-treePosX - 50);
+	treeTrunk2->setPosY(treePosY);
+	treeTrunk2->setPosZ(treePosZ);
+
+	treeLeaves = new Mesh(rkRenderer);
+	_importer.importMesh("Assets/treeLeaves.obj", *treeLeaves);
+	treeLeaves->setTextureId(0, rkRenderer.loadTexture("Assets/DB2X2_L01.png", D3DCOLOR_XRGB(255, 255, 255)));
+	treeLeaves->setScale(50, 50, 50);
+	treeLeaves->setPosX(treePosX);
+	treeLeaves->setPosY(treePosY);
+	treeLeaves->setPosZ(treePosZ);
+
+	treeLeaves2 = new Mesh(rkRenderer);
+	_importer.importMesh("Assets/treeLeaves.obj", *treeLeaves2);
+	treeLeaves2->setTextureId(0, rkRenderer.loadTexture("Assets/DB2X2_L01.png", D3DCOLOR_XRGB(255, 255, 255)));
+	treeLeaves2->setScale(50, 50, 50);
+	treeLeaves2->setPosX(-treePosX - 50);
+	treeLeaves2->setPosY(treePosY);
+	treeLeaves2->setPosZ(treePosZ);
+
+	float castleX = 0;
+	float castleY = 0;
+	float castleZ = -1300;
+	castleInterior = new Mesh(rkRenderer);
+	_importer.importMesh("Assets/castle_interior.obj", *castleInterior);
+	castleInterior->setTextureId(0, rkRenderer.loadTexture("Assets/Castle Interior Texture.jpg", D3DCOLOR_XRGB(255, 255, 255)));
+	castleInterior->setScale(3000, 3000, 3000);
+	castleInterior->setPosX(castleX);
+	castleInterior->setPosY(castleY);
+	castleInterior->setPosZ(castleZ);
+	castleExterior = new Mesh(rkRenderer);
+	_importer.importMesh("Assets/castle_exterior.obj", *castleExterior);
+	castleExterior->setTextureId(0, rkRenderer.loadTexture("Assets/Castle Exterior Texture.jpg", D3DCOLOR_XRGB(255, 255, 255)));
+	castleExterior->setScale(3000, 3000, 3000);
+	castleExterior->setPosX(castleX);
+	castleExterior->setPosY(castleY);
+	castleExterior->setPosZ(castleZ);
+	castleTowers = new Mesh(rkRenderer);
+	_importer.importMesh("Assets/castle_towers.obj", *castleTowers);
+	castleTowers->setTextureId(0, rkRenderer.loadTexture("Assets/Towers Doors and Windows Texture.jpg", D3DCOLOR_XRGB(255, 255, 255)));
+	castleTowers->setScale(3000, 3000, 3000);
+	castleTowers->setPosX(castleX);
+	castleTowers->setPosY(castleY);
+	castleTowers->setPosZ(castleZ);
 	return true;
 }
 //==================================================================================
@@ -71,9 +139,9 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 		camera->walk(-15.0f * (timer.timeBetweenFrames() / 100));
 	}
 
-	camera->yaw(input.mouseRelPosX() * 0.005);
-	camera->pitch(input.mouseRelPosY() * 0.005);
-	camera->roll(input.mouseRelPosZ() * 0.0005);
+	camera->yaw(input.mouseRelPosX() * 0.005f);
+	camera->pitch(input.mouseRelPosY() * 0.005f);
+	camera->roll(input.mouseRelPosZ() * 0.0005f);
 
 	for (size_t i = 0; i < _meshes.size(); i++)
 	{
@@ -82,6 +150,14 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 
 	torus->draw();
 	teaPot->draw();
+	bridge->draw();
+	treeTrunk->draw();
+	treeLeaves->draw();
+	treeTrunk2->draw();
+	treeLeaves2->draw();
+	castleInterior->draw();
+	castleExterior->draw();
+	castleTowers->draw();
 	cuboRotando->setRotation(rotation, rotation, rotation);
 	rotation += 0.003f;
 

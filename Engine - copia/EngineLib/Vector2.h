@@ -1,21 +1,21 @@
 #ifndef VECTOR2_H
 #define VECTOR2_H
 //========================================================================================
-#define DLLExport __declspec(dllexport)
+#include "DllExport.h"
 //========================================================================================
 class Vector2
 {
 public:
-	DLLExport Vector2(float x, float y);
-	DLLExport ~Vector2();
+	DllExport Vector2(float x, float y);
+	DllExport ~Vector2();
 
 public:
-	DLLExport float x();
-	DLLExport float y();
+	DllExport float x();
+	DllExport float y();
 
 public:
-	DLLExport static Vector2 Normalize();
-	DLLExport float getMagnitud();
+	DllExport static Vector2 Normalize();
+	DllExport float getMagnitud();
 private:
 	float _x, _y;
 };

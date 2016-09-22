@@ -1,0 +1,16 @@
+# Blender MTL File: 'None'
+# Material Count: 1
+
+newmtl DB2X2_L02
+Ns 78.431373
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.250000 0.250000 0.250000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 9
+map_Kd C:\Users\Morales\Downloads\whnp3v2jflkw-Tree\Tree\Tree.fbm\DB2X2_L01.png
+map_Bump -bm 0.350042 C:\\Users\\Morales\\Downloads\\whnp3v2jflkw-Tree\\Tree\\Tree.fbm\\DB2X2_L01_Nor.png
+map_Ks  C:\\Users\\Morales\\Downloads\\whnp3v2jflkw-Tree\\Tree\\Tree.fbm\\DB2X2_L01_Spec.png
+map_d  C:\\Users\\Morales\\Downloads\\whnp3v2jflkw-Tree\\Tree\\Tree.fbm\\DB2X2_L01.png
