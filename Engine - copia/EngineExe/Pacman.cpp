@@ -89,10 +89,11 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 }
 //==================================================================================
 void Pacman::deinit(){
-	delete cuboEstatico;
-	delete cuboRotando;
-	delete teaPot;
-	delete torus;
+	//delete cuboEstatico;
+	//delete cuboRotando;
+	//delete teaPot;
+	//delete torus;
 	delete camera;
+	
 }
 //==================================================================================
