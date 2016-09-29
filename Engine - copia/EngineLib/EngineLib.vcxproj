@@ -79,6 +79,7 @@
     <ClCompile Include="Importer.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Nodo.cpp" />
     <ClCompile Include="pg1_timer.cpp" />
     <ClCompile Include="pg2_indexbuffer.cpp" />
     <ClCompile Include="pg2_vertexbuffer.cpp" />
@@ -109,6 +110,7 @@
     <ClInclude Include="Importer.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Nodo.h" />
     <ClInclude Include="pg1_timer.h" />
     <ClInclude Include="pg2_indexbuffer.h" />
     <ClInclude Include="pg2_vertexbuffer.h" />

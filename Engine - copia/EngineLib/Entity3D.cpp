@@ -19,9 +19,11 @@ Entity3D::Entity3D()
 	_rotationZ(0),
 	_scaleX(100.0f),
 	_scaleY(100.0f),
-	_scaleZ(100.0f)
+	_scaleZ(100.0f),
+	_parent(NULL)
 {
 	updateLocalTransformation();
+	updateWorldTransformation();
 }
 //==================================================================================
 Entity3D::~Entity3D(){
@@ -167,6 +169,11 @@ float Entity3D::scaleY() const{
 	return _scaleY;
 }
 //==================================================================================
+void Entity3D::setParent(Entity3D* parent){
+	if (!_parent)
+		_parent = parent;
+}
+//==================================================================================
 void Entity3D::updateLocalTransformation(){
 
 	D3DXMATRIX traslatrionMat;
@@ -183,5 +190,15 @@ void Entity3D::updateLocalTransformation(){
 	D3DXMatrixMultiply(_transformationMatrix, &traslatrionMat, _transformationMatrix);
 	D3DXMatrixMultiply(_transformationMatrix, &rotationMat, _transformationMatrix);
 	D3DXMatrixMultiply(_transformationMatrix, &scaleMat, _transformationMatrix);
+}
+//==================================================================================
+void Entity3D::updateWorldTransformation(){
+	if (_parent){
+		D3DXMatrixMultiply(_worldTransformationMatrix, _parent ->_worldTransformationMatrix, _transformationMatrix);
+	}
+
+	else{
+		_worldTransformationMatrix = _transformationMatrix;
+	}
 }
 //==================================================================================

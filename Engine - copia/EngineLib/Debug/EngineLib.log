@@ -1,69 +1,7 @@
-﻿Build started 28/09/2016 03:47:22 p.m..
-     1>Project "C:\Users\826\Documents\GitHub\Engine3D\Engine - copia\EngineLib\EngineLib.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\826\Documents\GitHub\Engine3D\Engine - copia\/EngineLib/Assimp/include" /I"C:\Users\826\Documents\GitHub\Engine3D\Engine - copia\/EngineLib/Include" /ZI /nologo /W3 /WX- /Od /Oy- /D _WINDLL /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Animation.cpp Camera.cpp Engine.cpp Entity2D.cpp Entity3D.cpp Game.cpp Importer.cpp Mesh.cpp Physics.cpp Quad.cpp Random.cpp Renderer.cpp ScreenText.cpp Sound.cpp Sprite.cpp Tile.cpp TileMap.cpp Vector2.cpp Window.cpp directinput.cpp input.cpp pg2_indexbuffer.cpp pg2_vertexbuffer.cpp vertexbuffer.cpp
-         Animation.cpp
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\animation.cpp(21): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\animation.cpp(83): warning C4244: 'return' : conversion from 'float' to 'int', possible loss of data
-         Generating Code...
-         Compiling...
-         vertexbuffer.cpp
-         pg2_vertexbuffer.cpp
-         pg2_indexbuffer.cpp
-         input.cpp
-         directinput.cpp
-         Window.cpp
-         Vector2.cpp
-         TileMap.cpp
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(12): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(30): warning C4244: '=' : conversion from 'float' to 'unsigned int', possible loss of data
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(31): warning C4244: '=' : conversion from 'float' to 'unsigned int', possible loss of data
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(36): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(56): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(57): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(58): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(98): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(99): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(150): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(167): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(168): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(185): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(186): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(187): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(196): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\tilemap.cpp(198): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-         Tile.cpp
-         Sprite.cpp
-         Sound.cpp
-         ScreenText.cpp
-         Renderer.cpp
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\renderer.cpp(105): warning C4305: 'argument' : truncation from 'double' to 'FLOAT'
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\renderer.cpp(145): warning C4172: returning address of local variable or temporary
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\renderer.cpp(152): warning C4172: returning address of local variable or temporary
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\renderer.cpp(182): warning C4018: '<' : signed/unsigned mismatch
-         Random.cpp
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\random.cpp(4): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
-         Quad.cpp
-         Physics.cpp
-         Mesh.cpp
-         Importer.cpp
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\importer.cpp(28): warning C4018: '<' : signed/unsigned mismatch
-         Game.cpp
-         Entity3D.cpp
-         Generating Code...
-         Compiling...
-         Entity2D.cpp
-         Engine.cpp
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\engine.cpp(16): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(226) : see declaration of 'freopen'
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\engine.cpp(17): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(226) : see declaration of 'freopen'
-     1>c:\users\826\documents\github\engine3d\engine - copia\enginelib\engine.cpp(18): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(226) : see declaration of 'freopen'
-         Camera.cpp
-         Generating Code...
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\826\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.dll" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\826\Documents\GitHub\Engine3D\Engine - copia\/EngineLib/Assimp/lib/x86" /LIBPATH:"C:\Users\826\Documents\GitHub\Engine3D\Engine - copia\/EngineLib" dxguid.lib assimp.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\826\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\826\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.lib" /MACHINE:X86 /DLL Debug\Animation.obj
+﻿Build started 29/09/2016 01:03:44 p.m..
+     1>Project "C:\Users\820\Desktop\Engine3D\Engine - copia\EngineLib\EngineLib.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\820\Desktop\Engine3D\Engine - copia\Debug\EngineLib.dll" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\820\Desktop\Engine3D\Engine - copia\/EngineLib/Assimp/lib/x86" /LIBPATH:"C:\Users\820\Desktop\Engine3D\Engine - copia\/EngineLib" dxguid.lib assimp.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\820\Desktop\Engine3D\Engine - copia\Debug\EngineLib.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\820\Desktop\Engine3D\Engine - copia\Debug\EngineLib.lib" /MACHINE:X86 /DLL Debug\Animation.obj
          Debug\Camera.obj
          Debug\directinput.obj
          Debug\Engine.obj
@@ -74,6 +12,7 @@
          Debug\Importer.obj
          Debug\input.obj
          Debug\Mesh.obj
+         Debug\Nodo.obj
          Debug\pg1_timer.obj
          Debug\pg2_indexbuffer.obj
          Debug\pg2_vertexbuffer.obj
@@ -90,9 +29,11 @@
          Debug\Vector2.obj
          Debug\vertexbuffer.obj
          Debug\Window.obj
-         EngineLib.vcxproj -> C:\Users\826\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.dll
-     1>Done Building Project "C:\Users\826\Documents\GitHub\Engine3D\Engine - copia\EngineLib\EngineLib.vcxproj" (Build target(s)).
+            Creating library C:\Users\820\Desktop\Engine3D\Engine - copia\Debug\EngineLib.lib and object C:\Users\820\Desktop\Engine3D\Engine - copia\Debug\EngineLib.exp
+     1>Nodo.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall Nodo::draw(void)" (?draw@Nodo@@UAEXXZ)
+     1>C:\Users\820\Desktop\Engine3D\Engine - copia\Debug\EngineLib.dll : fatal error LNK1120: 1 unresolved externals
+     1>Done Building Project "C:\Users\820\Desktop\Engine3D\Engine - copia\EngineLib\EngineLib.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:11.34
+Time Elapsed 00:00:00.35

@@ -80,6 +80,7 @@
     <ClCompile Include="Importer.cpp">
       <Filter>Source\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="Nodo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyxml2.h" />
@@ -167,6 +168,7 @@
     <ClInclude Include="Importer.h">
       <Filter>Headers\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="Nodo.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="input.inl">
