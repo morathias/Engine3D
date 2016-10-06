@@ -43,11 +43,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir)/EngineLib/Assimp/include;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/EngineLib/Assimp/include;$(SolutionDir)/EngineLib/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)/EngineLib/Assimp/lib/x86;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)/EngineLib/Assimp/lib/x86;$(SolutionDir)/EngineLib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>dxguid.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -79,6 +79,7 @@
     <ClCompile Include="Importer.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Nodo.cpp" />
     <ClCompile Include="pg1_timer.cpp" />
     <ClCompile Include="pg2_indexbuffer.cpp" />
     <ClCompile Include="pg2_vertexbuffer.cpp" />
@@ -100,7 +101,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="directinput.h" />
-    <ClInclude Include="DllExport.h" />
+    <ClInclude Include="DLLExport.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Entity2D.h" />
     <ClInclude Include="Entity3D.h" />
@@ -109,6 +110,7 @@
     <ClInclude Include="Importer.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Nodo.h" />
     <ClInclude Include="pg1_timer.h" />
     <ClInclude Include="pg2_indexbuffer.h" />
     <ClInclude Include="pg2_vertexbuffer.h" />

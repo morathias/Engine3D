@@ -14,7 +14,7 @@ Importer::~Importer(){
 bool Importer::importMesh(const std::string& fileName, Mesh& mesh){
 	Assimp::Importer importer;
 
-	const aiScene* scene = importer.ReadFile(fileName, aiProcess_Triangulate  | aiProcess_ConvertToLeftHanded);
+	const aiScene* scene = importer.ReadFile(fileName, aiProcess_Triangulate | aiProcess_ConvertToLeftHanded);
 	if (!scene){
 		return false;
 	}
@@ -25,7 +25,7 @@ bool Importer::importMesh(const std::string& fileName, Mesh& mesh){
 	}
 	
 	TexturedVertex* verts = new TexturedVertex[_aiMesh->mNumVertices];
-	for (size_t i = 0; i < _aiMesh->mNumVertices; i++)
+	for (int i = 0; i < _aiMesh->mNumVertices; i++)
 	{
 		verts[i] = { _aiMesh->mVertices[i].x,
 			_aiMesh->mVertices[i].y,
@@ -39,6 +39,20 @@ bool Importer::importMesh(const std::string& fileName, Mesh& mesh){
 	unsigned int numIndices = _aiMesh->mNumFaces * 3;
 	unsigned short* indices = new unsigned short[numIndices];
 	int index = 0;
+
+	/*for (size_t i = 0; i < _aiMesh->mNumFaces; i++)
+	{
+		const aiFace& face = _aiMesh->mFaces[i];
+		if (face.mNumIndices == 3){
+			for (size_t j = 0; j < face.mNumIndices; j++)
+			{
+				indices[index] = face.mIndices[j];
+				cout << indices[index]<< " ";
+				index++;
+			}
+		}
+		cout << endl;
+	}*/
 
 	for (unsigned int i = 0; i < _aiMesh->mNumFaces; i++)
 	{

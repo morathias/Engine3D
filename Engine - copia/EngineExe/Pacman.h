@@ -15,42 +15,17 @@ public:
 	void frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer);
 	void deinit();
 
+	void moveRoot(Input& input);
+	void moveNode1(Input& input);
+	void moveMesh(Input& input);
+
 private:
-	TileMap* tileMap;
-
-	Sprite* _player;
-	Animation* _runUp;
-	Animation* _runDown;
-	Animation* _runLeft;
-	Animation* _runRight;
-	Animation* _iddleDown;
-	Animation* _iddleUp;
-	Animation* _iddleRight;
-	Animation* _iddleLeft;
-
-	ScreenText _score;
-	ScreenText _userName;
-
-	Sound _sound;
-
-	Quad quad;
-
 	Camera* camera;
-
-	std::vector<Mesh*> _meshes;
-
-	Mesh* cuboRotando;
 	Mesh* cuboEstatico;
 	Mesh* torus;
 	Mesh* teaPot;
-	Mesh* bridge;
-	Mesh* treeTrunk;
-	Mesh* treeLeaves;
-	Mesh* treeTrunk2;
-	Mesh* treeLeaves2;
-	Mesh* castleInterior;
-	Mesh* castleExterior;
-	Mesh* castleTowers;
+	Nodo _root;
+	Nodo _node1;
 
 	Importer _importer;
 };

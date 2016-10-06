@@ -13,6 +13,7 @@ enum CollisionResult3D
 	Collision_X_Left,
 	NoCollision_3D
 };
+class Nodo;
 //========================================================================================
 class Entity3D
 {
@@ -49,6 +50,11 @@ public:
 	DllExport float scaleY() const;
 	DllExport float scaleZ() const;
 
+	DllExport void setParent(Nodo* parent);
+	DllExport const Matrix& worldMatrix() const;
+	DllExport virtual void updateWorldTransformation();
+	DllExport virtual void draw() = 0;
+
 protected:
 	void updateLocalTransformation();
 	float _posX, _posY, _posZ;
@@ -59,7 +65,9 @@ protected:
 	float _scaleX, _scaleY, _scaleZ;
 
 	Matrix _transformationMatrix;
+	Matrix _worldTransformationMatrix;
 
+	Nodo* _parent;
 };
 //========================================================================================
 #endif

@@ -1,9 +1,9 @@
 #ifndef TILEMAP_H
 #define TILEMAP_H
-
+//===================================================================
 #include "Tile.h"
 #include <string>
-
+//===================================================================
 class TileMap{
 public:
 	DllExport TileMap();
@@ -13,7 +13,7 @@ public:
 	DllExport void setTile(const Tile& tile);
 	DllExport void setMapTileId(int layer, unsigned int column, unsigned int row, unsigned int id);
 
-	DllExport void setDimensions(unsigned int width, unsigned int heigth);
+	DllExport void setDimensions(float width, float heigth);
 	DllExport void setTileDimensions(float tileWidth, float tileHeigth);
 
 	DllExport void setTexture(const Texture& texture);

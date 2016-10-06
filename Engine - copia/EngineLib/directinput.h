@@ -12,7 +12,7 @@
 #pragma comment(lib, "dinput8.lib")
 #pragma comment(lib, "dxguid.lib")
 //---------------------------------------------------------------------------
-#define DllExport __declspec( dllexport )
+#include "DLLExport.h"
 //---------------------------------------------------------------------------
 class DirectInput : public Input{
 public:

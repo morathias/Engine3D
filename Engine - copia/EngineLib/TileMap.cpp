@@ -9,7 +9,7 @@ TileMap::~TileMap(){}
 const Tile& TileMap::tile(unsigned int id){
 	Tile* NoTile = nullptr;
 
-	for(size_t i = 0; i < tiles.size(); i++){
+	for(int i = 0; i < tiles.size(); i++){
 		if(id == tiles[i].getId()){
 			return tiles[i];
 		}
@@ -26,14 +26,14 @@ void TileMap::setMapTileId(int layer, unsigned int column, unsigned int row, uns
 	_tileMapGrid[layer][column][row] = tile(id);
 }
 
-void TileMap::setDimensions(unsigned int width, unsigned int height){
+void TileMap::setDimensions(float width, float height){
 	_width = width;
 	_height = height;
 
 	//creo la grilla bidimensional para guardar la posicion de cada tile igual que en el editor
 	Tile** tileMap;
 		tileMap = new Tile*[_height];
-	for (size_t i = 0; i < _height; i++){
+	for (int i = 0; i < _height; i++){
 		tileMap[i] = new Tile[_width];
 	}
 	_tileMapGrid.push_back(tileMap);
@@ -53,9 +53,9 @@ void TileMap::draw(Renderer& renderer) {
 
 	float mapWidth = -(_width * _tileWidth) / 2; 
 	float mapHeight = (_height * _tileHeight) / 2;
-	for (size_t i = 0; i < _tileMapGrid.size(); i++){
-		for (size_t y = 0; y < _height; y++){
-			for (size_t x = 0; x < _width; x++){
+	for (int i = 0; i < _tileMapGrid.size(); i++){
+		for (int y = 0; y < _height; y++){
+			for (int x = 0; x < _width; x++){
 				if (_tileMapGrid[i][y][x].getId() != NULL){
 					_tileMapGrid[i][y][x].setPosX(mapWidth + (_tileWidth * x));
 					_tileMapGrid[i][y][x].setPosY(mapHeight - (_tileHeight * y));
@@ -95,8 +95,8 @@ bool TileMap::importTileMap(std::string filePath, Renderer& renderer){
 	setTexture(renderer.loadTexture(_imagePath.c_str(), D3DCOLOR_XRGB(255, 255, 255))); //
 
 	// Save the Tiles in the TileMap
-	_imageWidth = pTileset->FirstChildElement("image")->FloatAttribute("width");
-	_imageHeight = pTileset->FirstChildElement("image")->FloatAttribute("height");
+	_imageWidth = pTileset->FirstChildElement("image")->IntAttribute("width");
+	_imageHeight = pTileset->FirstChildElement("image")->IntAttribute("height");
 	float tileX = 0.0f, tileY = 0.0f;
 	int _id = 1;
 	for (int i = 0; i < rows; i++){
@@ -147,7 +147,7 @@ bool TileMap::importTileMap(std::string filePath, Renderer& renderer){
 		if (layerCount > 0){
 			Tile** tileMap;
 				tileMap = new Tile*[_height];
-			for (size_t i = 0; i < _height; i++){
+			for (int i = 0; i < _height; i++){
 				tileMap[i] = new Tile[_width];
 			}
 			_tileMapGrid.push_back(tileMap);
@@ -164,8 +164,8 @@ bool TileMap::importTileMap(std::string filePath, Renderer& renderer){
 			}
 			
 			int gid = 0;
-			for (size_t y = 0; y < _height; y++){
-				for (size_t x = 0; x < _width; x++){
+			for (int y = 0; y < _height; y++){
+				for (int x = 0; x < _width; x++){
 					if (tileGids[gid] != 0)
 						setMapTileId(layerCount, y, x, tileGids[gid]);
 					gid++;
@@ -182,9 +182,9 @@ bool TileMap::importTileMap(std::string filePath, Renderer& renderer){
 }
 
 void TileMap::checkCollision(Entity2D& object) {
-	for(size_t y = 0; y < _height; y++){
-		for(size_t x = 0; x < _width; x++){
-			for (size_t i = 0; i < _tileMapGrid.size(); i++)
+	for(int y = 0; y < _height; y++){
+		for(int x = 0; x < _width; x++){
+			for (int i = 0; i < _tileMapGrid.size(); i++)
 			{
 				if (!_tileMapGrid[i][y][x].isWalkable()){
 

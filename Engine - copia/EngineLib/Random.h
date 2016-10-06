@@ -4,7 +4,7 @@
 #include <time.h>
 #include <stdlib.h>
 //===============================================================
-#include "DllExport.h"
+#include "DLLExport.h"
 //===============================================================
 class Random{
 public:

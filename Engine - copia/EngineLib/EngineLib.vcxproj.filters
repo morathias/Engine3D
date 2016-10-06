@@ -80,6 +80,7 @@
     <ClCompile Include="Importer.cpp">
       <Filter>Source\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="Nodo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyxml2.h" />
@@ -161,12 +162,13 @@
     <ClInclude Include="Entity3D.h">
       <Filter>Headers\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="DLLExport.h">
+      <Filter>Headers\Engine</Filter>
+    </ClInclude>
     <ClInclude Include="Importer.h">
       <Filter>Headers\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="DllExport.h">
-      <Filter>Source\Engine</Filter>
-    </ClInclude>
+    <ClInclude Include="Nodo.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="input.inl">
