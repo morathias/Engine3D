@@ -110,6 +110,7 @@ void Pacman::moveNode1(Input& input){
 	}
 }
 //==================================================================================
+<<<<<<< HEAD
 void Pacman::moveMesh(Input& input){
 	if (input.keyDown(input.KEY_N)){
 		torus->setRotation(0,0,torus->rotationZ() + 1 * 0.001);
@@ -118,5 +119,14 @@ void Pacman::moveMesh(Input& input){
 	else if (input.keyDown(input.KEY_M)){
 		torus->setRotation(0, 0, torus->rotationZ() + 1 * -0.001);
 	}
+=======
+void Pacman::deinit(){
+	delete cuboEstatico;
+	//delete cuboRotando;
+	//delete teaPot;
+	//delete torus;
+	delete camera;
+	
+>>>>>>> origin/master
 }
 //==================================================================================

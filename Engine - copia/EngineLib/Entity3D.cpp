@@ -19,9 +19,15 @@ Entity3D::Entity3D()
 	_rotationX(0),
 	_rotationY(0),
 	_rotationZ(0),
+<<<<<<< HEAD
 	_scaleX(1.0f),
 	_scaleY(1.0f),
 	_scaleZ(1.0f),
+=======
+	_scaleX(100.0f),
+	_scaleY(100.0f),
+	_scaleZ(100.0f),
+>>>>>>> origin/master
 	_parent(NULL)
 {
 	updateLocalTransformation();
@@ -175,8 +181,14 @@ float Entity3D::scaleY() const{
 	return _scaleY;
 }
 //==================================================================================
+<<<<<<< HEAD
 void Entity3D::setParent(Nodo* parent){
 	if (!_parent) _parent = parent;
+=======
+void Entity3D::setParent(Entity3D* parent){
+	if (!_parent)
+		_parent = parent;
+>>>>>>> origin/master
 }
 //==================================================================================
 void Entity3D::updateLocalTransformation(){
@@ -199,6 +211,7 @@ void Entity3D::updateLocalTransformation(){
 //==================================================================================
 void Entity3D::updateWorldTransformation(){
 	if (_parent){
+<<<<<<< HEAD
 		D3DXMatrixMultiply(_worldTransformationMatrix, _parent->worldMatrix(), _transformationMatrix);
 	}
 
@@ -209,3 +222,13 @@ void Entity3D::updateWorldTransformation(){
 const Matrix& Entity3D::worldMatrix() const{
 	return _worldTransformationMatrix;
 }
+=======
+		D3DXMatrixMultiply(_worldTransformationMatrix, _parent ->_worldTransformationMatrix, _transformationMatrix);
+	}
+
+	else{
+		_worldTransformationMatrix = _transformationMatrix;
+	}
+}
+//==================================================================================
+>>>>>>> origin/master
