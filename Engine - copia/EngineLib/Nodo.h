@@ -11,10 +11,7 @@ public:
 	DllExport Nodo();
 	DllExport ~Nodo();
 
-<<<<<<< HEAD
 	DllExport const vector<Entity3D*> childs() const;
-=======
->>>>>>> origin/master
 	DllExport bool addChild(Entity3D& child);
 	DllExport bool removeChild(Entity3D& child);
 

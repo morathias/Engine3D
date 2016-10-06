@@ -25,7 +25,7 @@ bool Importer::importMesh(const std::string& fileName, Mesh& mesh){
 	}
 	
 	TexturedVertex* verts = new TexturedVertex[_aiMesh->mNumVertices];
-	for (int i = 0; i < _aiMesh->mNumVertices; i++)
+	for (size_t i = 0; i < _aiMesh->mNumVertices; i++)
 	{
 		verts[i] = { _aiMesh->mVertices[i].x,
 			_aiMesh->mVertices[i].y,

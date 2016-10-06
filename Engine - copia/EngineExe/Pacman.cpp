@@ -77,71 +77,19 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 	camera->roll(input.mouseRelPosZ() * 0.0005);
 
 	camera->update(rkRenderer);
+
 	moveRoot(input);
 	moveNode1(input);
 	moveMesh(input);
-	_root.draw();
-<<<<<<< HEAD
-}
-//==================================================================================
-void Pacman::deinit(){
-	delete cuboEstatico;
-	delete teaPot;
-	delete torus;
-	delete camera;
-}
-//==================================================================================
-void Pacman::moveRoot(Input& input){
-	if (input.keyDown(input.KEY_O)){
-		_root.setRotation(_root.rotationX()+1 * 0.001, 0, 0);
-	}
-
-	else if (input.keyDown(input.KEY_P)){
-		_root.setRotation(_root.rotationX()+ 1 * -0.001, 0, 0);
-	}
-}
-//==================================================================================
-void Pacman::moveNode1(Input& input){
-	if (input.keyDown(input.KEY_K)){
-		_node1.setRotation(0, _node1.rotationY() + 1 * 0.001, 0);
-	}
-
-	else if (input.keyDown(input.KEY_L)){
-		_node1.setRotation(0, _node1.rotationY() + 1 * -0.001, 0);
-	}
-=======
->>>>>>> origin/master
-}
-//==================================================================================
-<<<<<<< HEAD
-void Pacman::moveMesh(Input& input){
-	if (input.keyDown(input.KEY_N)){
-		torus->setRotation(0,0,torus->rotationZ() + 1 * 0.001);
-	}
-
-	else if (input.keyDown(input.KEY_M)){
-		torus->setRotation(0, 0, torus->rotationZ() + 1 * -0.001);
-	}
-=======
-void Pacman::deinit(){
-	delete cuboEstatico;
-	delete teaPot;
-	delete torus;
-	delete camera;
-<<<<<<< HEAD
 	
->>>>>>> origin/master
-=======
+	_root.draw();
 }
 //==================================================================================
-void Pacman::moveRoot(Input& input){
-	if (input.keyDown(input.KEY_O)){
-		_root.setRotation(_root.rotationX()+1 * 0.001, 0, 0);
-	}
-
-	else if (input.keyDown(input.KEY_P)){
-		_root.setRotation(_root.rotationX()+ 1 * -0.001, 0, 0);
-	}
+void Pacman::deinit(){
+	delete cuboEstatico;
+	delete teaPot;
+	delete torus;
+	delete camera;
 }
 //==================================================================================
 void Pacman::moveNode1(Input& input){
@@ -156,12 +104,21 @@ void Pacman::moveNode1(Input& input){
 //==================================================================================
 void Pacman::moveMesh(Input& input){
 	if (input.keyDown(input.KEY_N)){
-		torus->setRotation(0,0,torus->rotationZ() + 1 * 0.001);
+		torus->setRotation(0, 0, torus->rotationZ() + 1 * 0.001);
 	}
 
 	else if (input.keyDown(input.KEY_M)){
 		torus->setRotation(0, 0, torus->rotationZ() + 1 * -0.001);
 	}
->>>>>>> origin/master
+}
+//==================================================================================
+void Pacman::moveRoot(Input& input){
+	if (input.keyDown(input.KEY_O)){
+		_root.setRotation(_root.rotationX()+1 * 0.001, 0, 0);
+	}
+
+	else if (input.keyDown(input.KEY_P)){
+		_root.setRotation(_root.rotationX()+ 1 * -0.001, 0, 0);
+	}
 }
 //==================================================================================

@@ -80,7 +80,7 @@ bool Renderer::init(HWND hWnd, unsigned int uiW, unsigned int uiH){
 	hr = m_pkD3D->CreateDevice(D3DADAPTER_DEFAULT,
 		D3DDEVTYPE_HAL,
 		hWnd,
-		D3DCREATE_SOFTWARE_VERTEXPROCESSING,
+		D3DCREATE_HARDWARE_VERTEXPROCESSING,
 		&d3dpp,
 		&m_pkDevice);
 
@@ -226,8 +226,6 @@ void Renderer::setCurrentVertexBuffer(pg2::VertexBuffer* vertexBuffer){
 }
 //==================================================================================
 void Renderer::drawCurrentBuffers(Primitive primitive){
-	_vertexBuffer->bind();
-	_indexBuffer->bind();
 	m_pkDevice->DrawIndexedPrimitive(_primitives[primitive], 0, 0, _vertexBuffer->vertexCount(), 0, _indexBuffer->indexCount() / 3);
 }
 //==================================================================================

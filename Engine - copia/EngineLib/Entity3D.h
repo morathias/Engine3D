@@ -50,11 +50,7 @@ public:
 	DllExport float scaleY() const;
 	DllExport float scaleZ() const;
 
-<<<<<<< HEAD
 	DllExport void setParent(Nodo* parent);
-=======
-	DllExport void setParent(Entity3D* parent);
->>>>>>> origin/master
 	DllExport const Matrix& worldMatrix() const;
 	DllExport virtual void updateWorldTransformation();
 	DllExport virtual void draw() = 0;
@@ -71,11 +67,7 @@ protected:
 	Matrix _transformationMatrix;
 	Matrix _worldTransformationMatrix;
 
-<<<<<<< HEAD
 	Nodo* _parent;
-=======
-	Entity3D* _parent;
->>>>>>> origin/master
 };
 //========================================================================================
 #endif

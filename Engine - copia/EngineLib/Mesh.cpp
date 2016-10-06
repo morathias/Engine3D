@@ -2,10 +2,10 @@
 #include "pg2_indexbuffer.h"
 #include "pg2_vertexbuffer.h"
 //=====================================================
-Mesh::Mesh(Renderer& renderer){
-	_renderer = renderer;
-	_texture = NoTexture;
-}
+Mesh::Mesh(Renderer& renderer):
+	_renderer (renderer),
+	_texture (NoTexture)
+{}
 //=====================================================
 Mesh::~Mesh(){
 	delete _vertexBuffer;
@@ -53,6 +53,10 @@ void Mesh::setMeshData(const Vertex* texVertex,
 void Mesh::draw(){
 	_renderer.setCurrentTexture(_texture);
 	_renderer.setMatrix(MatrixType::WORLD, _worldTransformationMatrix);
+
+	_vertexBuffer->bind();
+	_indexBuffer->bind();
+
 	_renderer.drawCurrentBuffers(_primitive);
 }
 //=====================================================

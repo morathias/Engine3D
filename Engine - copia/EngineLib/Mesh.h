@@ -27,7 +27,7 @@ public:
 	DllExport void setTextureId(int iTextureId, Texture texture);
 
 private:
-	Renderer _renderer;
+	Renderer& _renderer;
 	Primitive _primitive;
 	pg2::IndexBuffer* _indexBuffer;
 	pg2::VertexBuffer* _vertexBuffer;
