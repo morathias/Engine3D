@@ -52,7 +52,7 @@ void Mesh::setMeshData(const Vertex* texVertex,
 //=====================================================
 void Mesh::draw(){
 	_renderer.setCurrentTexture(_texture);
-	_renderer.setMatrix(MatrixType::WORLD, _transformationMatrix);
+	_renderer.setMatrix(MatrixType::WORLD, _worldTransformationMatrix);
 	_renderer.drawCurrentBuffers(_primitive);
 }
 //=====================================================

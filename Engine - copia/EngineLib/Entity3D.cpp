@@ -1,4 +1,5 @@
 #include "Entity3D.h"
+#include "Nodo.h"
 //==================================================================================
 #include <d3dx9.h>
 #pragma comment (lib, "d3dx9.lib")
@@ -9,6 +10,7 @@ using namespace std;
 Entity3D::Entity3D()
 	:
 	_transformationMatrix(new D3DXMATRIX()),
+	_worldTransformationMatrix(new D3DXMATRIX()),
 	_posX(0),
 	_posY(0),
 	_posZ(0),
@@ -17,9 +19,9 @@ Entity3D::Entity3D()
 	_rotationX(0),
 	_rotationY(0),
 	_rotationZ(0),
-	_scaleX(100.0f),
-	_scaleY(100.0f),
-	_scaleZ(100.0f),
+	_scaleX(1.0f),
+	_scaleY(1.0f),
+	_scaleZ(1.0f),
 	_parent(NULL)
 {
 	updateLocalTransformation();
@@ -35,6 +37,7 @@ void Entity3D::setPosX(float fPosX){
 	_posX = fPosX;
 
 	updateLocalTransformation();
+	updateWorldTransformation();
 }
 //==================================================================================
 void Entity3D::setPosY(float fPosY){
@@ -43,12 +46,14 @@ void Entity3D::setPosY(float fPosY){
 	_posY = fPosY;
 
 	updateLocalTransformation();
+	updateWorldTransformation();
 }
 //==================================================================================
 void Entity3D::setPosZ(float fPosZ){
 	_posZ = fPosZ;
 
 	updateLocalTransformation();
+	updateWorldTransformation();
 }
 //==================================================================================
 void Entity3D::setRotation(float rotationX, float rotationY, float rotationZ){
@@ -57,6 +62,7 @@ void Entity3D::setRotation(float rotationX, float rotationY, float rotationZ){
 	_rotationZ = rotationZ;
 
 	updateLocalTransformation();
+	updateWorldTransformation();
 }
 //==================================================================================
 void Entity3D::setScale(float fScaleX, float fScaleY){
@@ -169,9 +175,8 @@ float Entity3D::scaleY() const{
 	return _scaleY;
 }
 //==================================================================================
-void Entity3D::setParent(Entity3D* parent){
-	if (!_parent)
-		_parent = parent;
+void Entity3D::setParent(Nodo* parent){
+	if (!_parent) _parent = parent;
 }
 //==================================================================================
 void Entity3D::updateLocalTransformation(){
@@ -194,11 +199,13 @@ void Entity3D::updateLocalTransformation(){
 //==================================================================================
 void Entity3D::updateWorldTransformation(){
 	if (_parent){
-		D3DXMatrixMultiply(_worldTransformationMatrix, _parent ->_worldTransformationMatrix, _transformationMatrix);
+		D3DXMatrixMultiply(_worldTransformationMatrix, _parent->worldMatrix(), _transformationMatrix);
 	}
 
-	else{
+	else
 		_worldTransformationMatrix = _transformationMatrix;
-	}
 }
 //==================================================================================
+const Matrix& Entity3D::worldMatrix() const{
+	return _worldTransformationMatrix;
+}

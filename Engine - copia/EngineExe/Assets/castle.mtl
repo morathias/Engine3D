@@ -1,0 +1,50 @@
+# Blender MTL File: 'None'
+# Material Count: 4
+
+newmtl dx_dx_th_portugal_edit_lt01
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\Morales\Downloads\f4xvf4xdl2-EasternAncientCasttle\eastern ancient casttle\Maps\rf1.jpg
+map_Ka  C:\\Users\\Morales\\Downloads\\Castle\\Castle\\Texture\\th_portugal_edit-lt.jpg
+
+newmtl dx_dx_th_portugal_edit_lt01_AHB_gold2.jpg
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\Morales\Downloads\f4xvf4xdl2-EasternAncientCasttle\eastern ancient casttle\Maps\AHB_gold2.jpg
+map_Ka  C:\\Users\\Morales\\Downloads\\Castle\\Castle\\Texture\\th_portugal_edit-lt.jpg
+
+newmtl dx_dx_th_portugal_edit_lt01_fl1.jpg
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\Morales\Downloads\f4xvf4xdl2-EasternAncientCasttle\eastern ancient casttle\Maps\fl1.jpg
+map_Ka  C:\\Users\\Morales\\Downloads\\Castle\\Castle\\Texture\\th_portugal_edit-lt.jpg
+
+newmtl dx_dx_th_portugal_edit_lt01_sd7.jpg
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\Morales\Downloads\f4xvf4xdl2-EasternAncientCasttle\eastern ancient casttle\Maps\sd7.jpg
+map_Ka  C:\\Users\\Morales\\Downloads\\Castle\\Castle\\Texture\\th_portugal_edit-lt.jpg

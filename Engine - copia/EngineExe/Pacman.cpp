@@ -24,21 +24,17 @@ bool Pacman::init(Renderer& rkRenderer){
 	_verts[6].x = -0.5f;	_verts[6].y = -0.5f;	_verts[6].z = 0.5f;		_verts[6].color = D3DCOLOR_ARGB(255, 200, 32, 200);
 	_verts[7].x = 0.5f;		_verts[7].y = -0.5f;	_verts[7].z = 0.5f;		_verts[7].color = D3DCOLOR_ARGB(255, 255, 10, 111);
 
+	_root.addChild(_node1);
+	_node1.setParent(&_root);
+
 	cuboEstatico = new Mesh(rkRenderer);
 	cuboEstatico->setMeshData(_verts, Primitive::TRIANGLELIST, ARRAYSIZE(_verts), indices, ARRAYSIZE(indices));
 	cuboEstatico->setPosX(20);
 	cuboEstatico->setPosY(20);
 	cuboEstatico->setPosZ(20);
 	cuboEstatico->setScale(50, 50, 50);
-	_meshes.push_back(cuboEstatico);
-
-	cuboRotando = new Mesh(rkRenderer);
-	cuboRotando->setMeshData(_verts, Primitive::TRIANGLELIST, ARRAYSIZE(_verts), indices, ARRAYSIZE(indices));
-	cuboRotando->setPosX(100);
-	cuboRotando->setPosY(100);
-	cuboRotando->setPosZ(100);
-	cuboRotando->setScale(50, 50, 50);
-	_meshes.push_back(cuboRotando);
+	_root.addChild(*cuboEstatico);
+	cuboEstatico->setParent(&_root);
 
 	torus = new Mesh(rkRenderer);
 	_importer.importMesh("Assets/taurus.obj", *torus);
@@ -51,6 +47,11 @@ bool Pacman::init(Renderer& rkRenderer){
 	teaPot->setTextureId(0, rkRenderer.loadTexture("Assets/TexturesCom_Cliffs0180_1_seamless_S.jpg", D3DCOLOR_XRGB(255, 255, 255)));
 	teaPot->setScale(1, 1, 1);
 	teaPot->setPosX(-100);
+
+	_node1.addChild(*torus);
+	_node1.addChild(*teaPot);
+	torus->setParent(&_node1);
+	teaPot->setParent(&_node1);
 	return true;
 }
 //==================================================================================
@@ -75,25 +76,47 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 	camera->pitch(input.mouseRelPosY() * 0.005);
 	camera->roll(input.mouseRelPosZ() * 0.0005);
 
-	for (size_t i = 0; i < _meshes.size(); i++)
-	{
-		_meshes[i]->draw();
-	}
-
-	torus->draw();
-	teaPot->draw();
-	cuboRotando->setRotation(rotation, rotation, rotation);
-	rotation += 0.003f;
-
 	camera->update(rkRenderer);
+	moveRoot(input);
+	moveNode1(input);
+	moveMesh(input);
+	_root.draw();
 }
 //==================================================================================
 void Pacman::deinit(){
 	delete cuboEstatico;
-	//delete cuboRotando;
-	//delete teaPot;
-	//delete torus;
+	delete teaPot;
+	delete torus;
 	delete camera;
-	
+}
+//==================================================================================
+void Pacman::moveRoot(Input& input){
+	if (input.keyDown(input.KEY_O)){
+		_root.setRotation(_root.rotationX()+1 * 0.001, 0, 0);
+	}
+
+	else if (input.keyDown(input.KEY_P)){
+		_root.setRotation(_root.rotationX()+ 1 * -0.001, 0, 0);
+	}
+}
+//==================================================================================
+void Pacman::moveNode1(Input& input){
+	if (input.keyDown(input.KEY_K)){
+		_node1.setRotation(0, _node1.rotationY() + 1 * 0.001, 0);
+	}
+
+	else if (input.keyDown(input.KEY_L)){
+		_node1.setRotation(0, _node1.rotationY() + 1 * -0.001, 0);
+	}
+}
+//==================================================================================
+void Pacman::moveMesh(Input& input){
+	if (input.keyDown(input.KEY_N)){
+		torus->setRotation(0,0,torus->rotationZ() + 1 * 0.001);
+	}
+
+	else if (input.keyDown(input.KEY_M)){
+		torus->setRotation(0, 0, torus->rotationZ() + 1 * -0.001);
+	}
 }
 //==================================================================================
