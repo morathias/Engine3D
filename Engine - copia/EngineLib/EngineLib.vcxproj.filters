@@ -80,7 +80,9 @@
     <ClCompile Include="Importer.cpp">
       <Filter>Source\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="Nodo.cpp" />
+    <ClCompile Include="Nodo.cpp">
+      <Filter>Source\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyxml2.h" />
@@ -168,7 +170,9 @@
     <ClInclude Include="Importer.h">
       <Filter>Headers\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="Nodo.h" />
+    <ClInclude Include="Nodo.h">
+      <Filter>Headers\Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="input.inl">

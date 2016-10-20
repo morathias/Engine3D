@@ -102,7 +102,7 @@ bool Renderer::init(HWND hWnd, unsigned int uiW, unsigned int uiH){
 	//----------------orthogonal projection--------------------------------
 	D3DXMATRIX projectionMatrix;
 	//D3DXMatrixOrthoLH(&projectionMatrix, viewportWidth, viewportHeight, 0.0f, 1000.0f);
-	D3DXMatrixPerspectiveFovLH(&projectionMatrix, M_PI * 0.25, viewportWidth / viewportHeight, 1.0f, 10000.0f);
+	D3DXMatrixPerspectiveFovLH(&projectionMatrix, M_PI * 0.25f, (FLOAT)viewportWidth / viewportHeight, (FLOAT)1.0f, (FLOAT)10000.0f);
 	m_pkDevice->SetTransform(D3DTS_PROJECTION, &projectionMatrix);
 	_projectionMatrix = new D3DXMATRIX();
 	_projectionMatrix = &projectionMatrix;
@@ -129,7 +129,7 @@ void Renderer::draw(TexturedVertex* gameVertex, Primitive primitive, int vertexC
 }
 //==================================================================================
 Font& Renderer::createFont(int charSize, std::string textFont, bool italic){
-	Font font;
+	Font* font = new Font();
 	D3DXCreateFont(m_pkDevice, 
 				   charSize, 
 				   0, 
@@ -140,16 +140,16 @@ Font& Renderer::createFont(int charSize, std::string textFont, bool italic){
 				   ANTIALIASED_QUALITY, 
 				   FF_DONTCARE,
 				   textFont.c_str(),
-				   &font);
+				   font);
 
-	return font;
+	return *font;
 }
 //==================================================================================
 RECT& Renderer::createRect(int x, int y, int width, int height){
-	RECT rect;
-	SetRect(&rect, x, y, width, height);
+	RECT* rect = new RECT();
+	SetRect(rect, x, y, width, height);
 
-	return rect;
+	return *rect;
 }
 //==================================================================================
 void Renderer::displayText(Font& font, RECT& rect, std::string text){
@@ -179,7 +179,7 @@ const Texture Renderer::loadTexture(const std::string& textureName, D3DCOLOR Col
 								&texture);
 
 	if(texture){
-		for(int i = 0; i < _textureList.size(); i++){
+		for(size_t i = 0; i < _textureList.size(); i++){
 			if(texture == _textureList[i])
 				return texture;
 		}

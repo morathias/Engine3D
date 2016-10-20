@@ -37,13 +37,13 @@ bool Pacman::init(Renderer& rkRenderer){
 	cuboEstatico->setParent(&_root);
 
 	torus = new Mesh(rkRenderer);
-	_importer.importMesh("Assets/taurus.obj", *torus);
+	//_importer.importMesh("Assets/taurus.obj", *torus);
 	torus->setTextureId(0, rkRenderer.loadTexture("Assets/TexturesCom_Cliffs0180_1_seamless_S.jpg", D3DCOLOR_XRGB(255, 255, 255)));
 	torus->setScale(35, 35, 35);
 	torus->setPosZ(200);
 
 	teaPot = new Mesh(rkRenderer);
-	_importer.importMesh("Assets/teapot.obj", *teaPot);
+	//_importer.importMesh("Assets/teapot.obj", *teaPot);
 	teaPot->setTextureId(0, rkRenderer.loadTexture("Assets/TexturesCom_Cliffs0180_1_seamless_S.jpg", D3DCOLOR_XRGB(255, 255, 255)));
 	teaPot->setScale(1, 1, 1);
 	teaPot->setPosX(-100);
@@ -72,9 +72,9 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 		camera->walk(-15.0f * (timer.timeBetweenFrames() / 100));
 	}
 
-	camera->yaw(input.mouseRelPosX() * 0.005);
-	camera->pitch(input.mouseRelPosY() * 0.005);
-	camera->roll(input.mouseRelPosZ() * 0.0005);
+	camera->yaw(input.mouseRelPosX() * 0.005f);
+	camera->pitch(input.mouseRelPosY() * 0.005f);
+	camera->roll(input.mouseRelPosZ() * 0.0005f);
 
 	camera->update(rkRenderer);
 
@@ -94,31 +94,31 @@ void Pacman::deinit(){
 //==================================================================================
 void Pacman::moveNode1(Input& input){
 	if (input.keyDown(input.KEY_K)){
-		_node1.setRotation(0, _node1.rotationY() + 1 * 0.001, 0);
+		_node1.setRotation(0, _node1.rotationY() + 1.0f * 0.001f, 0);
 	}
 
 	else if (input.keyDown(input.KEY_L)){
-		_node1.setRotation(0, _node1.rotationY() + 1 * -0.001, 0);
+		_node1.setRotation(0, _node1.rotationY() + 1.0f * -0.001f, 0);
 	}
 }
 //==================================================================================
 void Pacman::moveMesh(Input& input){
 	if (input.keyDown(input.KEY_N)){
-		torus->setRotation(0, 0, torus->rotationZ() + 1 * 0.001);
+		torus->setRotation(0, 0, torus->rotationZ() + 1.0f * 0.001f);
 	}
 
 	else if (input.keyDown(input.KEY_M)){
-		torus->setRotation(0, 0, torus->rotationZ() + 1 * -0.001);
+		torus->setRotation(0, 0, torus->rotationZ() + 1.0f * -0.001f);
 	}
 }
 //==================================================================================
 void Pacman::moveRoot(Input& input){
 	if (input.keyDown(input.KEY_O)){
-		_root.setRotation(_root.rotationX()+1 * 0.001, 0, 0);
+		_root.setRotation(_root.rotationX() + 1.0f * 0.001f, 0, 0);
 	}
 
 	else if (input.keyDown(input.KEY_P)){
-		_root.setRotation(_root.rotationX()+ 1 * -0.001, 0, 0);
+		_root.setRotation(_root.rotationX() + 1.0f * -0.001f, 0, 0);
 	}
 }
 //==================================================================================

@@ -27,7 +27,7 @@ private:
 	Nodo _root;
 	Nodo _node1;
 
-	Importer _importer;
+	Importer* _importer;
 };
 //==================================================================================
 #endif

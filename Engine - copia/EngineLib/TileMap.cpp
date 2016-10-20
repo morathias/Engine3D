@@ -78,7 +78,7 @@ bool TileMap::importTileMap(std::string filePath, Renderer& renderer){
 	tinyxml2::XMLElement* mapNode = doc.FirstChildElement("map");
 	if (mapNode == nullptr)
 		return false;
-	setDimensions(mapNode->FloatAttribute("width"), mapNode->FloatAttribute("height"));				// Get width and heigth for
+	setDimensions((unsigned int)mapNode->FloatAttribute("width"), (unsigned int)mapNode->FloatAttribute("height"));				// Get width and heigth for
 	setTileDimensions(mapNode->FloatAttribute("tilewidth"), mapNode->FloatAttribute("tileheight")); // the map and the tiles
 
 	// Loading Tilset element
@@ -87,8 +87,8 @@ bool TileMap::importTileMap(std::string filePath, Renderer& renderer){
 		return false;
 	
 	int tileCount = pTileset->IntAttribute("tilecount"); // Number of Tiles in the Tileset
-	int columns = pTileset->IntAttribute("columns");  // Columns of Tiles in the Tileset
-	int rows = tileCount / columns;
+	unsigned int columns = pTileset->IntAttribute("columns");  // Columns of Tiles in the Tileset
+	unsigned int rows = tileCount / columns;
 
 	_imagePath = "Assets/";																//
 	_imagePath += pTileset->FirstChildElement("image")->Attribute("source");			// Loading Textures
@@ -147,7 +147,7 @@ bool TileMap::importTileMap(std::string filePath, Renderer& renderer){
 		if (layerCount > 0){
 			Tile** tileMap;
 				tileMap = new Tile*[_height];
-			for (int i = 0; i < _height; i++){
+			for (size_t i = 0; i < _height; i++){
 				tileMap[i] = new Tile[_width];
 			}
 			_tileMapGrid.push_back(tileMap);

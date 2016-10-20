@@ -2,15 +2,23 @@
 #define IMPORTER_H
 //=============================================================
 #include "Mesh.h"
+#include "Nodo.h"
 #include <string>
+
+struct aiNode;
+struct aiScene;
 //=============================================================
 class Importer
 {
 public:
-	DllExport Importer();
+	DllExport Importer(Renderer& renderer);
 	DllExport ~Importer();
 
-	DllExport bool importMesh(const std::string& fileName, Mesh& mesh);
+	DllExport bool importScene(const std::string& fileName, Nodo& rootNode);
+
+private:
+	bool processNode(Nodo& childNode, aiNode& assimpNode, const aiScene& scene);
+	Renderer& _renderer;
 };
 //=============================================================
 #endif

@@ -33,7 +33,8 @@ public:
 	DllExport vector<Frame>& getFrames();
 
 private:
-	float _currentFrame, _currentTime;
+	int _currentFrame;
+	float _currentTime;
 	float _length;
 	vector<Frame> _frames;
 };
