@@ -21,11 +21,7 @@ public:
 
 private:
 	Camera* camera;
-	Mesh* cuboEstatico;
-	Mesh* torus;
-	Mesh* teaPot;
 	Nodo _root;
-	Nodo _node1;
 
 	Importer* _importer;
 };

@@ -29,14 +29,25 @@ bool Importer::processNode(Nodo& nodo, aiNode& assimpNode, const aiScene& scene)
 		if (!_aiMesh) return false;
 
 		TexturedVertex* verts = new TexturedVertex[_aiMesh->mNumVertices];
-		for (size_t i = 0; i < _aiMesh->mNumVertices; i++)
-		{
-			verts[i] = { _aiMesh->mVertices[i].x,
-				_aiMesh->mVertices[i].y,
-				_aiMesh->mVertices[i].z,
-				_aiMesh->mTextureCoords[0][i].x,
-				_aiMesh->mTextureCoords[0][i].y
-			};
+		if (_aiMesh->HasTextureCoords(0)){
+			for (size_t i = 0; i < _aiMesh->mNumVertices; i++)
+			{
+				verts[i] = { _aiMesh->mVertices[i].x,
+					_aiMesh->mVertices[i].y,
+					_aiMesh->mVertices[i].z,
+					_aiMesh->mTextureCoords[0][i].x,
+					_aiMesh->mTextureCoords[0][i].y
+				};
+			}
+		}
+
+		else{
+			for (size_t i = 0; i < _aiMesh->mNumVertices; i++){
+				verts[i] = { _aiMesh->mVertices[i].x,
+					_aiMesh->mVertices[i].y,
+					_aiMesh->mVertices[i].z,
+				};
+			}
 		}
 
 		unsigned int numIndices = _aiMesh->mNumFaces * 3;
@@ -53,6 +64,21 @@ bool Importer::processNode(Nodo& nodo, aiNode& assimpNode, const aiScene& scene)
 		mesh->setMeshData(verts, TRIANGLELIST, _aiMesh->mNumVertices, indices, numIndices);
 		nodo.addChild(*mesh);
 		mesh->setParent(&nodo);
+		aiVector3t<float> position, scaling;
+		aiQuaterniont<float> rotation;
+		assimpNode.mTransformation.Decompose(scaling, rotation, position);
+
+		mesh->setPosX(position.x);
+		mesh->setPosY(position.y);
+		mesh->setPosZ(position.z);
+		mesh->setScale(scaling.x, scaling.y, scaling.z);
+		mesh->setRotation(rotation.x, rotation.y, rotation.z);
+
+		aiString path;
+		if (scene.mMaterials[_aiMesh->mMaterialIndex]->GetTexture(aiTextureType_DIFFUSE, 0, &path) == AI_SUCCESS)
+		{
+			mesh->setTextureId(0, _renderer.loadTexture(path.data, D3DCOLOR_XRGB(255, 0, 255)));
+		}
 	}
 
 	for (size_t i = 0; i < assimpNode.mNumChildren; i++)
@@ -61,7 +87,17 @@ bool Importer::processNode(Nodo& nodo, aiNode& assimpNode, const aiScene& scene)
 
 		nodo.addChild(*nodoHijo);
 		nodoHijo->setParent(&nodo);
-		processNode(*nodoHijo, assimpNode, scene);
+
+		aiVector3t<float> position, scaling;
+		aiQuaterniont<float> rotation;
+		assimpNode.mTransformation.Decompose(scaling, rotation, position);
+		nodoHijo->setPosX(position.x);
+		nodoHijo->setPosY(position.y);
+		nodoHijo->setPosZ(position.z);
+		nodoHijo->setScale(scaling.x , scaling.y, scaling.z );
+		nodoHijo->setRotation(rotation.x, rotation.y, rotation.z);
+
+		processNode(*nodoHijo, *assimpNode.mChildren[i], scene);
 	}
 
 	return true;
