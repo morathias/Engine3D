@@ -86,7 +86,7 @@ bool Renderer::init(HWND hWnd, unsigned int uiW, unsigned int uiH){
 
 	if (hr != D3D_OK) return false;
 	//----------------------States-----------------------------------------
-	//m_pkDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
+	m_pkDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, FALSE);
 	m_pkDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
 	m_pkDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
 	m_pkDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
@@ -196,6 +196,8 @@ const Texture Renderer::loadTexture(const std::string& textureName, D3DCOLOR Col
 //==================================================================================
 void Renderer::setCurrentTexture(const Texture& texture){
 	m_pkDevice->SetTexture(0, texture);
+	m_pkDevice->SetSamplerState(0, D3DSAMP_MAGFILTER, D3DTEXF_LINEAR);
+	m_pkDevice->SetSamplerState(0, D3DSAMP_MINFILTER, D3DTEXF_LINEAR);
 }
 //==================================================================================
 Matrix& Renderer::getProjectionMatrix(){

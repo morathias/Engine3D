@@ -77,7 +77,8 @@ bool Importer::processNode(Nodo& nodo, aiNode& assimpNode, const aiScene& scene)
 		aiString path;
 		if (scene.mMaterials[_aiMesh->mMaterialIndex]->GetTexture(aiTextureType_DIFFUSE, 0, &path) == AI_SUCCESS)
 		{
-			mesh->setTextureId(0, _renderer.loadTexture(path.data, D3DCOLOR_XRGB(255, 0, 255)));
+			string fullPath = path.data;
+			mesh->setTextureId(0, _renderer.loadTexture("Assets/" + fullPath, D3DCOLOR_XRGB(255, 0, 255)));
 		}
 	}
 
