@@ -46,3 +46,12 @@ const vector<Entity3D*> Nodo::childs() const{
 	return _childs;
 }
 //=====================================================================
+void Nodo::showNames(){
+	_names.push_back(_name);
+	for (size_t i = 0; i < _childs.size(); i++){
+		_names.push_back(_childs[i]->getName());
+		if (typeid(_childs[i]) == typeid(Nodo)){
+			
+		}
+	}
+}

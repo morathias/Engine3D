@@ -2,15 +2,19 @@
 #include "input.h"
 #include <iostream>
 //==================================================================================
+Nodo* nodo1;
 string userName;
 bool Pacman::init(Renderer& rkRenderer){
 	camera = new Camera();
+	
 	camera->setPos(0, 0, -100);
 
 	_importer = new Importer(rkRenderer);
 	if (!_importer->importScene("Assets/demo.dae", _root))
 		cout << "no se cargo escena";
 
+	_root.updateWorldTransformation();
+	nodo1 = dynamic_cast<Nodo*>(_root.childs()[0]);
 	return true;
 }
 //==================================================================================
@@ -48,22 +52,14 @@ void Pacman::deinit(){
 }
 //==================================================================================
 void Pacman::moveNode1(Input& input){
-	if (input.keyDown(input.KEY_K))
-		_root.childs()[0]->setRotation(_root.childs()[0]->rotationX() + 1.0f * -0.001f, 0, 0);
+	_root.childs()[1]->setRotation(0, _root.childs()[1]->rotationY() + 1.0f * -0.001f, 0);
 }
 //==================================================================================
 void Pacman::moveMesh(Input& input){
-	if (input.keyDown(input.KEY_N))
-		_root.childs()[2]->setRotation(_root.childs()[2]->rotationX() + 1.0f * -0.001f, 0, 0);
+	nodo1->childs()[0]->setRotation(nodo1->childs()[0]->rotationX() + 1.0f * 0.001f, 0, 0);
 }
 //==================================================================================
 void Pacman::moveRoot(Input& input){
-	if (input.keyDown(input.KEY_O)){
-		_root.setRotation(_root.rotationX() + 1.0f * 0.001f, 0, 0);
-	}
-
-	else if (input.keyDown(input.KEY_P)){
-		_root.setRotation(_root.rotationX() + 1.0f * -0.001f, 0, 0);
-	}
+	_root.setRotation(0, 0, _root.rotationZ() + 1.0f * 0.001f);
 }
 //==================================================================================

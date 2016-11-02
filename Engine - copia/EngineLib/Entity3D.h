@@ -50,6 +50,9 @@ public:
 	DllExport float scaleY() const;
 	DllExport float scaleZ() const;
 
+	DllExport void setName(std::string name);
+	DllExport std::string getName() const;
+
 	DllExport void setParent(Nodo* parent);
 	DllExport const Matrix& worldMatrix() const;
 	DllExport virtual void updateWorldTransformation();
@@ -59,6 +62,7 @@ protected:
 	void updateLocalTransformation();
 	float _posX, _posY, _posZ;
 	float _previusPosX, _previusPosY;
+	std::string _name;
 
 	float _rotationX, _rotationY, _rotationZ;
 

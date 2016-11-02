@@ -86,7 +86,7 @@ bool Renderer::init(HWND hWnd, unsigned int uiW, unsigned int uiH){
 
 	if (hr != D3D_OK) return false;
 	//----------------------States-----------------------------------------
-	m_pkDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, FALSE);
+	m_pkDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
 	m_pkDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
 	m_pkDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
 	m_pkDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
@@ -102,7 +102,7 @@ bool Renderer::init(HWND hWnd, unsigned int uiW, unsigned int uiH){
 	//----------------orthogonal/perspective projection--------------------------------
 	D3DXMATRIX projectionMatrix;
 	//D3DXMatrixOrthoLH(&projectionMatrix, viewportWidth, viewportHeight, 0.0f, 1000.0f);
-	D3DXMatrixPerspectiveFovLH(&projectionMatrix, M_PI * 0.25f, (FLOAT)viewportWidth / viewportHeight, (FLOAT)1.0f, (FLOAT)10000.0f);
+	D3DXMatrixPerspectiveFovLH(&projectionMatrix, M_PI * 0.25f, (FLOAT)viewportWidth / viewportHeight, (FLOAT)1.0f, (FLOAT)1000.0f);
 	m_pkDevice->SetTransform(D3DTS_PROJECTION, &projectionMatrix);
 	_projectionMatrix = new D3DXMATRIX();
 	_projectionMatrix = &projectionMatrix;

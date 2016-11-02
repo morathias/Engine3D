@@ -22,6 +22,7 @@ Entity3D::Entity3D()
 	_scaleX(1.0f),
 	_scaleY(1.0f),
 	_scaleZ(1.0f),
+	_name(""),
 	_parent(NULL)
 {
 	updateLocalTransformation();
@@ -172,6 +173,13 @@ float Entity3D::scaleY() const{
 //==================================================================================
 void Entity3D::setParent(Nodo* parent){
 	if (!_parent) _parent = parent;
+}
+//==================================================================================
+void Entity3D::setName(string name){
+	_name = name;
+}
+string Entity3D::getName() const{
+	return _name;
 }
 //==================================================================================
 void Entity3D::updateLocalTransformation(){

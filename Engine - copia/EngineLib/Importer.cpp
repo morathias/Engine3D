@@ -3,6 +3,7 @@
 #include "assimp\Importer.hpp"
 #include "assimp\scene.h"
 #include "assimp\postprocess.h"
+#include <stack>
 #include <iostream>
 //=============================================================================================================
 Importer::Importer(Renderer& renderer):
@@ -62,8 +63,9 @@ bool Importer::processNode(Nodo& nodo, aiNode& assimpNode, const aiScene& scene)
 		}
 
 		mesh->setMeshData(verts, TRIANGLELIST, _aiMesh->mNumVertices, indices, numIndices);
-		nodo.addChild(*mesh);
-		mesh->setParent(&nodo);
+		mesh->setName(_aiMesh->mName.C_Str());
+		cout << _aiMesh->mName.C_Str() << endl;
+		
 		aiVector3t<float> position, scaling;
 		aiQuaterniont<float> rotation;
 		assimpNode.mTransformation.Decompose(scaling, rotation, position);
@@ -75,28 +77,46 @@ bool Importer::processNode(Nodo& nodo, aiNode& assimpNode, const aiScene& scene)
 		mesh->setRotation(rotation.x, rotation.y, rotation.z);
 
 		aiString path;
+		std::stack<char> _stack;
 		if (scene.mMaterials[_aiMesh->mMaterialIndex]->GetTexture(aiTextureType_DIFFUSE, 0, &path) == AI_SUCCESS)
 		{
 			string fullPath = path.data;
+			for (size_t i = fullPath.length(); i > 0; i--){
+				if (fullPath[i] == '/')
+					break;
+
+				_stack.push(fullPath[i - 1]);
+			}
+
+			fullPath.clear();
+			while (!_stack.empty()){
+				fullPath += _stack.top();
+				_stack.pop();
+			}
 			mesh->setTextureId(0, _renderer.loadTexture("Assets/" + fullPath, D3DCOLOR_XRGB(255, 0, 255)));
 		}
+
+		nodo.addChild(*mesh);
+		mesh->setParent(&nodo);
 	}
 
 	for (size_t i = 0; i < assimpNode.mNumChildren; i++)
 	{
 		Nodo* nodoHijo = new Nodo();
 
-		nodo.addChild(*nodoHijo);
-		nodoHijo->setParent(&nodo);
-
 		aiVector3t<float> position, scaling;
 		aiQuaterniont<float> rotation;
 		assimpNode.mTransformation.Decompose(scaling, rotation, position);
+		nodoHijo->setName(assimpNode.mName.C_Str());
+		cout << assimpNode.mName.C_Str() << endl;
 		nodoHijo->setPosX(position.x);
 		nodoHijo->setPosY(position.y);
 		nodoHijo->setPosZ(position.z);
 		nodoHijo->setScale(scaling.x , scaling.y, scaling.z );
 		nodoHijo->setRotation(rotation.x, rotation.y, rotation.z);
+
+		nodo.addChild(*nodoHijo);
+		nodoHijo->setParent(&nodo);
 
 		processNode(*nodoHijo, *assimpNode.mChildren[i], scene);
 	}
