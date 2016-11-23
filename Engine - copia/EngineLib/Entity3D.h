@@ -4,16 +4,21 @@
 #define ARRAY_SIZE(array) (sizeof((array))/sizeof((array[0]))) //dinamic array size
 //========================================================================================
 #include "Renderer.h"
+#include "Frustum.h"
 //========================================================================================
-enum CollisionResult3D
+enum CollisionResult
 {
-	Collision_Y_Up,
-	Collision_Y_Down,
-	Collision_X_Right,
-	Collision_X_Left,
-	NoCollision_3D
+	AllInside,
+	AllOutside,
+	PartiallyInside
 };
+
 class Nodo;
+
+struct AABB{
+	Vector3 minPoint;
+	Vector3 maxPoint;
+};
 //========================================================================================
 class Entity3D
 {
@@ -29,7 +34,7 @@ public:
 
 	DllExport void Flip(bool flipped);
 
-	DllExport CollisionResult3D checkCollision(Entity3D& toCheck);
+	DllExport CollisionResult checkCollision(Entity3D& toCheck);
 
 	DllExport void returnToPreviusPos(float fPosX, float fPosY);
 	DllExport void returnToPreviusPosH();
@@ -56,7 +61,11 @@ public:
 	DllExport void setParent(Nodo* parent);
 	DllExport const Matrix& worldMatrix() const;
 	DllExport virtual void updateWorldTransformation();
-	DllExport virtual void draw() = 0;
+	DllExport virtual void draw(Renderer& renderer, CollisionResult parentResult,
+								const Frustum& frustum) = 0;
+
+	DllExport const AABB& getAABB() const;
+	DllExport virtual void updateBV() = 0;
 
 protected:
 	void updateLocalTransformation();
@@ -67,6 +76,8 @@ protected:
 	float _rotationX, _rotationY, _rotationZ;
 
 	float _scaleX, _scaleY, _scaleZ;
+
+	AABB _aabb;
 
 	Matrix _transformationMatrix;
 	Matrix _worldTransformationMatrix;

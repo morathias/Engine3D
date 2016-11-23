@@ -23,7 +23,10 @@ public:
 								size_t uiVertexCount,
 								const unsigned short* pusIndices,
 								size_t uiIndexCount);
-	DllExport void draw();
+	DllExport void draw(Renderer& renderer, CollisionResult parentResult,
+						const Frustum& frustum);
+
+	DllExport void updateBV();
 	DllExport void setTextureId(int iTextureId, Texture texture);
 
 private:
@@ -32,6 +35,7 @@ private:
 	pg2::IndexBuffer* _indexBuffer;
 	pg2::VertexBuffer* _vertexBuffer;
 	Texture _texture;
+	const TexturedVertex* _verts;
 };
 //========================================================================================
 #endif

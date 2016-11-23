@@ -12,6 +12,9 @@ struct IDirect3DDevice9;
 struct D3DXMATRIX;
 typedef D3DXMATRIX* Matrix;
 
+struct D3DXVECTOR3;
+typedef D3DXVECTOR3* Vector3;
+
 struct IDirect3DTexture9;
 typedef IDirect3DTexture9* Texture;
 #define NoTexture NULL

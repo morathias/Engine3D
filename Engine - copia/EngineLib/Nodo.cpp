@@ -34,11 +34,39 @@ void Nodo::updateWorldTransformation(){
 	}
 }
 //=====================================================================
-void Nodo::draw(){
+void Nodo::draw(Renderer& renderer, CollisionResult parentResult,
+				const Frustum& frustum){
 	if (!_parent) updateWorldTransformation();
 
-	for (size_t i = 0; i < _childs.size(); i++){
-		_childs[i]->draw();
+	if (parentResult == AllOutside) return;
+
+	/*if (parentResult == PartiallyInside){
+		bool maxIn, minIn;
+
+		maxIn = frustum.pointInFrustum(_aabb.maxPoint);
+		minIn = frustum.pointInFrustum(_aabb.minPoint);
+
+		if (maxIn && minIn){
+			for (size_t i = 0; i < _childs.size(); i++){
+				_childs[i]->draw(renderer, AllInside, frustum);
+			}
+		}
+		else if (!maxIn && !minIn){
+			for (size_t i = 0; i < _childs.size(); i++){
+				_childs[i]->draw(renderer, AllOutside, frustum);
+			}
+		}
+		else if (maxIn && !minIn || !maxIn && minIn){
+			for (size_t i = 0; i < _childs.size(); i++){
+				_childs[i]->draw(renderer, PartiallyInside, frustum);
+			}
+		}
+	}*/
+
+	if (parentResult == AllInside){
+		for (size_t i = 0; i < _childs.size(); i++){
+			_childs[i]->draw(renderer, AllInside, frustum);
+		}
 	}
 }
 //=====================================================================
@@ -46,12 +74,7 @@ const vector<Entity3D*> Nodo::childs() const{
 	return _childs;
 }
 //=====================================================================
-void Nodo::showNames(){
-	_names.push_back(_name);
-	for (size_t i = 0; i < _childs.size(); i++){
-		_names.push_back(_childs[i]->getName());
-		if (typeid(_childs[i]) == typeid(Nodo)){
-			
-		}
-	}
+void Nodo::updateBV(){
+	
 }
+//=====================================================================

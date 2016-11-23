@@ -14,6 +14,8 @@ Camera::Camera(){
 	_lookAt = new D3DXVECTOR3(0.0f, 0.0f, 1.0f);
 
 	_viewMatrix = new D3DXMATRIX();
+
+	_frustum = new Frustum();
 }
 //==================================================================================
 Camera::~Camera(){
@@ -40,7 +42,7 @@ void Camera::pitch(float value){
 	D3DXVec3TransformCoord(_up, _up, &rotationMatrix);
 	D3DXVec3TransformCoord(_lookAt, _lookAt, &rotationMatrix);
 }
-
+//==================================================================================
 void Camera::yaw(float value){
 	D3DXMATRIX rotationMatrix;
 	D3DXMatrixRotationAxis(&rotationMatrix, _up, value);
@@ -112,9 +114,16 @@ void Camera::update(Renderer& renderer){
 	(*_viewMatrix)(3, 2) = z;
 	(*_viewMatrix)(3, 3) = 1.0f;
 
-	//D3DXVECTOR3 _look = *_eye + *_lookAt;
-	//D3DXMatrixLookAtLH(_viewMatrix, _eye, &_look, _up);
-
 	renderer.setMatrix(VIEW, _viewMatrix);
+
+	updateFrustum(renderer);
+}
+//==================================================================================
+const Frustum& Camera::getFrustum() const{
+	return *_frustum;
+}
+//==================================================================================
+void Camera::updateFrustum(Renderer& renderer){
+	_frustum->buildFrustum(_viewMatrix, renderer.getProjectionMatrix());
 }
 //==================================================================================

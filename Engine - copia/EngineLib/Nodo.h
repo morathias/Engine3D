@@ -15,11 +15,11 @@ public:
 	DllExport bool addChild(Entity3D& child);
 	DllExport bool removeChild(Entity3D& child);
 
-	DllExport void showNames();
-
 	DllExport void updateWorldTransformation();
 	
-	DllExport void draw();
+	DllExport void draw(Renderer& renderer, CollisionResult parentResult,
+						const Frustum& frustum);
+	DllExport void updateBV();
 private:
 	vector<Entity3D*> _childs;
 	vector<string> _names;

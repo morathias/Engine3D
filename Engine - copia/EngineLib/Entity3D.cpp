@@ -25,6 +25,8 @@ Entity3D::Entity3D()
 	_name(""),
 	_parent(NULL)
 {
+	_aabb.maxPoint = new D3DXVECTOR3();
+	_aabb.minPoint = new D3DXVECTOR3();
 	updateLocalTransformation();
 }
 //==================================================================================
@@ -81,8 +83,8 @@ void Entity3D::Flip(bool flipped){
 		_scaleX = -(_scaleX);
 }
 //==================================================================================
-CollisionResult3D Entity3D::checkCollision(Entity3D& toCheck){
-	float overlapX = max(0.0f,
+CollisionResult Entity3D::checkCollision(Entity3D& toCheck){
+	/*float overlapX = max(0.0f,
 		min(posX() + fabs(scaleX()) / 2.0f, toCheck.posX() + fabs(toCheck.scaleX()) / 2.0f) -
 		max(posX() - fabs(scaleX()) / 2.0f, toCheck.posX() - fabs(toCheck.scaleX()) / 2.0f));
 
@@ -108,8 +110,8 @@ CollisionResult3D Entity3D::checkCollision(Entity3D& toCheck){
 			else if (posX() < 0 && posX() > toCheck.posX() || posX() > 0 && posX() > toCheck.posX())
 				return Collision_X_Left;
 		}
-	}
-	return NoCollision_3D;
+	}*/
+	return AllInside;
 }
 //==================================================================================
 void Entity3D::returnToPreviusPos(float fPosX, float fPosY){
@@ -198,6 +200,8 @@ void Entity3D::updateLocalTransformation(){
 	D3DXMatrixMultiply(_transformationMatrix, &traslatrionMat, _transformationMatrix);
 	D3DXMatrixMultiply(_transformationMatrix, &rotationMat, _transformationMatrix);
 	D3DXMatrixMultiply(_transformationMatrix, &scaleMat, _transformationMatrix);
+
+	//updateBV();
 }
 //==================================================================================
 void Entity3D::updateWorldTransformation(){

@@ -2,9 +2,7 @@
 #define CAMERA_H
 //==================================================================================
 #include "Renderer.h"
-//==================================================================================
-struct D3DXVECTOR3;
-typedef D3DXVECTOR3* Vector3;
+#include "Frustum.h"
 //==================================================================================
 class Camera
 {
@@ -27,6 +25,9 @@ public:
 
 	DllExport void update(Renderer& renderer);
 
+	DllExport void updateFrustum(Renderer& renderer);
+	DllExport const Frustum& getFrustum() const;
+
 private:
 	Vector3 _eye;
 	Vector3 _lookAt;
@@ -34,6 +35,8 @@ private:
 	Vector3 _right;
 
 	Matrix _viewMatrix;
+
+	Frustum* _frustum;
 };
 //==================================================================================
 #endif

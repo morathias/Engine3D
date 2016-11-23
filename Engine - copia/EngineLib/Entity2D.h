@@ -5,7 +5,7 @@
 //========================================================================================
 #include "Renderer.h"
 //========================================================================================
-enum CollisionResult
+enum CollisionResult2D
 {
 	CollisionVerticalUp,
 	CollisionVerticalDown,
@@ -27,7 +27,7 @@ public:
 	DllExport void flipNot();
 	DllExport void Flip();
 
-	DllExport CollisionResult checkCollision(Entity2D& toCheck);
+	DllExport CollisionResult2D checkCollision(Entity2D& toCheck);
 
 	DllExport void returnToPreviusPos(float fPosX, float fPosY);
 	DllExport void returnToPreviusPosH();

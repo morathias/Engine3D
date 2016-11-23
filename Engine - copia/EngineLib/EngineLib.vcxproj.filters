@@ -83,6 +83,7 @@
     <ClCompile Include="Nodo.cpp">
       <Filter>Source\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="Frustum.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyxml2.h" />
@@ -173,6 +174,7 @@
     <ClInclude Include="Nodo.h">
       <Filter>Headers\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="Frustum.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="input.inl">

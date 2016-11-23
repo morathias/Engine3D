@@ -63,7 +63,7 @@ void Entity2D::Flip(){
 		_scaleX = -(_scaleX);
 }
 //==================================================================================
-CollisionResult Entity2D::checkCollision(Entity2D& toCheck){
+CollisionResult2D Entity2D::checkCollision(Entity2D& toCheck){
 	float overlapX = max(0.0f,
 		min(posX() + fabs(scaleX()) / 2.0f, toCheck.posX() + fabs(toCheck.scaleX()) / 2.0f) -
 		max(posX() - fabs(scaleX()) / 2.0f, toCheck.posX() - fabs(toCheck.scaleX()) / 2.0f));
