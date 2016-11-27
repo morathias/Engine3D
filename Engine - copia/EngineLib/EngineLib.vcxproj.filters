@@ -84,6 +84,7 @@
       <Filter>Source\Entities</Filter>
     </ClCompile>
     <ClCompile Include="Frustum.cpp" />
+    <ClCompile Include="BoundingBox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyxml2.h" />
@@ -175,6 +176,7 @@
       <Filter>Headers\Entities</Filter>
     </ClInclude>
     <ClInclude Include="Frustum.h" />
+    <ClInclude Include="BoundingBox.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="input.inl">

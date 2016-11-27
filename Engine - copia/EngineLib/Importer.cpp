@@ -94,6 +94,19 @@ Mesh& Importer::processMesh(aiMesh& assimpMesh, aiNode& assimpNode, const aiScen
 	}
 
 	mesh->setMeshData(verts, TRIANGLELIST, assimpMesh.mNumVertices, indices, numIndices);
+	mesh->buildAABB();
+	aiVector3t<float> position, scaling;
+	aiQuaterniont<float> rotation;
+	assimpNode.mTransformation.Decompose(scaling, rotation, position);
+	mesh->setPosX(position.x);
+	mesh->setPosY(position.y);
+	mesh->setPosZ(position.z);
+	mesh->setScale(scaling.x, scaling.y, scaling.z);
+	mesh->setRotation(rotation.x, rotation.y, rotation.z);
+	cout << mesh->posX() << " " << mesh->posY() << " " << mesh->posZ() << endl;
+	
+	mesh->updateWorldTransformation();
+	mesh->updateBV();
 
 	aiString path;
 	std::stack<char> _stack;

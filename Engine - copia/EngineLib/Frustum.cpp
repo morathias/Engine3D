@@ -27,39 +27,42 @@ void Frustum::buildFrustum(Matrix& viewMatrix, Matrix& projectionMatrix){
 	_planes[0]->b = frustumMatrix._24 + frustumMatrix._21;
 	_planes[0]->c = frustumMatrix._34 + frustumMatrix._31;
 	_planes[0]->d = frustumMatrix._44 + frustumMatrix._41;
+	D3DXPlaneNormalize(_planes[0], _planes[0]);
 
 	// Right plane
 	_planes[1]->a = frustumMatrix._14 - frustumMatrix._11;
 	_planes[1]->b = frustumMatrix._24 - frustumMatrix._21;
 	_planes[1]->c = frustumMatrix._34 - frustumMatrix._31;
 	_planes[1]->d = frustumMatrix._44 - frustumMatrix._41;
+	D3DXPlaneNormalize(_planes[1], _planes[1]);
 
 	// Top plane
 	_planes[2]->a = frustumMatrix._14 - frustumMatrix._12;
 	_planes[2]->b = frustumMatrix._24 - frustumMatrix._22;
 	_planes[2]->c = frustumMatrix._34 - frustumMatrix._32;
 	_planes[2]->d = frustumMatrix._44 - frustumMatrix._42;
+	D3DXPlaneNormalize(_planes[2], _planes[2]);
 
 	// Bottom plane
 	_planes[3]->a = frustumMatrix._14 + frustumMatrix._12;
 	_planes[3]->b = frustumMatrix._24 + frustumMatrix._22;
 	_planes[3]->c = frustumMatrix._34 + frustumMatrix._32;
 	_planes[3]->d = frustumMatrix._44 + frustumMatrix._42;
+	D3DXPlaneNormalize(_planes[3], _planes[3]);
 
 	// Near plane
 	_planes[4]->a = frustumMatrix._13;
 	_planes[4]->b = frustumMatrix._23;
 	_planes[4]->c = frustumMatrix._33;
 	_planes[4]->d = frustumMatrix._43;
+	D3DXPlaneNormalize(_planes[4], _planes[4]);
 
 	// Far plane
 	_planes[5]->a = frustumMatrix._14 - frustumMatrix._13;
 	_planes[5]->b = frustumMatrix._24 - frustumMatrix._23;
 	_planes[5]->c = frustumMatrix._34 - frustumMatrix._33;
 	_planes[5]->d = frustumMatrix._44 - frustumMatrix._43;
-
-	for (size_t i = 0; i < 6; i++)
-		D3DXPlaneNormalize(_planes[i], _planes[i]);
+	D3DXPlaneNormalize(_planes[5], _planes[5]);
 }
 //=============================================================================================
 bool Frustum::pointInFrustum(Vector3& point) const{

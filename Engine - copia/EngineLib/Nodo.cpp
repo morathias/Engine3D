@@ -1,4 +1,5 @@
 #include "Nodo.h"
+#include <algorithm>
 //=====================================================================
 Nodo::Nodo(){}
 //=====================================================================
@@ -75,6 +76,34 @@ const vector<Entity3D*> Nodo::childs() const{
 }
 //=====================================================================
 void Nodo::updateBV(){
-	
+	float newMinPointX = FLT_MAX;
+	float newMinPointY = FLT_MAX;
+	float newMinPointZ = FLT_MAX;
+
+	float newMaxPointX = FLT_MIN;
+	float newMaxPointY = FLT_MIN;
+	float newMaxPointZ = FLT_MIN;
+
+	for (size_t i = 0; i < _childs.size(); i++){
+		_childs[i]->updateBV();
+
+		if (_childs[i]->getAABB().minPointX < newMinPointX)
+			newMinPointX = _childs[i]->getAABB().minPointX;
+
+		if (_childs[i]->getAABB().minPointY < newMinPointY)
+			newMinPointY = _childs[i]->getAABB().minPointY;
+
+		if (_childs[i]->getAABB().minPointZ < newMinPointZ)
+			newMinPointZ = _childs[i]->getAABB().minPointZ;
+
+		if (newMaxPointX < _childs[i]->getAABB().maxPointX)
+			newMaxPointX = _childs[i]->getAABB().maxPointX;
+
+		if (newMaxPointY < _childs[i]->getAABB().maxPointY)
+			newMaxPointY = _childs[i]->getAABB().maxPointY;
+
+		if (newMaxPointZ < _childs[i]->getAABB().maxPointZ)
+			newMaxPointZ = _childs[i]->getAABB().maxPointZ;
+	}
 }
 //=====================================================================

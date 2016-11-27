@@ -1,5 +1,6 @@
 #include "Entity3D.h"
 #include "Nodo.h"
+#include "BoundingBox.h"
 //==================================================================================
 #include <d3dx9.h>
 #pragma comment (lib, "d3dx9.lib")
@@ -25,8 +26,10 @@ Entity3D::Entity3D()
 	_name(""),
 	_parent(NULL)
 {
-	_aabb.maxPoint = new D3DXVECTOR3();
-	_aabb.minPoint = new D3DXVECTOR3();
+	for (size_t i = 0; i < 8; i++)
+	{
+		points[i] = new D3DXVECTOR3();
+	}
 	updateLocalTransformation();
 }
 //==================================================================================
@@ -218,5 +221,14 @@ void Entity3D::updateWorldTransformation(){
 //==================================================================================
 const Matrix& Entity3D::worldMatrix() const{
 	return _worldTransformationMatrix;
+}
+//==================================================================================
+void Entity3D::buildBoundingBox(Renderer& renderer){
+	_boundingBox = new BoundingBox(renderer);
+	//_boundingBox->buildBox(_aabb.minPoint, _aabb.maxPoint);
+}
+//==================================================================================
+const AABB& Entity3D::getAABB() const{
+	return _aabb;
 }
 //==================================================================================

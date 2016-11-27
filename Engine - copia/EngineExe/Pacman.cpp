@@ -10,10 +10,10 @@ bool Pacman::init(Renderer& rkRenderer){
 	camera->setPos(0, 0, -100);
 
 	_importer = new Importer(rkRenderer);
-	if (!_importer->importScene("Assets/untitled.dae", _root))
+	if (!_importer->importScene("Assets/DemoTP8.dae", _root))
 		cout << "no se cargo escena";
-
-	_root.updateWorldTransformation();
+	nodo1 = new Nodo();
+	nodo1 = (Nodo*)_root.childs()[0];
 	
 	return true;
 }
@@ -40,11 +40,14 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 	camera->roll(input.mouseRelPosZ() * 0.0005f);
 
 	camera->update(rkRenderer);
-
+	if (input.keyDown(Input::KEY_RIGHT))
+		nodo1->setPosX(nodo1->posX() + 0.01f);
 	//moveRoot(input);
 	//moveNode1(input);
 	//moveMesh(input);
+	//_root.updateWorldTransformation();
 	_root.draw(rkRenderer, CollisionResult::AllInside, camera->getFrustum());
+	_root.updateBV();
 }
 //==================================================================================
 void Pacman::deinit(){

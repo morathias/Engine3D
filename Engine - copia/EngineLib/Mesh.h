@@ -28,6 +28,7 @@ public:
 
 	DllExport void updateBV();
 	DllExport void setTextureId(int iTextureId, Texture texture);
+	DllExport void buildAABB();
 
 private:
 	Renderer& _renderer;

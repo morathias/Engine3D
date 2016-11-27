@@ -53,6 +53,7 @@ Renderer::~Renderer(){
 }
 //==================================================================================
 bool Renderer::init(HWND hWnd, unsigned int uiW, unsigned int uiH){
+	_projectionMatrix = new D3DXMATRIX();
 	uiWidth = uiW;
 	uiHeight = uiH;
 	_hwnd = hWnd;
@@ -100,12 +101,9 @@ bool Renderer::init(HWND hWnd, unsigned int uiW, unsigned int uiH){
 	float viewportWidth = static_cast<float>(viewport.Width);
 	float viewportHeight = static_cast<float>(viewport.Height);
 	//----------------orthogonal/perspective projection--------------------------------
-	D3DXMATRIX projectionMatrix;
 	//D3DXMatrixOrthoLH(&projectionMatrix, viewportWidth, viewportHeight, 0.0f, 1000.0f);
-	D3DXMatrixPerspectiveFovLH(&projectionMatrix, M_PI * 0.25f, (FLOAT)viewportWidth / viewportHeight, (FLOAT)1.0f, (FLOAT)1000.0f);
-	m_pkDevice->SetTransform(D3DTS_PROJECTION, &projectionMatrix);
-	_projectionMatrix = new D3DXMATRIX();
-	_projectionMatrix = &projectionMatrix;
+	D3DXMatrixPerspectiveFovLH(_projectionMatrix, D3DX_PI * 0.25f, (FLOAT)viewportWidth / viewportHeight, (FLOAT)0.1f, (FLOAT)2000.0f);
+	m_pkDevice->SetTransform(D3DTS_PROJECTION, _projectionMatrix);
 	//----------------vertex Buffers---------------------------------------
 	v_buffer = new pg1::VertexBuffer(m_pkDevice, sizeof(Vertex), CUSTOMFVF);
 	texturedVBuffer = new pg1::VertexBuffer(m_pkDevice, sizeof(TexturedVertex), TEXTUREFVF);

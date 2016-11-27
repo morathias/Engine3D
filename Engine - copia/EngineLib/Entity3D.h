@@ -14,10 +14,11 @@ enum CollisionResult
 };
 
 class Nodo;
+class BoundingBox;
 
 struct AABB{
-	Vector3 minPoint;
-	Vector3 maxPoint;
+	float maxPointX, maxPointY, maxPointZ;
+	float minPointX, minPointY, minPointZ;
 };
 //========================================================================================
 class Entity3D
@@ -66,6 +67,7 @@ public:
 
 	DllExport const AABB& getAABB() const;
 	DllExport virtual void updateBV() = 0;
+	DllExport void buildBoundingBox(Renderer& renderer);
 
 protected:
 	void updateLocalTransformation();
@@ -78,6 +80,8 @@ protected:
 	float _scaleX, _scaleY, _scaleZ;
 
 	AABB _aabb;
+	Vector3 points[8];
+	BoundingBox* _boundingBox;
 
 	Matrix _transformationMatrix;
 	Matrix _worldTransformationMatrix;
