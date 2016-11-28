@@ -4,16 +4,17 @@
 //==================================================================================
 Nodo* nodo1;
 string userName;
+
 unsigned short indices[] = { 0, 1, 2, 2, 1, 3, //front
 4, 0, 6, 6, 0, 2, //right
 7, 5, 6, 6, 5, 4, //back
 3, 1, 7, 7, 1, 5, //left
 4, 5, 0, 0, 5, 1, //upper
 3, 7, 2, 2, 7, 6 }; //bottom
-TexturedVertex _verts[8];
-bool Pacman::init(Renderer& rkRenderer){
-	
 
+TexturedVertex _verts[8];
+//==================================================================================
+bool Pacman::init(Renderer& rkRenderer){
 	_verts[0].x = -0.1f;	_verts[0].y = 0.1f;		_verts[0].z = -0.1f;	
 	_verts[1].x = 0.1f;		_verts[1].y = 0.1f;		_verts[1].z = -0.1f;	
 	_verts[2].x = -0.1f;	_verts[2].y = -0.1f;	_verts[2].z = -0.1f;	
@@ -25,10 +26,10 @@ bool Pacman::init(Renderer& rkRenderer){
 
 	camera = new Camera();
 	
-	camera->setPos(0, 0, -100);
+	camera->setPos(0, 0, -10);
 
 	_importer = new Importer(rkRenderer);
-	if (!_importer->importScene("Assets/DemoTP8.dae", _root))
+	if (!_importer->importScene("Assets/DemoTp8v2.dae", _root))
 		cout << "no se cargo escena";
 
 	nodo1 = new Nodo();
@@ -79,8 +80,6 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 	camera->roll(input.mouseRelPosZ() * 0.0005f);
 
 	camera->update(rkRenderer);
-	//_max->setScale(0.25f, 0.25f, 0.25f);
-	//_min->setScale(0.25f, 0.25f, 0.25f);
 
 	_max->setPosX(_root.getAABB().max[0]);
 	_max->setPosY(_root.getAABB().max[1]);
@@ -89,17 +88,13 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 	_min->setPosX(_root.getAABB().min[0]);
 	_min->setPosY(_root.getAABB().min[1]);
 	_min->setPosZ(_root.getAABB().min[2]);
-
-	std::cout << "max x: " << _max->posX() << " max y: " << _max->posY() << " max z: " << _max->posZ() << endl;
-	std::cout << "min x: " << _min->posX() << " min y: " << _min->posY() << " min z: " << _min->posZ() << endl;
 	if (input.keyDown(Input::KEY_RIGHT))
-		nodo1->setPosX(nodo1->posX() + 0.01f);
-	//moveRoot(input);
-	//moveNode1(input);
-	//moveMesh(input);
-	//_root.updateWorldTransformation();
-	_root.draw(rkRenderer, CollisionResult::AllInside, camera->getFrustum());
+		nodo1->setScale(nodo1->scaleX() + 0.01f, nodo1->scaleY() + 0.01f, nodo1->scaleZ() + 0.01f);
+
 	_root.updateBV();
+	CollisionResult col = camera->getFrustum().aabbVsFrustum(_root.getAABB());
+	_root.draw(rkRenderer, col, camera->getFrustum());
+
 	_max->updateBV();
 	_min->updateBV();
 	_max->draw(rkRenderer, AllInside, camera->getFrustum());

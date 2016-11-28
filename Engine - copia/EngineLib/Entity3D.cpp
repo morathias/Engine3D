@@ -28,7 +28,7 @@ Entity3D::Entity3D()
 {
 	for (size_t i = 0; i < 8; i++)
 	{
-		points[i] = new D3DXVECTOR3();
+		_aabb.points[i] = new D3DXVECTOR3();
 	}
 	updateLocalTransformation();
 }
@@ -176,6 +176,10 @@ float Entity3D::scaleY() const{
 	return _scaleY;
 }
 //==================================================================================
+float Entity3D::scaleZ() const{
+	return _scaleZ;
+}
+//==================================================================================
 void Entity3D::setParent(Nodo* parent){
 	if (!_parent) _parent = parent;
 }
@@ -183,6 +187,7 @@ void Entity3D::setParent(Nodo* parent){
 void Entity3D::setName(string name){
 	_name = name;
 }
+//==================================================================================
 string Entity3D::getName() const{
 	return _name;
 }
@@ -203,8 +208,6 @@ void Entity3D::updateLocalTransformation(){
 	D3DXMatrixMultiply(_transformationMatrix, &traslatrionMat, _transformationMatrix);
 	D3DXMatrixMultiply(_transformationMatrix, &rotationMat, _transformationMatrix);
 	D3DXMatrixMultiply(_transformationMatrix, &scaleMat, _transformationMatrix);
-
-	//updateBV();
 }
 //==================================================================================
 void Entity3D::updateWorldTransformation(){
@@ -224,7 +227,7 @@ const Matrix& Entity3D::worldMatrix() const{
 }
 //==================================================================================
 const Vector3* Entity3D::getPoints() const{
-	return points;
+	return _aabb.points;
 }
 //==================================================================================
 const AABB& Entity3D::getAABB() const{

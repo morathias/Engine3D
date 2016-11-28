@@ -1,6 +1,8 @@
 #include "Nodo.h"
 #include <algorithm>
 #include <iostream>
+#include <d3dx9.h>
+//=====================================================================
 using namespace std;
 //=====================================================================
 Nodo::Nodo(){}
@@ -41,32 +43,18 @@ void Nodo::draw(Renderer& renderer, CollisionResult parentResult,
 				const Frustum& frustum){
 	if (!_parent) updateWorldTransformation();
 
-	if (parentResult == AllOutside) return;
-
-	/*if (parentResult == PartiallyInside){
-		bool maxIn, minIn;
-
-		maxIn = frustum.pointInFrustum(_aabb.maxPoint);
-		minIn = frustum.pointInFrustum(_aabb.minPoint);
-
-		if (maxIn && minIn){
-			for (size_t i = 0; i < _childs.size(); i++){
-				_childs[i]->draw(renderer, AllInside, frustum);
-			}
+	if (parentResult == AllOutside){
+		for (size_t i = 0; i < _childs.size(); i++){
+			_childs[i]->draw(renderer, AllOutside, frustum);
 		}
-		else if (!maxIn && !minIn){
-			for (size_t i = 0; i < _childs.size(); i++){
-				_childs[i]->draw(renderer, AllOutside, frustum);
-			}
+	}
+	else if (parentResult == PartiallyInside){
+		for (size_t i = 0; i < _childs.size(); i++){
+			_childs[i]->draw(renderer, frustum.aabbVsFrustum(_childs[i]->getAABB()), frustum);
 		}
-		else if (maxIn && !minIn || !maxIn && minIn){
-			for (size_t i = 0; i < _childs.size(); i++){
-				_childs[i]->draw(renderer, PartiallyInside, frustum);
-			}
-		}
-	}*/
+	}
 
-	if (parentResult == AllInside){
+	else{
 		for (size_t i = 0; i < _childs.size(); i++){
 			_childs[i]->draw(renderer, AllInside, frustum);
 		}
@@ -103,15 +91,16 @@ void Nodo::updateBV(){
 		if (newMaxPointZ < _childs[i]->getAABB().max[2])
 			newMaxPointZ = _childs[i]->getAABB().max[2];
 	}
-	_aabb.max[0] = newMaxPointX;
-	_aabb.max[1] = newMaxPointY;
-	_aabb.max[2] = newMaxPointZ;
+	_aabb.max[0] = newMaxPointX;	_aabb.max[1] = newMaxPointY;	_aabb.max[2] = newMaxPointZ;
+	_aabb.min[0] = newMinPointX;	_aabb.min[1] = newMinPointY;	_aabb.min[2] = newMinPointZ;
 
-	_aabb.min[0] = newMinPointX;
-	_aabb.min[1] = newMinPointY;
-	_aabb.min[2] = newMinPointZ;
-
-	//std::cout << "min x: " << _aabb.min[0] << " min y: " << _aabb.min[1] << " min z: " << _aabb.min[2] << endl;
-	//std::cout << "max x: " << _aabb.max[0] << " max y: " << _aabb.max[1] << " max z: " << _aabb.max[2] << endl;
+	_aabb.points[0]->x = newMinPointX;	_aabb.points[0]->y = newMaxPointY;	_aabb.points[0]->z = newMinPointZ;
+	_aabb.points[1]->x = newMaxPointX;	_aabb.points[1]->y = newMaxPointY;	_aabb.points[1]->z = newMinPointZ;
+	_aabb.points[2]->x = newMinPointX;	_aabb.points[2]->y = newMinPointY;	_aabb.points[2]->z = newMinPointZ;
+	_aabb.points[3]->x = newMaxPointX;	_aabb.points[3]->y = newMinPointY;	_aabb.points[3]->z = newMinPointZ;
+	_aabb.points[4]->x = newMinPointX;	_aabb.points[4]->y = newMaxPointY;	_aabb.points[4]->z = newMaxPointZ;
+	_aabb.points[5]->x = newMaxPointX;	_aabb.points[5]->y = newMaxPointY;	_aabb.points[5]->z = newMaxPointZ;
+	_aabb.points[6]->x = newMinPointX;	_aabb.points[6]->y = newMinPointY;	_aabb.points[6]->z = newMaxPointZ;
+	_aabb.points[7]->x = newMaxPointX;	_aabb.points[7]->y = newMinPointY;	_aabb.points[7]->z = newMaxPointZ;
 }
 //=====================================================================

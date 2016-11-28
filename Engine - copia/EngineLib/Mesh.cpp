@@ -56,16 +56,7 @@ void Mesh::setMeshData(const Vertex* texVertex,
 //=====================================================
 void Mesh::draw(Renderer& renderer, CollisionResult parentResult,
 				const Frustum& frustum){
-	//if (parentResult != CollisionResult::AllOutside){
-	int pointsInFrustrum = 0;
-
-	for (size_t i = 0; i < 8; i++){
-		if (frustum.pointInFrustum(points[i]))
-			pointsInFrustrum++;
-	}
-
-	if (pointsInFrustrum > 0){
-		//std::cout << "se dibuja"<< endl;
+	if (parentResult != CollisionResult::AllOutside){
 		_renderer.setCurrentTexture(_texture);
 		_renderer.setMatrix(MatrixType::WORLD, _worldTransformationMatrix);
 
@@ -74,9 +65,6 @@ void Mesh::draw(Renderer& renderer, CollisionResult parentResult,
 
 		_renderer.drawCurrentBuffers(_primitive);
 	}
-	//updateBV();
-	//_boundingBox->draw(renderer, parentResult, frustum);
-	//_boundingBox->setScale(100, 100, 100);
 }
 //=====================================================
 void Mesh::setTextureId(int iTextureId, Texture texture){
@@ -91,35 +79,25 @@ void Mesh::updateBV(){
 	float auxMaxX, auxMaxY, auxMaxZ = 0;
 	float auxMinX, auxMinY, auxMinZ = 0;
 
-	auxMaxX = (_aabb.maxPointX + pos.x) * scale.x;
-	auxMaxY = (_aabb.maxPointY + pos.y) * scale.y;
-	auxMaxZ = (_aabb.maxPointZ + pos.z) * scale.z;
+	auxMaxX = (_aabb.maxPointX * scale.x) + pos.x;
+	auxMaxY = (_aabb.maxPointY * scale.y) + pos.y;
+	auxMaxZ = (_aabb.maxPointZ * scale.z) + pos.z;
 
-	auxMinX = (_aabb.minPointX + pos.x) * scale.x;
-	auxMinY = (_aabb.minPointY + pos.y) * scale.y;
-	auxMinZ = (_aabb.minPointZ + pos.z) * scale.z;
+	auxMinX = (_aabb.minPointX * scale.x) + pos.x;
+	auxMinY = (_aabb.minPointY * scale.y) + pos.y;
+	auxMinZ = (_aabb.minPointZ * scale.z) + pos.z;
 
-	//std::cout << "x: " << scale.x << " y: " << scale.y << " z: " << scale.z << endl;
-	//std::cout << "x: " << pos.x << " y: " << pos.y << " z: " << pos.z << endl;
-	//std::cout << "x: " << auxMaxX << " y: " << auxMaxY << " z: " << auxMaxZ << endl;
-	//std::cout << "x: " << auxMinX << " y: " << auxMinY << " z: " << auxMinZ << endl;
-
-	points[0]->x = auxMinX;		points[0]->y = auxMaxY;		points[0]->z = auxMinZ;
-	points[1]->x = auxMaxX;		points[1]->y = auxMaxY;		points[1]->z = auxMinZ;
-	points[2]->x = auxMinX;		points[2]->y = auxMinY;		points[2]->z = auxMinZ;
-	points[3]->x = auxMaxX;		points[3]->y = auxMinY;		points[3]->z = auxMinZ;
-	points[4]->x = auxMinX;		points[4]->y = auxMaxY;		points[4]->z = auxMaxZ;
-	points[5]->x = auxMaxX;		points[5]->y = auxMaxY;		points[5]->z = auxMaxZ;
-	points[6]->x = auxMinX;		points[6]->y = auxMinY;		points[6]->z = auxMaxZ;
-	points[7]->x = auxMaxX;		points[7]->y = auxMinY;		points[7]->z = auxMaxZ;
+	_aabb.points[0]->x = auxMinX;		_aabb.points[0]->y = auxMaxY;		_aabb.points[0]->z = auxMinZ;
+	_aabb.points[1]->x = auxMaxX;		_aabb.points[1]->y = auxMaxY;		_aabb.points[1]->z = auxMinZ;
+	_aabb.points[2]->x = auxMinX;		_aabb.points[2]->y = auxMinY;		_aabb.points[2]->z = auxMinZ;
+	_aabb.points[3]->x = auxMaxX;		_aabb.points[3]->y = auxMinY;		_aabb.points[3]->z = auxMinZ;
+	_aabb.points[4]->x = auxMinX;		_aabb.points[4]->y = auxMaxY;		_aabb.points[4]->z = auxMaxZ;
+	_aabb.points[5]->x = auxMaxX;		_aabb.points[5]->y = auxMaxY;		_aabb.points[5]->z = auxMaxZ;
+	_aabb.points[6]->x = auxMinX;		_aabb.points[6]->y = auxMinY;		_aabb.points[6]->z = auxMaxZ;
+	_aabb.points[7]->x = auxMaxX;		_aabb.points[7]->y = auxMinY;		_aabb.points[7]->z = auxMaxZ;
 
 	_aabb.max[0] = auxMaxX;		_aabb.max[1] = auxMaxY;		_aabb.max[2] = auxMaxZ;
 	_aabb.min[0] = auxMinX;		_aabb.min[1] = auxMinY;		_aabb.min[2] = auxMinZ;
-
-	/*for (size_t i = 0; i < 8; i++)
-	{
-		std::cout << "x: " << _aabb.points[i]->x << " y: " << _aabb.points[i]->y << " z: " << _aabb.points[i]->z << endl;
-	}*/
 }
 //=====================================================
 void Mesh::buildAABB(){
@@ -141,8 +119,5 @@ void Mesh::buildAABB(){
 		if (_verts[i].z > _aabb.maxPointZ)
 			_aabb.maxPointZ = _verts[i].z;
 	}
-
-	std::cout << "min x: " << _aabb.minPointX << " min y: " << _aabb.minPointY << " min z: " << _aabb.minPointY << endl;
-	std::cout << "max x: " << _aabb.maxPointX << " max y: " << _aabb.maxPointY << " max z: " << _aabb.maxPointY << endl;
 }
 //=====================================================

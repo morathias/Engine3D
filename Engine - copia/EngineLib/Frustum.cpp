@@ -14,8 +14,6 @@ Frustum::Frustum(){
 Frustum::~Frustum(){
 	for (size_t i = 0; i < 6; i++)
 		delete _planes[i];
-
-	delete[] _planes;
 }
 //=============================================================================================
 void Frustum::buildFrustum(Matrix& viewMatrix, Matrix& projectionMatrix){
@@ -65,13 +63,25 @@ void Frustum::buildFrustum(Matrix& viewMatrix, Matrix& projectionMatrix){
 	D3DXPlaneNormalize(_planes[5], _planes[5]);
 }
 //=============================================================================================
-bool Frustum::pointInFrustum(Vector3& point) const{
+bool Frustum::pointInFrustum(const Vector3& point) const{
 	for (size_t i = 0; i < 6; i++)
 	{
 		if (D3DXPlaneDotCoord(_planes[i], point) < 0)
 			return false;
 	}
-
 	return true;
+}
+//=============================================================================================
+CollisionResult Frustum::aabbVsFrustum(const AABB& aabb) const{
+	int pointsInFrustrum = 0;
+
+	for (size_t i = 0; i < 8; i++){
+		if (pointInFrustum(aabb.points[i]))
+			pointsInFrustrum++;
+	}
+
+	if (pointsInFrustrum == 0)	return AllOutside;
+	else if (pointsInFrustrum > 0 && pointsInFrustrum < 8) return PartiallyInside;
+	else if (pointsInFrustrum == 8) return AllInside;
 }
 //=============================================================================================

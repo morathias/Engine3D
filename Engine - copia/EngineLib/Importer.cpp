@@ -54,12 +54,12 @@ bool Importer::processNode(Nodo& nodo, aiNode& assimpNode, const aiScene& scene)
 
 	return true;
 }
-
+//=============================================================================================================
 Mesh& Importer::processMesh(aiMesh& assimpMesh, aiNode& assimpNode, const aiScene& scene){
 	Mesh* mesh = new Mesh(_renderer);
-
-	mesh->setName(assimpMesh.mName.C_Str());
-
+	string name = assimpNode.mName.C_Str();
+	mesh->setName(name + "_mesh");
+	cout << mesh->getName() << endl;
 	TexturedVertex* verts = new TexturedVertex[assimpMesh.mNumVertices];
 	if (assimpMesh.HasTextureCoords(0)){
 		for (size_t i = 0; i < assimpMesh.mNumVertices; i++)
@@ -143,6 +143,8 @@ void Importer::showNodeNames(aiNode& assimpNode, const aiScene& scene){
 		showNodeNames(*assimpNode.mChildren[i], scene);
 	}
 }
+//=============================================================================================================
 void Importer::showMeshNames(aiMesh& assimpMesh, const aiScene& scene){
 	cout << assimpMesh.mName.C_Str()<<endl;
 }
+//=============================================================================================================

@@ -23,6 +23,7 @@ public:
 								size_t uiVertexCount,
 								const unsigned short* pusIndices,
 								size_t uiIndexCount);
+
 	DllExport void draw(Renderer& renderer, CollisionResult parentResult,
 						const Frustum& frustum);
 

@@ -6,21 +6,9 @@
 #include "Renderer.h"
 #include "Frustum.h"
 //========================================================================================
-enum CollisionResult
-{
-	AllInside,
-	AllOutside,
-	PartiallyInside
-};
-
 class Nodo;
 class BoundingBox;
 
-struct AABB{
-	float maxPointX, maxPointY, maxPointZ;
-	float minPointX, minPointY, minPointZ;
-	float max[3], min[3];
-};
 //========================================================================================
 class Entity3D
 {
@@ -81,7 +69,7 @@ protected:
 	float _scaleX, _scaleY, _scaleZ;
 
 	AABB _aabb;
-	Vector3 points[8];
+	
 	BoundingBox* _boundingBox;
 
 	Matrix _transformationMatrix;

@@ -28,6 +28,13 @@ namespace pg2{
 	class VertexBuffer;
 }
 //========================================================================================
+struct AABB{
+	float maxPointX, maxPointY, maxPointZ;
+	float minPointX, minPointY, minPointZ;
+	float max[3], min[3];
+	Vector3 points[8];
+};
+//========================================================================================
 //Se encarga de la comunicacion con el Direct3D
 class Renderer{
 public:
