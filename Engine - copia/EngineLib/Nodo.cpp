@@ -1,5 +1,7 @@
 #include "Nodo.h"
 #include <algorithm>
+#include <iostream>
+using namespace std;
 //=====================================================================
 Nodo::Nodo(){}
 //=====================================================================
@@ -87,23 +89,29 @@ void Nodo::updateBV(){
 	for (size_t i = 0; i < _childs.size(); i++){
 		_childs[i]->updateBV();
 
-		if (_childs[i]->getAABB().minPointX < newMinPointX)
-			newMinPointX = _childs[i]->getAABB().minPointX;
+		if (newMinPointX > _childs[i]->getAABB().min[0])
+			newMinPointX = _childs[i]->getAABB().min[0];
+		if (newMinPointY > _childs[i]->getAABB().min[1])
+			newMinPointY = _childs[i]->getAABB().min[1];
+		if (newMinPointZ > _childs[i]->getAABB().min[2])
+			newMinPointZ = _childs[i]->getAABB().min[2];
 
-		if (_childs[i]->getAABB().minPointY < newMinPointY)
-			newMinPointY = _childs[i]->getAABB().minPointY;
-
-		if (_childs[i]->getAABB().minPointZ < newMinPointZ)
-			newMinPointZ = _childs[i]->getAABB().minPointZ;
-
-		if (newMaxPointX < _childs[i]->getAABB().maxPointX)
-			newMaxPointX = _childs[i]->getAABB().maxPointX;
-
-		if (newMaxPointY < _childs[i]->getAABB().maxPointY)
-			newMaxPointY = _childs[i]->getAABB().maxPointY;
-
-		if (newMaxPointZ < _childs[i]->getAABB().maxPointZ)
-			newMaxPointZ = _childs[i]->getAABB().maxPointZ;
+		if (newMaxPointX < _childs[i]->getAABB().max[0])
+			newMaxPointX = _childs[i]->getAABB().max[0];
+		if (newMaxPointY < _childs[i]->getAABB().max[1])
+			newMaxPointY = _childs[i]->getAABB().max[1];
+		if (newMaxPointZ < _childs[i]->getAABB().max[2])
+			newMaxPointZ = _childs[i]->getAABB().max[2];
 	}
+	_aabb.max[0] = newMaxPointX;
+	_aabb.max[1] = newMaxPointY;
+	_aabb.max[2] = newMaxPointZ;
+
+	_aabb.min[0] = newMinPointX;
+	_aabb.min[1] = newMinPointY;
+	_aabb.min[2] = newMinPointZ;
+
+	//std::cout << "min x: " << _aabb.min[0] << " min y: " << _aabb.min[1] << " min z: " << _aabb.min[2] << endl;
+	//std::cout << "max x: " << _aabb.max[0] << " max y: " << _aabb.max[1] << " max z: " << _aabb.max[2] << endl;
 }
 //=====================================================================

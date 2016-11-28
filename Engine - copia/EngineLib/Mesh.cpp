@@ -65,7 +65,7 @@ void Mesh::draw(Renderer& renderer, CollisionResult parentResult,
 	}
 
 	if (pointsInFrustrum > 0){
-		std::cout << "se dibuja"<< endl;
+		//std::cout << "se dibuja"<< endl;
 		_renderer.setCurrentTexture(_texture);
 		_renderer.setMatrix(MatrixType::WORLD, _worldTransformationMatrix);
 
@@ -112,6 +112,9 @@ void Mesh::updateBV(){
 	points[5]->x = auxMaxX;		points[5]->y = auxMaxY;		points[5]->z = auxMaxZ;
 	points[6]->x = auxMinX;		points[6]->y = auxMinY;		points[6]->z = auxMaxZ;
 	points[7]->x = auxMaxX;		points[7]->y = auxMinY;		points[7]->z = auxMaxZ;
+
+	_aabb.max[0] = auxMaxX;		_aabb.max[1] = auxMaxY;		_aabb.max[2] = auxMaxZ;
+	_aabb.min[0] = auxMinX;		_aabb.min[1] = auxMinY;		_aabb.min[2] = auxMinZ;
 
 	/*for (size_t i = 0; i < 8; i++)
 	{

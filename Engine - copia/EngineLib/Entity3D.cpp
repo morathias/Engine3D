@@ -223,9 +223,8 @@ const Matrix& Entity3D::worldMatrix() const{
 	return _worldTransformationMatrix;
 }
 //==================================================================================
-void Entity3D::buildBoundingBox(Renderer& renderer){
-	_boundingBox = new BoundingBox(renderer);
-	//_boundingBox->buildBox(_aabb.minPoint, _aabb.maxPoint);
+const Vector3* Entity3D::getPoints() const{
+	return points;
 }
 //==================================================================================
 const AABB& Entity3D::getAABB() const{

@@ -19,6 +19,7 @@ class BoundingBox;
 struct AABB{
 	float maxPointX, maxPointY, maxPointZ;
 	float minPointX, minPointY, minPointZ;
+	float max[3], min[3];
 };
 //========================================================================================
 class Entity3D
@@ -67,7 +68,7 @@ public:
 
 	DllExport const AABB& getAABB() const;
 	DllExport virtual void updateBV() = 0;
-	DllExport void buildBoundingBox(Renderer& renderer);
+	const Vector3* getPoints() const;
 
 protected:
 	void updateLocalTransformation();

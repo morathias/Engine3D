@@ -24,6 +24,7 @@ private:
 	Nodo _root;
 
 	Importer* _importer;
+	Mesh* _max; Mesh* _min;
 };
 //==================================================================================
 #endif
