@@ -25,7 +25,7 @@ public:
 								size_t uiIndexCount);
 
 	DllExport void draw(Renderer& renderer, CollisionResult parentResult,
-						const Frustum& frustum);
+		const Frustum& frustum, std::list <std::string>& names);
 
 	DllExport void updateBV();
 	DllExport void setTextureId(int iTextureId, Texture texture);

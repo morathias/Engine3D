@@ -40,23 +40,26 @@ void Nodo::updateWorldTransformation(){
 }
 //=====================================================================
 void Nodo::draw(Renderer& renderer, CollisionResult parentResult,
-				const Frustum& frustum){
+	const Frustum& frustum, std::list <std::string>& names){
 	if (!_parent) updateWorldTransformation();
 
 	if (parentResult == AllOutside){
 		for (size_t i = 0; i < _childs.size(); i++){
-			_childs[i]->draw(renderer, AllOutside, frustum);
+			_childs[i]->draw(renderer, AllOutside, frustum, names);
+			//names.remove(getName());
 		}
 	}
 	else if (parentResult == PartiallyInside){
 		for (size_t i = 0; i < _childs.size(); i++){
-			_childs[i]->draw(renderer, frustum.aabbVsFrustum(_childs[i]->getAABB()), frustum);
+			_childs[i]->draw(renderer, frustum.aabbVsFrustum(_childs[i]->getAABB()), frustum, names);
+			names.push_back(getName());
 		}
 	}
 
 	else{
 		for (size_t i = 0; i < _childs.size(); i++){
-			_childs[i]->draw(renderer, AllInside, frustum);
+			_childs[i]->draw(renderer, AllInside, frustum, names);
+			names.push_back(getName());
 		}
 	}
 }

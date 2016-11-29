@@ -1,0 +1,45 @@
+﻿Compilación iniciada a las 29/11/2016 05:54:22 p.m..
+     1>Proyecto "C:\Users\Stefano\Documents\GitHub\Engine3D\Engine - copia\EngineLib\EngineLib.vcxproj" en el nodo 2 (Build destinos).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Stefano\Documents\GitHub\Engine3D\Engine - copia\/EngineLib/Assimp/include" /I"C:\Users\Stefano\Documents\GitHub\Engine3D\Engine - copia\/EngineLib/Include" /ZI /nologo /W3 /WX- /Od /Oy- /D _WINDLL /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Mesh.cpp Nodo.cpp
+         Nodo.cpp
+         Mesh.cpp
+         Generando código...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Stefano\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.dll" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Stefano\Documents\GitHub\Engine3D\Engine - copia\/EngineLib/Assimp/lib/x86" /LIBPATH:"C:\Users\Stefano\Documents\GitHub\Engine3D\Engine - copia\/EngineLib" dxguid.lib assimp.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Stefano\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Stefano\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.lib" /MACHINE:X86 /DLL Debug\Animation.obj
+         Debug\BoundingBox.obj
+         Debug\Camera.obj
+         Debug\directinput.obj
+         Debug\Engine.obj
+         Debug\Entity2D.obj
+         Debug\Entity3D.obj
+         Debug\Frame.obj
+         Debug\Frustum.obj
+         Debug\Game.obj
+         Debug\Importer.obj
+         Debug\input.obj
+         Debug\Mesh.obj
+         Debug\Nodo.obj
+         Debug\pg1_timer.obj
+         Debug\pg2_indexbuffer.obj
+         Debug\pg2_vertexbuffer.obj
+         Debug\Physics.obj
+         Debug\Quad.obj
+         Debug\Random.obj
+         Debug\Renderer.obj
+         Debug\ScreenText.obj
+         Debug\Sound.obj
+         Debug\Sprite.obj
+         Debug\Tile.obj
+         Debug\TileMap.obj
+         Debug\tinyxml2.obj
+         Debug\Vector2.obj
+         Debug\vertexbuffer.obj
+         Debug\Window.obj
+            Creando biblioteca C:\Users\Stefano\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.lib y objeto C:\Users\Stefano\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.exp
+         EngineLib.vcxproj -> C:\Users\Stefano\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.dll
+     1>Compilación del proyecto terminada "C:\Users\Stefano\Documents\GitHub\Engine3D\Engine - copia\EngineLib\EngineLib.vcxproj" (Build destinos).
+
+Compilación correcta.
+
+Tiempo transcurrido 00:00:06.80

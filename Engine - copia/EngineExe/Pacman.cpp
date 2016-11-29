@@ -38,6 +38,9 @@ bool Pacman::init(Renderer& rkRenderer){
 	_max = new Mesh(rkRenderer);
 	_min = new Mesh(rkRenderer);
 
+	_min->setName("Min");
+	_max->setName("Max");
+
 	_max->setMeshData(_verts, TRIANGLELIST, ARRAYSIZE(_verts), indices, ARRAYSIZE(indices));
 	_min->setMeshData(_verts, TRIANGLELIST, ARRAYSIZE(_verts), indices, ARRAYSIZE(indices));
 	_max->buildAABB();
@@ -54,6 +57,10 @@ bool Pacman::init(Renderer& rkRenderer){
 	_max->updateWorldTransformation();
 	_max->updateBV();
 	_min->updateBV();
+
+	_screenText = new ScreenText();
+	_screenText->create(0, 0, 50, 720, 15, "arial", "", true, rkRenderer);
+	_text = "";
 	
 	return true;
 }
@@ -93,16 +100,30 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 
 	_root.updateBV();
 	CollisionResult col = camera->getFrustum().aabbVsFrustum(_root.getAABB());
-	_root.draw(rkRenderer, col, camera->getFrustum());
+	_root.draw(rkRenderer, col, camera->getFrustum(), meshNames);
 
 	_max->updateBV();
 	_min->updateBV();
-	_max->draw(rkRenderer, AllInside, camera->getFrustum());
-	_min->draw(rkRenderer, AllInside, camera->getFrustum());
+	_max->draw(rkRenderer, AllInside, camera->getFrustum(), meshNames);
+	_min->draw(rkRenderer, AllInside, camera->getFrustum(), meshNames);
+
+	list <string>:: iterator it = meshNames.begin();
+	for (it; it != meshNames.end(); it++)
+	{
+		_text += *it + "/n";
+	}
+
+	_screenText->setText(_text);
+	_screenText->display(rkRenderer);
 }
 //==================================================================================
 void Pacman::deinit(){
 	delete camera;
+	delete _importer;
+	delete nodo1;
+	delete _max;
+	delete _min;
+	delete _screenText;
 }
 //==================================================================================
 void Pacman::moveNode1(Input& input){

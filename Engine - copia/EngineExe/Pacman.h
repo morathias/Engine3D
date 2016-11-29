@@ -25,6 +25,10 @@ private:
 
 	Importer* _importer;
 	Mesh* _max; Mesh* _min;
+
+	ScreenText* _screenText;
+	list <string> meshNames;
+	string _text;
 };
 //==================================================================================
 #endif

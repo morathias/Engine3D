@@ -5,6 +5,7 @@
 //========================================================================================
 #include "Renderer.h"
 #include "Frustum.h"
+#include <list>
 //========================================================================================
 class Nodo;
 class BoundingBox;
@@ -52,7 +53,7 @@ public:
 	DllExport const Matrix& worldMatrix() const;
 	DllExport virtual void updateWorldTransformation();
 	DllExport virtual void draw(Renderer& renderer, CollisionResult parentResult,
-								const Frustum& frustum) = 0;
+								const Frustum& frustum, std::list<std::string>& names) = 0;
 
 	DllExport const AABB& getAABB() const;
 	DllExport virtual void updateBV() = 0;

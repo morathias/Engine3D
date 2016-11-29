@@ -55,7 +55,7 @@ void Mesh::setMeshData(const Vertex* texVertex,
 }
 //=====================================================
 void Mesh::draw(Renderer& renderer, CollisionResult parentResult,
-				const Frustum& frustum){
+	const Frustum& frustum, std::list <std::string>& names){
 	if (parentResult != CollisionResult::AllOutside){
 		_renderer.setCurrentTexture(_texture);
 		_renderer.setMatrix(MatrixType::WORLD, _worldTransformationMatrix);
@@ -64,7 +64,21 @@ void Mesh::draw(Renderer& renderer, CollisionResult parentResult,
 		_indexBuffer->bind();
 
 		_renderer.drawCurrentBuffers(_primitive);
+
+		names.push_back(getName());
 	}
+
+	//names.remove(getName());
+
+	/*list<string> :: iterator it = names.begin();
+
+	for (it; it != names.end(); it++)
+	{
+		if (getName() == *it)
+		{
+			names.remove(*it);
+		}
+	}*/
 }
 //=====================================================
 void Mesh::setTextureId(int iTextureId, Texture texture){
