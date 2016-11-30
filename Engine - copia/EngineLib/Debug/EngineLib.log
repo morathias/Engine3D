@@ -1,12 +1,12 @@
-﻿Compilación iniciada a las 29/11/2016 05:54:22 p.m..
-     1>Proyecto "C:\Users\Stefano\Documents\GitHub\Engine3D\Engine - copia\EngineLib\EngineLib.vcxproj" en el nodo 2 (Build destinos).
+﻿Build started 30/11/2016 03:53:00 p.m..
+     1>Project "C:\Users\820\Desktop\Engine3D\Engine - copia\EngineLib\EngineLib.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Stefano\Documents\GitHub\Engine3D\Engine - copia\/EngineLib/Assimp/include" /I"C:\Users\Stefano\Documents\GitHub\Engine3D\Engine - copia\/EngineLib/Include" /ZI /nologo /W3 /WX- /Od /Oy- /D _WINDLL /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Mesh.cpp Nodo.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\820\Desktop\Engine3D\Engine - copia\/EngineLib/Assimp/include" /I"C:\Users\820\Desktop\Engine3D\Engine - copia\/EngineLib/Include" /ZI /nologo /W3 /WX- /Od /Oy- /D _WINDLL /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Mesh.cpp Nodo.cpp
          Nodo.cpp
          Mesh.cpp
-         Generando código...
+         Generating Code...
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Stefano\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.dll" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Stefano\Documents\GitHub\Engine3D\Engine - copia\/EngineLib/Assimp/lib/x86" /LIBPATH:"C:\Users\Stefano\Documents\GitHub\Engine3D\Engine - copia\/EngineLib" dxguid.lib assimp.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Stefano\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Stefano\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.lib" /MACHINE:X86 /DLL Debug\Animation.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\820\Desktop\Engine3D\Engine - copia\Debug\EngineLib.dll" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\820\Desktop\Engine3D\Engine - copia\/EngineLib/Assimp/lib/x86" /LIBPATH:"C:\Users\820\Desktop\Engine3D\Engine - copia\/EngineLib" dxguid.lib assimp.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\820\Desktop\Engine3D\Engine - copia\Debug\EngineLib.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\820\Desktop\Engine3D\Engine - copia\Debug\EngineLib.lib" /MACHINE:X86 /DLL Debug\Animation.obj
          Debug\BoundingBox.obj
          Debug\Camera.obj
          Debug\directinput.obj
@@ -36,10 +36,9 @@
          Debug\Vector2.obj
          Debug\vertexbuffer.obj
          Debug\Window.obj
-            Creando biblioteca C:\Users\Stefano\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.lib y objeto C:\Users\Stefano\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.exp
-         EngineLib.vcxproj -> C:\Users\Stefano\Documents\GitHub\Engine3D\Engine - copia\Debug\EngineLib.dll
-     1>Compilación del proyecto terminada "C:\Users\Stefano\Documents\GitHub\Engine3D\Engine - copia\EngineLib\EngineLib.vcxproj" (Build destinos).
+         EngineLib.vcxproj -> C:\Users\820\Desktop\Engine3D\Engine - copia\Debug\EngineLib.dll
+     1>Done Building Project "C:\Users\820\Desktop\Engine3D\Engine - copia\EngineLib\EngineLib.vcxproj" (Build target(s)).
 
-Compilación correcta.
+Build succeeded.
 
-Tiempo transcurrido 00:00:06.80
+Time Elapsed 00:00:03.07

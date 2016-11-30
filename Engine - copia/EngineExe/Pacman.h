@@ -28,6 +28,7 @@ private:
 
 	ScreenText* _screenText;
 	list <string> meshNames;
+	vector <string> names;
 	string _text;
 };
 //==================================================================================

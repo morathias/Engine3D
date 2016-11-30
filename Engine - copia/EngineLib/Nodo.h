@@ -20,6 +20,7 @@ public:
 	DllExport void draw(Renderer& renderer, CollisionResult parentResult,
 		const Frustum& frustum, std::list <std::string>& names);
 	DllExport void updateBV();
+	DllExport void getNames(vector<std::string>& names, const Frustum& frustum);
 private:
 	vector<Entity3D*> _childs;
 };

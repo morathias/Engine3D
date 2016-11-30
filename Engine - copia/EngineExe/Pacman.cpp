@@ -59,15 +59,17 @@ bool Pacman::init(Renderer& rkRenderer){
 	_min->updateBV();
 
 	_screenText = new ScreenText();
-	_screenText->create(0, 0, 50, 720, 15, "arial", "", true, rkRenderer);
+	_screenText->create(0, 0, 200, 720, 15, "arial", "", true, rkRenderer);
 	_text = "";
 	
+	_root.getNames(names, camera->getFrustum());
 	return true;
 }
 //==================================================================================
 float rotation = 0.0f;
 
 void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
+	_text = "";
 	if (input.keyDown(Input::KEY_D)){
 		camera->strafe(15.0f * (timer.timeBetweenFrames() / 1000.0f));
 	}
@@ -107,10 +109,14 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 	_max->draw(rkRenderer, AllInside, camera->getFrustum(), meshNames);
 	_min->draw(rkRenderer, AllInside, camera->getFrustum(), meshNames);
 
-	list <string>:: iterator it = meshNames.begin();
+	/*list <string>:: iterator it = meshNames.begin();
 	for (it; it != meshNames.end(); it++)
 	{
 		_text += *it + "/n";
+	}*/
+	for (size_t i = 0; i < names.size(); i++)
+	{
+		_text += names[i]+"\n";
 	}
 
 	_screenText->setText(_text);

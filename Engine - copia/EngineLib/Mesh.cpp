@@ -64,10 +64,11 @@ void Mesh::draw(Renderer& renderer, CollisionResult parentResult,
 		_indexBuffer->bind();
 
 		_renderer.drawCurrentBuffers(_primitive);
-
-		names.push_back(getName());
+		_isDrawn = true;
+		//names.push_back(getName());
 	}
-
+	else
+		_isDrawn = false;
 	//names.remove(getName());
 
 	/*list<string> :: iterator it = names.begin();
@@ -135,3 +136,9 @@ void Mesh::buildAABB(){
 	}
 }
 //=====================================================
+void Mesh::getNames(vector<string>& names, const Frustum& frustum){
+	if (frustum.aabbVsFrustum(getAABB()) != AllOutside)
+		names.push_back(getName());
+	else
+		names.push_back("");
+}

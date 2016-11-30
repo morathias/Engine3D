@@ -46,20 +46,23 @@ void Nodo::draw(Renderer& renderer, CollisionResult parentResult,
 	if (parentResult == AllOutside){
 		for (size_t i = 0; i < _childs.size(); i++){
 			_childs[i]->draw(renderer, AllOutside, frustum, names);
+			_isDrawn = false;
 			//names.remove(getName());
 		}
 	}
 	else if (parentResult == PartiallyInside){
 		for (size_t i = 0; i < _childs.size(); i++){
 			_childs[i]->draw(renderer, frustum.aabbVsFrustum(_childs[i]->getAABB()), frustum, names);
-			names.push_back(getName());
+			//names.push_back(getName());
+			_isDrawn = true;
 		}
 	}
 
 	else{
 		for (size_t i = 0; i < _childs.size(); i++){
 			_childs[i]->draw(renderer, AllInside, frustum, names);
-			names.push_back(getName());
+			_isDrawn = true;
+			//names.push_back(getName());
 		}
 	}
 }
@@ -107,3 +110,14 @@ void Nodo::updateBV(){
 	_aabb.points[7]->x = newMaxPointX;	_aabb.points[7]->y = newMinPointY;	_aabb.points[7]->z = newMaxPointZ;
 }
 //=====================================================================
+void Nodo::getNames(vector<string>& names, const Frustum& frustum){
+	if (frustum.aabbVsFrustum(getAABB()) == AllInside || frustum.aabbVsFrustum(getAABB()) == AllInside){
+		names.push_back(getName());
+	}
+	else
+		names.push_back("");
+	for (size_t i = 0; i < _childs.size(); i++)
+	{
+		_childs[i]->getNames(names,frustum);
+	}
+}

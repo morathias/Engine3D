@@ -30,6 +30,7 @@ public:
 	DllExport void updateBV();
 	DllExport void setTextureId(int iTextureId, Texture texture);
 	DllExport void buildAABB();
+	DllExport void getNames(vector<std::string>& names, const Frustum& frustum);
 
 private:
 	Renderer& _renderer;

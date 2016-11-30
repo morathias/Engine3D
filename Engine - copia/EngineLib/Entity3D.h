@@ -58,12 +58,13 @@ public:
 	DllExport const AABB& getAABB() const;
 	DllExport virtual void updateBV() = 0;
 	const Vector3* getPoints() const;
-
+	DllExport virtual void getNames(std::vector<std::string>& names, const Frustum& frustum) = 0;
 protected:
 	void updateLocalTransformation();
 	float _posX, _posY, _posZ;
 	float _previusPosX, _previusPosY;
 	std::string _name;
+	bool _isDrawn;
 
 	float _rotationX, _rotationY, _rotationZ;
 

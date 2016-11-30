@@ -24,7 +24,8 @@ Entity3D::Entity3D()
 	_scaleY(1.0f),
 	_scaleZ(1.0f),
 	_name(""),
-	_parent(NULL)
+	_parent(NULL),
+	_isDrawn(true)
 {
 	for (size_t i = 0; i < 8; i++)
 	{
@@ -189,7 +190,10 @@ void Entity3D::setName(string name){
 }
 //==================================================================================
 string Entity3D::getName() const{
-	return _name;
+	if (_isDrawn)
+		return _name;
+
+	return "";
 }
 //==================================================================================
 void Entity3D::updateLocalTransformation(){
