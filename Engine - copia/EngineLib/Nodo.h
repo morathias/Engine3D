@@ -18,9 +18,10 @@ public:
 	DllExport void updateWorldTransformation();
 	
 	DllExport void draw(Renderer& renderer, CollisionResult parentResult,
-		const Frustum& frustum, std::list <std::string>& names);
+		const Frustum& frustum);
 	DllExport void updateBV();
-	DllExport void getNames(vector<std::string>& names, const Frustum& frustum);
+	DllExport void getNames(vector<std::string>& names);
+	DllExport void updateNames(std::vector<std::string>& names, int& entityIndex);
 private:
 	vector<Entity3D*> _childs;
 };

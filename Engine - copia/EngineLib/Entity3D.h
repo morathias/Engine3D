@@ -53,12 +53,15 @@ public:
 	DllExport const Matrix& worldMatrix() const;
 	DllExport virtual void updateWorldTransformation();
 	DllExport virtual void draw(Renderer& renderer, CollisionResult parentResult,
-								const Frustum& frustum, std::list<std::string>& names) = 0;
+								const Frustum& frustum) = 0;
 
 	DllExport const AABB& getAABB() const;
 	DllExport virtual void updateBV() = 0;
 	const Vector3* getPoints() const;
-	DllExport virtual void getNames(std::vector<std::string>& names, const Frustum& frustum) = 0;
+	DllExport virtual void getNames(std::vector<std::string>& names) = 0;
+	DllExport virtual void updateNames(std::vector<std::string>& names, int& entityIndex) = 0;
+	DllExport virtual Entity3D& findEntity(std::string name);
+
 protected:
 	void updateLocalTransformation();
 	float _posX, _posY, _posZ;

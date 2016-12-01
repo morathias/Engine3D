@@ -238,3 +238,7 @@ const AABB& Entity3D::getAABB() const{
 	return _aabb;
 }
 //==================================================================================
+Entity3D& Entity3D::findEntity(string name){
+	if (_name == name)
+		return *this;
+}

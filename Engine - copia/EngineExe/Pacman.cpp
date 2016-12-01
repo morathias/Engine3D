@@ -62,25 +62,26 @@ bool Pacman::init(Renderer& rkRenderer){
 	_screenText->create(0, 0, 200, 720, 15, "arial", "", true, rkRenderer);
 	_text = "";
 	
-	_root.getNames(names, camera->getFrustum());
+	__root.getNames(names);
+	//cout << _root.findEntity("pCone1").getName();
 	return true;
 }
 //==================================================================================
-float rotation = 0.0f;
-
 void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 	_text = "";
-	if (input.keyDown(Input::KEY_D)){
+	
+	//Movimiento de la camara
+	if (input.keyDown(Input::KEY_H)){
 		camera->strafe(15.0f * (timer.timeBetweenFrames() / 1000.0f));
 	}
-	else if (input.keyDown(Input::KEY_A)){
+	else if (input.keyDown(Input::KEY_F)){
 		camera->strafe(-15.0f * (timer.timeBetweenFrames() / 1000.0f));
 	}
 
-	if (input.keyDown(Input::KEY_W)){
+	if (input.keyDown(Input::KEY_T)){
 		camera->walk(15.0f * (timer.timeBetweenFrames() / 1000.0f));
 	}
-	else if (input.keyDown(Input::KEY_S)) {
+	else if (input.keyDown(Input::KEY_G)) {
 		camera->walk(-15.0f * (timer.timeBetweenFrames() / 1000.0f));
 	}
 
@@ -97,26 +98,57 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 	_min->setPosX(_root.getAABB().min[0]);
 	_min->setPosY(_root.getAABB().min[1]);
 	_min->setPosZ(_root.getAABB().min[2]);
-	if (input.keyDown(Input::KEY_RIGHT))
+
+	//Transformaciones Nodo1
+	if (input.keyDown(Input::KEY_A)){
+		nodo1->setPosX(nodo1->posX() - 0.01f);
+	}
+	else if (input.keyDown(Input::KEY_D)){
+		nodo1->setPosX(nodo1->posX() + 0.01f);
+	}
+
+	if (input.keyDown(Input::KEY_S)){
+		nodo1->setPosY(nodo1->posY() - 0.01f);
+	}
+	else if (input.keyDown(Input::KEY_W)){
+		nodo1->setPosY(nodo1->posY() + 0.01f);
+	}
+	
+	if (input.keyDown(Input::KEY_K))
 		nodo1->setScale(nodo1->scaleX() + 0.01f, nodo1->scaleY() + 0.01f, nodo1->scaleZ() + 0.01f);
+	if (input.keyDown(Input::KEY_L))
+		nodo1->setScale(nodo1->scaleX() - 0.01f, nodo1->scaleY() - 0.01f, nodo1->scaleZ() - 0.01f);
+	
+	//Transformaciones Teapot
+	if (input.keyDown(Input::KEY_UP)){
+		nodo1->setScale(nodo1->scaleX() + 0.01f, nodo1->scaleY() + 0.01f, nodo1->scaleZ() + 0.01f);
+	}
+	else if (input.keyDown(Input::KEY_DOWN)){
+		nodo1->setScale(nodo1->scaleX() - 0.01f, nodo1->scaleY() - 0.01f, nodo1->scaleZ() - 0.01f);
+	}
+
+	if (input.keyDown(Input::KEY_LEFT)){
+		nodo1->setPosX(nodo1->posX() - 0.01f);
+	}
+	else if (input.keyDown(Input::KEY_RIGHT)){
+		nodo1->setPosX(nodo1->posX() + 0.01f);
+	}
+	
 
 	_root.updateBV();
 	CollisionResult col = camera->getFrustum().aabbVsFrustum(_root.getAABB());
-	_root.draw(rkRenderer, col, camera->getFrustum(), meshNames);
+	_root.draw(rkRenderer, col, camera->getFrustum());
 
 	_max->updateBV();
 	_min->updateBV();
-	_max->draw(rkRenderer, AllInside, camera->getFrustum(), meshNames);
-	_min->draw(rkRenderer, AllInside, camera->getFrustum(), meshNames);
+	_max->draw(rkRenderer, AllInside, camera->getFrustum());
+	_min->draw(rkRenderer, AllInside, camera->getFrustum());
 
-	/*list <string>:: iterator it = meshNames.begin();
-	for (it; it != meshNames.end(); it++)
-	{
-		_text += *it + "/n";
-	}*/
+	int index = 0;
+	_root.updateNames(names, index);
 	for (size_t i = 0; i < names.size(); i++)
 	{
-		_text += names[i]+"\n";
+		_text += names[i] + "\n";
 	}
 
 	_screenText->setText(_text);
@@ -144,3 +176,22 @@ void Pacman::moveRoot(Input& input){
 	_root.setRotation(0, 0, _root.rotationZ() + 1.0f * 0.001f);
 }
 //==================================================================================
+/*Mesh Pacman::findMesh(Nodo* node, string meshName){
+	for (size_t i = 0; i < node->childs.size(); i++)
+	{
+		if (meshName == node->childs[i])
+			return node->childs[i];
+	}
+
+	return;
+}*/
+//==================================================================================
+/*Nodo Pacman::findNode(Nodo& node, string nodeName){
+	for (size_t i = 0; i < node.childs.size(); i++)
+	{
+		if (nodeName == node.childs[i])
+			return node.childs[i];
+	}
+
+	return;
+}*/

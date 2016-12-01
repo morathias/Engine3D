@@ -40,19 +40,19 @@ void Nodo::updateWorldTransformation(){
 }
 //=====================================================================
 void Nodo::draw(Renderer& renderer, CollisionResult parentResult,
-	const Frustum& frustum, std::list <std::string>& names){
+	const Frustum& frustum){
 	if (!_parent) updateWorldTransformation();
 
 	if (parentResult == AllOutside){
 		for (size_t i = 0; i < _childs.size(); i++){
-			_childs[i]->draw(renderer, AllOutside, frustum, names);
+			_childs[i]->draw(renderer, AllOutside, frustum);
 			_isDrawn = false;
 			//names.remove(getName());
 		}
 	}
 	else if (parentResult == PartiallyInside){
 		for (size_t i = 0; i < _childs.size(); i++){
-			_childs[i]->draw(renderer, frustum.aabbVsFrustum(_childs[i]->getAABB()), frustum, names);
+			_childs[i]->draw(renderer, frustum.aabbVsFrustum(_childs[i]->getAABB()), frustum);
 			//names.push_back(getName());
 			_isDrawn = true;
 		}
@@ -60,7 +60,7 @@ void Nodo::draw(Renderer& renderer, CollisionResult parentResult,
 
 	else{
 		for (size_t i = 0; i < _childs.size(); i++){
-			_childs[i]->draw(renderer, AllInside, frustum, names);
+			_childs[i]->draw(renderer, AllInside, frustum);
 			_isDrawn = true;
 			//names.push_back(getName());
 		}
@@ -110,14 +110,20 @@ void Nodo::updateBV(){
 	_aabb.points[7]->x = newMaxPointX;	_aabb.points[7]->y = newMinPointY;	_aabb.points[7]->z = newMaxPointZ;
 }
 //=====================================================================
-void Nodo::getNames(vector<string>& names, const Frustum& frustum){
-	if (frustum.aabbVsFrustum(getAABB()) == AllInside || frustum.aabbVsFrustum(getAABB()) == AllInside){
-		names.push_back(getName());
-	}
-	else
-		names.push_back("");
+void Nodo::getNames(vector<string>& names){
+	names.push_back(getName());
 	for (size_t i = 0; i < _childs.size(); i++)
 	{
-		_childs[i]->getNames(names,frustum);
+		_childs[i]->getNames(names);
 	}
 }
+//=====================================================================
+void Nodo::updateNames(std::vector<std::string>& names, int& entityIndex){
+	names[entityIndex] = getName();
+
+	for (size_t i = 0; i < _childs.size(); i++){
+		entityIndex++;
+		_childs[i]->updateNames(names, entityIndex);
+	}
+}
+//=====================================================================

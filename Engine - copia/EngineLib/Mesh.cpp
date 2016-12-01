@@ -55,7 +55,7 @@ void Mesh::setMeshData(const Vertex* texVertex,
 }
 //=====================================================
 void Mesh::draw(Renderer& renderer, CollisionResult parentResult,
-	const Frustum& frustum, std::list <std::string>& names){
+	const Frustum& frustum){
 	if (parentResult != CollisionResult::AllOutside){
 		_renderer.setCurrentTexture(_texture);
 		_renderer.setMatrix(MatrixType::WORLD, _worldTransformationMatrix);
@@ -136,9 +136,11 @@ void Mesh::buildAABB(){
 	}
 }
 //=====================================================
-void Mesh::getNames(vector<string>& names, const Frustum& frustum){
-	if (frustum.aabbVsFrustum(getAABB()) != AllOutside)
-		names.push_back(getName());
-	else
-		names.push_back("");
+void Mesh::getNames(vector<string>& names){
+	names.push_back(getName());
 }
+//=====================================================
+void Mesh::updateNames(std::vector<std::string>& names, int& entityIndex){
+	names[entityIndex] = getName();
+}
+//=====================================================

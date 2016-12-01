@@ -25,12 +25,13 @@ public:
 								size_t uiIndexCount);
 
 	DllExport void draw(Renderer& renderer, CollisionResult parentResult,
-		const Frustum& frustum, std::list <std::string>& names);
+		const Frustum& frustum);
 
 	DllExport void updateBV();
 	DllExport void setTextureId(int iTextureId, Texture texture);
 	DllExport void buildAABB();
-	DllExport void getNames(vector<std::string>& names, const Frustum& frustum);
+	DllExport void getNames(vector<std::string>& names);
+	DllExport void updateNames(std::vector<std::string>& names, int& entityIndex);
 
 private:
 	Renderer& _renderer;
