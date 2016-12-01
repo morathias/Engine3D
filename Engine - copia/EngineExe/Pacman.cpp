@@ -26,14 +26,14 @@ bool Pacman::init(Renderer& rkRenderer){
 
 	camera = new Camera();
 	
-	camera->setPos(0, 0, -10);
+	camera->setPos(0, 0, -500);
 
 	_importer = new Importer(rkRenderer);
-	if (!_importer->importScene("Assets/DemoTp8v2.dae", _root))
+	if (!_importer->importScene("Assets/sample_scene.dae", _root))
 		cout << "no se cargo escena";
 
 	nodo1 = new Nodo();
-	nodo1 = (Nodo*)_root.childs()[0];
+	nodo1 = (Nodo*)_root.childs()[1];
 	
 	_max = new Mesh(rkRenderer);
 	_min = new Mesh(rkRenderer);
@@ -62,32 +62,34 @@ bool Pacman::init(Renderer& rkRenderer){
 	_screenText->create(0, 0, 200, 720, 15, "arial", "", true, rkRenderer);
 	_text = "";
 	
-	__root.getNames(names);
-	//cout << _root.findEntity("pCone1").getName();
+	_root.getNames(names);
+	cout << _root.rotationX() <<" "<< _root.rotationY()<<" " << _root.rotationZ() << endl;
 	return true;
 }
 //==================================================================================
+float rotation = 0.0f;
+
 void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 	_text = "";
-	
+
 	//Movimiento de la camara
 	if (input.keyDown(Input::KEY_H)){
-		camera->strafe(15.0f * (timer.timeBetweenFrames() / 1000.0f));
+		camera->strafe(10.0f * (timer.timeBetweenFrames() / 1000.0f));
 	}
 	else if (input.keyDown(Input::KEY_F)){
-		camera->strafe(-15.0f * (timer.timeBetweenFrames() / 1000.0f));
+		camera->strafe(-10.0f * (timer.timeBetweenFrames() / 1000.0f));
 	}
 
 	if (input.keyDown(Input::KEY_T)){
-		camera->walk(15.0f * (timer.timeBetweenFrames() / 1000.0f));
+		camera->walk(10.0f * (timer.timeBetweenFrames() / 1000.0f));
 	}
 	else if (input.keyDown(Input::KEY_G)) {
-		camera->walk(-15.0f * (timer.timeBetweenFrames() / 1000.0f));
+		camera->walk(-10.0f * (timer.timeBetweenFrames() / 1000.0f));
 	}
 
-	camera->yaw(input.mouseRelPosX() * 0.005f);
-	camera->pitch(input.mouseRelPosY() * 0.005f);
-	camera->roll(input.mouseRelPosZ() * 0.0005f);
+	camera->yaw(input.mouseRelPosX() * (timer.timeBetweenFrames() / 1000.0f));
+	camera->pitch(input.mouseRelPosY() * (timer.timeBetweenFrames() / 1000.0f));
+	camera->roll(input.mouseRelPosZ() * 0.1f * (timer.timeBetweenFrames() / 1000.0f));
 
 	camera->update(rkRenderer);
 
@@ -101,39 +103,38 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 
 	//Transformaciones Nodo1
 	if (input.keyDown(Input::KEY_A)){
-		nodo1->setPosX(nodo1->posX() - 0.01f);
+		nodo1->setPosX(nodo1->posX() - 1.01f * (timer.timeBetweenFrames() / 1000.0f));
 	}
 	else if (input.keyDown(Input::KEY_D)){
-		nodo1->setPosX(nodo1->posX() + 0.01f);
+		nodo1->setPosX(nodo1->posX() + 1.01f * (timer.timeBetweenFrames() / 1000.0f));
 	}
 
 	if (input.keyDown(Input::KEY_S)){
-		nodo1->setPosY(nodo1->posY() - 0.01f);
+		nodo1->setPosY(nodo1->posY() - 1.01f * (timer.timeBetweenFrames() / 1000.0f));
 	}
 	else if (input.keyDown(Input::KEY_W)){
-		nodo1->setPosY(nodo1->posY() + 0.01f);
+		nodo1->setPosY(nodo1->posY() + 1.01f * (timer.timeBetweenFrames() / 1000.0f));
 	}
-	
+
 	if (input.keyDown(Input::KEY_K))
-		nodo1->setScale(nodo1->scaleX() + 0.01f, nodo1->scaleY() + 0.01f, nodo1->scaleZ() + 0.01f);
+		nodo1->setScale(nodo1->scaleX() + 1.01f * (timer.timeBetweenFrames() / 1000.0f), nodo1->scaleY() + 1.01f * (timer.timeBetweenFrames() / 1000.0f), nodo1->scaleZ() + 1.01f * (timer.timeBetweenFrames() / 1000.0f));
 	if (input.keyDown(Input::KEY_L))
-		nodo1->setScale(nodo1->scaleX() - 0.01f, nodo1->scaleY() - 0.01f, nodo1->scaleZ() - 0.01f);
-	
+		nodo1->setScale(nodo1->scaleX() - 1.01f * (timer.timeBetweenFrames() / 1000.0f), nodo1->scaleY() - 1.01f * (timer.timeBetweenFrames() / 1000.0f), nodo1->scaleZ() - 1.01f * (timer.timeBetweenFrames() / 1000.0f));
+
 	//Transformaciones Teapot
 	if (input.keyDown(Input::KEY_UP)){
-		nodo1->setScale(nodo1->scaleX() + 0.01f, nodo1->scaleY() + 0.01f, nodo1->scaleZ() + 0.01f);
+		nodo1->childs()[0]->setScale(nodo1->childs()[0]->scaleX() + 1.01f * (timer.timeBetweenFrames() / 1000.0f), nodo1->childs()[0]->scaleY() + 1.01f * (timer.timeBetweenFrames() / 1000.0f), nodo1->childs()[0]->scaleZ() + 1.01f * (timer.timeBetweenFrames() / 1000.0f));
 	}
 	else if (input.keyDown(Input::KEY_DOWN)){
-		nodo1->setScale(nodo1->scaleX() - 0.01f, nodo1->scaleY() - 0.01f, nodo1->scaleZ() - 0.01f);
+		nodo1->childs()[0]->setScale(nodo1->childs()[0]->scaleX() - 1.01f * (timer.timeBetweenFrames() / 1000.0f), nodo1->childs()[0]->scaleY() - 1.01f * (timer.timeBetweenFrames() / 1000.0f), nodo1->childs()[0]->scaleZ() - 1.01f * (timer.timeBetweenFrames() / 1000.0f));
 	}
 
 	if (input.keyDown(Input::KEY_LEFT)){
-		nodo1->setPosX(nodo1->posX() - 0.01f);
+		nodo1->childs()[0]->setPosX(nodo1->childs()[0]->posX() - 1.01f * (timer.timeBetweenFrames() / 1000.0f));
 	}
 	else if (input.keyDown(Input::KEY_RIGHT)){
-		nodo1->setPosX(nodo1->posX() + 0.01f);
+		nodo1->childs()[0]->setPosX(nodo1->childs()[0]->posX() + 1.01f * (timer.timeBetweenFrames() / 1000.0f));
 	}
-	
 
 	_root.updateBV();
 	CollisionResult col = camera->getFrustum().aabbVsFrustum(_root.getAABB());
@@ -148,7 +149,7 @@ void Pacman::frame(Renderer& rkRenderer, Input& input, pg1::Timer& timer){
 	_root.updateNames(names, index);
 	for (size_t i = 0; i < names.size(); i++)
 	{
-		_text += names[i] + "\n";
+		_text += names[i]+"\n";
 	}
 
 	_screenText->setText(_text);
@@ -176,22 +177,3 @@ void Pacman::moveRoot(Input& input){
 	_root.setRotation(0, 0, _root.rotationZ() + 1.0f * 0.001f);
 }
 //==================================================================================
-/*Mesh Pacman::findMesh(Nodo* node, string meshName){
-	for (size_t i = 0; i < node->childs.size(); i++)
-	{
-		if (meshName == node->childs[i])
-			return node->childs[i];
-	}
-
-	return;
-}*/
-//==================================================================================
-/*Nodo Pacman::findNode(Nodo& node, string nodeName){
-	for (size_t i = 0; i < node.childs.size(); i++)
-	{
-		if (nodeName == node.childs[i])
-			return node.childs[i];
-	}
-
-	return;
-}*/

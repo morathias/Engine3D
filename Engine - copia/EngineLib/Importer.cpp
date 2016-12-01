@@ -18,7 +18,7 @@ bool Importer::importScene(const std::string& fileName, Nodo& rootNode){
 	if (!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) return false;
 
 	processNode(rootNode, *scene->mRootNode, *scene);
-	
+	rootNode.setRotation(0, rootNode.rotationY(), rootNode.rotationZ());
 	return true;
 }
 //=============================================================================================================
@@ -98,6 +98,7 @@ Mesh& Importer::processMesh(aiMesh& assimpMesh, aiNode& assimpNode, const aiScen
 	aiVector3t<float> position, scaling;
 	aiQuaterniont<float> rotation;
 	assimpNode.mTransformation.Decompose(scaling, rotation, position);
+	
 	mesh->setPosX(position.x);
 	mesh->setPosY(position.y);
 	mesh->setPosZ(position.z);

@@ -47,13 +47,11 @@ void Nodo::draw(Renderer& renderer, CollisionResult parentResult,
 		for (size_t i = 0; i < _childs.size(); i++){
 			_childs[i]->draw(renderer, AllOutside, frustum);
 			_isDrawn = false;
-			//names.remove(getName());
 		}
 	}
 	else if (parentResult == PartiallyInside){
 		for (size_t i = 0; i < _childs.size(); i++){
 			_childs[i]->draw(renderer, frustum.aabbVsFrustum(_childs[i]->getAABB()), frustum);
-			//names.push_back(getName());
 			_isDrawn = true;
 		}
 	}
@@ -62,7 +60,6 @@ void Nodo::draw(Renderer& renderer, CollisionResult parentResult,
 		for (size_t i = 0; i < _childs.size(); i++){
 			_childs[i]->draw(renderer, AllInside, frustum);
 			_isDrawn = true;
-			//names.push_back(getName());
 		}
 	}
 }
@@ -127,3 +124,10 @@ void Nodo::updateNames(std::vector<std::string>& names, int& entityIndex){
 	}
 }
 //=====================================================================
+Entity3D& Nodo::findEntity(string name){
+	for (size_t i = 0; i < _childs.size(); i++){
+		if (_childs[i]->getName() == name)
+			return *_childs[i];
+	}
+	//return _childs[i]->findEntity(name);
+}

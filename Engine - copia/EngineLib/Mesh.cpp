@@ -65,21 +65,9 @@ void Mesh::draw(Renderer& renderer, CollisionResult parentResult,
 
 		_renderer.drawCurrentBuffers(_primitive);
 		_isDrawn = true;
-		//names.push_back(getName());
 	}
 	else
 		_isDrawn = false;
-	//names.remove(getName());
-
-	/*list<string> :: iterator it = names.begin();
-
-	for (it; it != names.end(); it++)
-	{
-		if (getName() == *it)
-		{
-			names.remove(*it);
-		}
-	}*/
 }
 //=====================================================
 void Mesh::setTextureId(int iTextureId, Texture texture){
@@ -91,16 +79,13 @@ void Mesh::updateBV(){
 	D3DXQUATERNION rot;
 	D3DXMatrixDecompose(&scale, &rot, &pos, _worldTransformationMatrix);
 
-	float auxMaxX, auxMaxY, auxMaxZ = 0;
-	float auxMinX, auxMinY, auxMinZ = 0;
+	float auxMaxX = (_aabb.maxPointX * scale.x) + pos.x;
+	float auxMaxY = (_aabb.maxPointY * scale.y) + pos.y;
+	float auxMaxZ = (_aabb.maxPointZ * scale.z) + pos.z;
 
-	auxMaxX = (_aabb.maxPointX * scale.x) + pos.x;
-	auxMaxY = (_aabb.maxPointY * scale.y) + pos.y;
-	auxMaxZ = (_aabb.maxPointZ * scale.z) + pos.z;
-
-	auxMinX = (_aabb.minPointX * scale.x) + pos.x;
-	auxMinY = (_aabb.minPointY * scale.y) + pos.y;
-	auxMinZ = (_aabb.minPointZ * scale.z) + pos.z;
+	float auxMinX = (_aabb.minPointX * scale.x) + pos.x;
+	float auxMinY = (_aabb.minPointY * scale.y) + pos.y;
+	float auxMinZ = (_aabb.minPointZ * scale.z) + pos.z;
 
 	_aabb.points[0]->x = auxMinX;		_aabb.points[0]->y = auxMaxY;		_aabb.points[0]->z = auxMinZ;
 	_aabb.points[1]->x = auxMaxX;		_aabb.points[1]->y = auxMaxY;		_aabb.points[1]->z = auxMinZ;

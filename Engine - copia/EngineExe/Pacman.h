@@ -19,9 +19,6 @@ public:
 	void moveNode1(Input& input);
 	void moveMesh(Input& input);
 
-	//Mesh Pacman::findMesh(Nodo* node, string meshName);
-	//Nodo Pacman::findNode(Nodo& node, string nodeName);
-
 private:
 	Camera* camera;
 	Nodo _root;
@@ -30,6 +27,7 @@ private:
 	Mesh* _max; Mesh* _min;
 
 	ScreenText* _screenText;
+	list <string> meshNames;
 	vector <string> names;
 	string _text;
 };
